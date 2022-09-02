@@ -284,8 +284,8 @@ li span a:hover {
     /* position: fixed; */
     display: block;
     width: 80vw;
-    margin: auto;
-
+    
+    float: left;
     margin-top: 20px;
     left: 0;
     right: 0;
@@ -295,8 +295,7 @@ li span a:hover {
 .nav-logo {
     height: 100%;
     float: left;
-
-
+    left:  0;
 }
 
 
@@ -558,8 +557,9 @@ label {
 }
 
 #hero-img {
-    margin-top: 50px;
-    width: 90%;
+    margin-top: 140px;
+    width: 30%;
+    margin-left: 200px;
 }
 
 #left-hero {
@@ -789,6 +789,7 @@ li span:hover:after {
 
     .hero-des {
         padding-right: 30px;
+        margin-top: 20px;
     }
 
     .menu-wrap {
