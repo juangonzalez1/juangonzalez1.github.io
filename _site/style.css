@@ -285,16 +285,8 @@ li span a:hover {
 }
 
 .nav-desk {
-    height: 10vh;
-    /* position: fixed; */
-    display: block;
-    width: 80vw;
-    
-    float: left;
-    margin-top: 20px;
-    left: 0;
-    right: 0;
-    /* background: black; */
+    margin-top: 2vw;
+    text-align: center;
 }
 
 .nav-logo {
@@ -579,10 +571,11 @@ label {
     border-radius: 50%;
 }
 
-/* .nav-items{
+ .nav-items{
     color:black;
-    float:right;
-} */
+
+    display: inline-block;
+} 
 ul {
     float: right;
     /* color:white; */
