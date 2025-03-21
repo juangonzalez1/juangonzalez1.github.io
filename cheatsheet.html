@@ -1,0 +1,188 @@
+<html>
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159411627-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-159411627-1');
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <meta name="Description"
+        content="Juan Gonzalez web page" />
+    <title>Mi Cheatsheet</title>
+    <link rel="icon" type="image/png" href="assets/img/logo2.png">
+
+
+    <!-- Fuentes -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=jetbrains-mono:400,700">
+
+    <!-- Prism.js para resaltado de código -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+
+    <!-- Tocbot para la tabla de contenidos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 2.5em;
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #cccccc;
+            font-size: 1.8em;
+            margin-top: 20px;
+        }
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        pre, code {
+            background: #001833;
+            color: #87a1c0;
+            padding: 1em;
+            overflow: auto;
+            border-radius: 8px;
+        }
+        .callout {
+            background: #333;
+            padding: 1em;
+            border-left: 4px solid #ffa500;
+            margin: 1em 0;
+        }
+        header {
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 15px;
+        }
+        footer {
+            border-top: 1px solid #444;
+            padding-top: 10px;
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+        /* Estilos para la tabla de contenidos */
+        .post-toc {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            width: 200px;
+            background: #2a2a2a;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        .post-toc h4 {
+            margin: 0 0 10px 0;
+            color: #ffffff;
+        }
+        .post-toc a {
+            color: #e0e0e0;
+            display: block;
+            margin: 5px 0;
+        }
+        .post-toc a:hover {
+            color: #1e90ff;
+        }
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        .toc-list .toc-list {
+            padding-left: 15px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- Encabezado -->
+    <header>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/cheatsheet.html">Cheatsheet</a>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <h1>Mi Cheatsheet</h1>
+        <p>En esta página, recopilo mis comandos y técnicas favoritas para [inserta tu propósito, ej. ciberseguridad, programación].</p>
+
+        <h2>Sección 1: Comandos básicos</h2>
+        <p>Aquí están algunos comandos esenciales:</p>
+        <ul>
+            <li><code>ls -la</code> - Lista archivos detalladamente en *nix.</li>
+            <li><code>dir</code> - Lista archivos en Windows.</li>
+        </ul>
+
+        <h2>Sección 2: Ejemplo de código</h2>
+        <pre><code class="language-bash">echo "Hola mundo"</code></pre>
+
+        <div class="callout">
+            <p><strong>Nota:</strong> Esto es un callout para resaltar información importante.</p>
+        </div>
+
+        <h2>Sección 3: Técnicas avanzadas</h2>
+        <p>Más detalles aquí sobre técnicas avanzadas que utilizo...</p>
+    </main>
+
+    <!-- Panel de navegación (Tabla de contenidos) -->
+    <div class="post-toc">
+        <h4>Tabla de Contenidos</h4>
+        <div class="js-toc"></div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2025 Mi Sitio. Hecho con GitHub Pages.</p>
+    </footer>
+
+    <!-- Script para inicializar Tocbot -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            tocbot.init({
+                tocSelector: '.js-toc',         // Contenedor donde se renderiza la TOC
+                contentSelector: 'main',        // Área con los encabezados
+                headingSelector: 'h1, h2, h3',  // Encabezados a incluir
+                scrollSmooth: true,             // Desplazamiento suave al hacer clic
+                headingsOffset: 80              // Offset para ajustar el desplazamiento
+            });
+        });
+    </script>
+</body>
+</html>
