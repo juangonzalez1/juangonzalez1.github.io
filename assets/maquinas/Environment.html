@@ -29,6 +29,7 @@
 8000/tcp open  http-alt?
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </code></pre>
+<p>&nbsp;</p>        
 <h2 id="2-enumeración">2. Enumeración</h2>
 <p>Una vez añadido el dominio <code>environment.htb</code>al fichero <code>/etc/hosts</code>, hacemos una enumeración de directorios. </p>
 <pre><code class="language-bash"># gobuster dir -u http://environment.htb/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 200 --exclude-length 29
@@ -43,6 +44,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 /build                (Status: 301) [Size: 169] [--&gt; http://environment.htb/build/]
 /mailing              (Status: 405) [Size: 244854]
 </code></pre>
+<p>&nbsp;</p>
 <h2 id="3-explotación">3. Explotación</h2>
 <p>Si tratamos de acceder a <a href="http://environment.htb/upload">http://environment.htb/upload</a> podemos ver un mensaje de error en el que, entre otras cosas, observamos lo siguiente:</p>
 <pre><code class="language-bash">PHP 8.2.28 — Laravel 11.30.0
@@ -124,6 +126,7 @@ Content-Length: 126
 }
 </code></pre>
 <p>Si ponemos <strong>netcat</strong> a la escucha en nuestra máquina, y nos dirigimos a la URL <a href="http://environment.htb//storage//files//file1.php">http://environment.htb//storage//files//file1.php</a>, somos capaces de ejecutar el archivo .php, y establecer así una revershell con el usuario <strong>www-data</strong>.</p>
+<p>&nbsp;</p>
 <h2 id="4-movimiento-lateral">4. Movimiento lateral</h2>
 <p>Directamente con el usuario www-data, somo capaces de acceder al directorio del usuario hish, y obtener así la <strong>flag de usuario</strong>. Si continuamos observando el directorio de Hish, podemos observar que existe una carpeta llamada <code>Backup</code>, con un archivo <strong>.gpg</strong>.</p>
 <pre><code class="language-bash">www-data@environment:/home/hish/backup$ ls
@@ -142,6 +145,7 @@ ENVIRONMENT.HTB -&gt; marineSPm@ster!!
 FACEBOOK.COM -&gt; summerSunnyB3ACH!!
 </code></pre>
 <p>Por lo que probamos a conectarnos por SSH, utilizando las siguientes credenciales <code>hish - marineSPm@ster!!</code>, y conseguimos acceso.</p>
+<p>&nbsp;</p>
 <h2 id="4-escalado">4. Escalado</h2>
 <p>Si listamos los comandos que puede ejecutar <strong>hish</strong> como usuario root, obtenemos lo siguiente:</p>
 <pre><code class="language-bash">Matching Defaults entries for hish on environment:
