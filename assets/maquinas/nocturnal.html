@@ -29,6 +29,7 @@
 |_http-server-header: nginx/1.18.0 (Ubuntu)
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </code></pre>
+<p>&nbsp;</p>
 <h2 id="2-enumeración-de-usuarios">2. Enumeración de usuarios</h2>
 <p>Una vez añadido el dominio <code>nocturnal.htb</code>al fichero <code>/etc/hosts</code>, y accedemos y nos registramos en el recurso web <strong><a href="http://nocturnal.htb/dashborad.php">http://nocturnal.htb/dashborad.php</a></strong>, observamos como en el endpoint <code>/dashboard.php</code> existe un formulario para subir archivos.
 Si intentamos subir un archivo con extensión .php, observamos el siguiente mensaje de error:</p>
@@ -36,6 +37,7 @@ Si intentamos subir un archivo con extensión .php, observamos el siguiente mens
 </code></pre>
 <p>Sin embargo, si subimos un archivo válido, podemos descargarlo directamente desde el dashboard del propio usuario. Para dicha descarga la aplicación hace una petición al endpoint <code>/view.php?username=test1&amp;file=test.pdf</code>. Por lo que viendo esto, se nos puede ocurrir intentar realizar una enumeración de usuarios válidos y sus archivos.</p>
 <p>Utilizando el módulo de automate del proxy Caido, y utilizando para ello el wordlist de Xato, observamos que para los usuarios que no existen en el sistema se obtiene el mensaje <code>User not found</code>, por lo que tendremos que filtrar por dicho mensaje. Vemos entonces que existen los siguientes usuarios: test1, tester, amanda, admin, tobias.</p>
+<p>&nbsp;</p>
 <h2 id="3-enumeración-de-archivos">3. Enumeración de archivos</h2>
 <p>Ahora que tenemos los posibles lo usuarios, tenemos que intentar obtener los archivos de dichos usuarios. Si enviamos una petición con un nombre de usuario válido, pero con un archivo no existente, por ejemplo al endpoint <code>/view.php?username=test1&amp;file=test2.pdf</code>, obtenemos el siguiente contenido en la respuesta, en el que se pueden ver todos los archivos de dicho usuario:</p>
 <pre><code class="language-bash">&lt;div class=&quot;container&quot;&gt;
@@ -66,6 +68,7 @@ Si intentamos subir un archivo con extensión .php, observamos el siguiente mens
 &lt;/text:p&gt;
 </code></pre>
 <p>Probamos entonces acceder al panel web con las credenciales amanda - arHkG7HAI68X8s1J, y observamos como conseguimos acceso.</p>
+<p>&nbsp;</p>
 <h2 id="4-explotación">4. Explotación</h2>
 <p>En el dashboard vemos un link que nos lleva al panel de administración <code>http://nocturnal.htb/admin.php</code>. En él vemos un formulario en el que podemos crear un nuevo backup, y establecer una contraseña para crearlo. Dicha creación de backup, se crea mediante la siguiente petición:</p>
 <pre><code class="language-bash">POST /admin.php HTTP/1.1
@@ -194,6 +197,7 @@ Madmind725aeb8143f575736b07e045bd8ceeb
 <pre><code class="language-bash">55c82b1ccd55ab219b3b109b07d5061d:slowmotionapocalypse
 </code></pre>
 <p>Damos entonces accedido al sistema por SSH, con dichos credenciales, y somos capaces de obtener la <strong>flag de usuario</strong>.</p>
+<p>&nbsp;</p>
 <h2 id="5-escalado">5. Escalado</h2>
 <p>Una vez dentro, wsi listamos los puertos abiertos con <code># ss -lntu</code>, observamos la siguiente salida:</p>
 <pre><code class="language-bash">Netid           State             Recv-Q            Send-Q                       Local Address:Port                        Peer Address:Port           Process           
