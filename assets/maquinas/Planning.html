@@ -26,6 +26,7 @@
 |_http-title: Did not follow redirect to http://planning.htb/
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </code></pre>
+<p>&nbsp;</p>
 <h2 id="2-enumeración">2. Enumeración</h2>
 <p>Una vez añadido el dominio <code>planning.htb</code>al fichero <code>/etc/hosts</code>, hacemos una enumeración de directorios y de subdominios. Del primero no encontramos nada, pero en el segundo realizando la siguiente enumeración:</p>
 <pre><code class="language-bash"># gobuster vhost -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://planning.htb -t 200 --append-domain  -k
@@ -33,6 +34,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 <p>Encontramos el siguiente subdominio:</p>
 <pre><code class="language-bash">Found: grafana.planning.htb Status: 302 [Size: 29] [--&gt; /login]
 </code></pre>
+<p>&nbsp;</p>
 <h2 id="3-explotación">3. Explotación</h2>
 <p>Vemos que se trata de un servicio web de grafana, con un panel de administración, y que se trata de la versión <strong>v11.0.0</strong>. Buscamos si existe alguna vulnerabilidad para dicha versión y encontramos el <strong>CVE-2024-9264</strong>, sobre el cual encontramos el siguiente PoC: <a href="https://github.com/nollium/CVE-2024-9264">https://github.com/nollium/CVE-2024-9264</a>. Para ejecutar dicho exploit necesitamos unos credenciales válidos, por lo que realizamos una enumeración de directorios con el siguiente comando:</p>
 <pre><code class="language-bash"># gobuster dir -u http://grafana.planning.htb/ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 200 --exclude-length 29
@@ -99,7 +101,8 @@ grafana:x:472:0::/home/grafana:/usr/sbin/nologin
 </code></pre>
 </li>
 </ol>
-<h2 id="3-docker-escape">3. Docker escape</h2>
+<p>&nbsp;</p>
+<h2 id="4-docker-escape">4. Docker escape</h2>
 <p>Observamos como se trata de un servicio dockerizado. Antes de intentar realizar nada, podemos listar las variables del entorno del contenedor, con el comando <code># env</code>, observando la siguiente respuesta:</p>
 <pre><code class="language-bash"># root@7ce659d667d7:~/conf# env
     env
@@ -125,7 +128,8 @@ grafana:x:472:0::/home/grafana:/usr/sbin/nologin
     OLDPWD=/usr/share/grafana
 </code></pre>
 <p>Por lo que probamos a loguearnos por ssh, a la máquina, con la siguientes credenciales: <code>enzo - RioTecRANDEntANT!</code>. Conseguimos acceso y obtenemos la <strong>flag de usuario</strong>.</p>
-<h2 id="4-escalado">4. Escalado</h2>
+<p>&nbsp;</p>
+<h2 id="5-escalado">5. Escalado</h2>
 <p>Descubrimos que existe un servicio http corriendo en el puerto 8000, listando para ello los puertos del sistema:</p>
 <pre><code class="language-bash">$ ss -lntu
     Netid                State                 Recv-Q                Send-Q                               Local Address:Port                                  Peer Address:Port                Process                
