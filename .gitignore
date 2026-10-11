@@ -1,0 +1,5 @@
+# Build output y caché de Jekyll (GitHub reconstruye el sitio al hacer push)
+_site/
+.jekyll-cache/
+.sass-cache/
+Gemfile.lock

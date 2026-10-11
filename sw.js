@@ -1,38 +1,46 @@
-const staticCacheName = 'site-static-v1';
+const staticCacheName = 'juanchan-static-v1';
 const assets = [
-    '/Portfolio/',
-    '/Portfolio/index.html',
+    '/',
+    '/index.html',
     '/style.css',
-    '/Portfolio/assets/img/mobile.png',
-    '/Portfolio/assets/img/favicon.png',
-    'https://fonts.googleapis.com/css?family=Lato:300,400,700'
+    '/assets/js/app.js',
+    '/assets/img/logo2.png',
+    '/assets/img/FotoJuan.jpg'
 ];
-// install event
+
+// install: precache del "shell" (si algún recurso falla, no abortamos la instalación)
 self.addEventListener('install', evt => {
+    self.skipWaiting();
     evt.waitUntil(
-        caches.open(staticCacheName).then((cache) => {
-            console.log('caching shell assets');
-            cache.addAll(assets);
-        })
+        caches.open(staticCacheName).then(cache => cache.addAll(assets).catch(() => {}))
     );
 });
-// activate event
+
+// activate: borra cachés antiguas y toma el control de inmediato
 self.addEventListener('activate', evt => {
     evt.waitUntil(
-        caches.keys().then(keys => {
-            return Promise.all(keys
-                .filter(key => key !== staticCacheName)
-                .map(key => caches.delete(key))
-            );
-        })
+        caches.keys().then(keys => Promise.all(
+            keys.filter(key => key !== staticCacheName).map(key => caches.delete(key))
+        )).then(() => self.clients.claim())
     );
 });
-// When we change the name we could have multiple cache, to avoid that we need to delet the old cache, so with this function we check the key that is our cache naming, if it is different from the actual naming we delete it, in this way we will always have only the last updated cache.
-// fetch event
+
+// fetch: network-first para páginas (evita HTML obsoleto) y cache-first para estáticos
 self.addEventListener('fetch', evt => {
+    const req = evt.request;
+    if (req.method !== 'GET') return;
+    if (req.mode === 'navigate') {
+        evt.respondWith(
+            fetch(req).catch(() => caches.match(req).then(r => r || caches.match('/index.html')))
+        );
+        return;
+    }
     evt.respondWith(
-        caches.match(evt.request).then(cacheRes => {
-            return cacheRes || fetch(evt.request);
-        })
+        caches.match(req).then(cacheRes => cacheRes || fetch(req).then(netRes => {
+            return caches.open(staticCacheName).then(cache => {
+                try { cache.put(req, netRes.clone()); } catch (e) {}
+                return netRes;
+            });
+        }).catch(() => cacheRes))
     );
 });
