@@ -2,99 +2,79 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Legal notice and privacy policy of Juan González Iglesias." />
+    <title>Legal — Juan González Iglesias</title>
+    <link rel="icon" type="image/png" href="assets/img/logo2.png">
+    <meta name="theme-color" content="#0a0e16">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <meta name="Description" content="Legal notice and privacy policy of Juan González Iglesias" />
-    <title>Legal | Juan González</title>
-    <link rel="icon" type="image/png" href="assets/img/logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </head>
 
-<body id="legal-body" style="overflow-x: hidden;">
-    <div>
-        <nav class="nav-desk">
-            <center>
-                <div class="nav-items">
-                    <ul>
-                        <li><span><a href="/">About me</a></span></li>
-                        <li><span><a href="work.html">Works</a></span></li>
-                        <li><span><a href="maquinas.html">Machines/CTF</a></span></li>
-                        <li><span><a href="contact.html">Contact</a></span></li>
-                    </ul>
-                </div>
-
-            </center>
-        </nav>
-        <div class="animated fadeIn row" style="width:100vw;animation-duration: 1.5s;">
-            <div class="col-md-12" id="left-hero">
-                <h1 id="legal-hero" class="hero-tag contact-hero copyright animated fadeInLeft"></h1>
-                <p id="legal-hero-des" class="hero-des  animated fadeIn"><b><span class="copyright-legal">Contents of
-                            this site are ©
-                            Copyright 2025 Juan González Iglesias. All rights reserved.</b></span><br>
-                </p>
-
-                <div class="privacy-policy animated fadeInUp delay-1s">
-                    <h1>Privacy Policy</h1>
-                    <p>This privacy policy governs your access to and use of juanchan.es, including any content,
-                        functionality and services offered on or through juanchan.es (the “Website”).</p>
-
-                    <h2>1. What information I collect about you and why?</h2>
-                    <p class="legal-des">When you access the Website, I may learn certain information about you during
-                        your visit: <br> <br><strong>a. Information you provide to me.</strong> I collect information
-                        that you provide to me by filling out the contact form on the Website. I use this information
-                        only to reply to your message. <br> <br><strong>b. Information collected automatically.</strong>
-                        This data generally includes technical information such as your approximate location, the device
-                        and browser you use, and how you navigate the site. It is used only as aggregated statistics to
-                        improve the Website and does not include personal information.</p>
-
-                    <h2>2. Cookies</h2>
-                    <p class="legal-des">This Website does not use cookies for advertising or profiling. Any third-party
-                        resource loaded by the site (such as fonts or icon libraries) is governed by its own provider's
-                        privacy policy. You may block most cookies by adjusting your browser settings.</p>
-
-                    <h2>3. How long do I keep your data?</h2>
-                    <p class="legal-des">I will retain any information you choose to provide to me (for example, through
-                        the contact form) only for as long as necessary to respond to your request, and you may ask me
-                        to delete it at any time by writing to the email address below.</p>
-                </div>
-
-            </div>
-
-
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="/"><img src="assets/img/logo2.png" alt="Logo Juan González"><span>Juan&nbsp;González</span></a>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <nav class="nav-links" id="navlinks">
+                <a href="/">About</a>
+                <a href="work.html">Work</a>
+                <a href="maquinas.html">Machines&nbsp;/&nbsp;CTF</a>
+                <a href="contact.html">Contact</a>
+                <a class="btn btn-sm btn-primary" href="assets/JuanGonzalezIglesias_CV.pdf" target="_blank" rel="noopener">CV</a>
+            </nav>
         </div>
-        <div class="footer-full animated fadeIn delay-2s">
-            <div class="social-icons" style="display: inline;">
-                <a target="_blank" href="mailto:juan.gonzalez1@udc.es"><i class="fas fa-envelope"></i></a>
-                <a target="_blank" href="https://github.com/juangonzalez1"><i class="fab fa-github"></i></a>
-                <a target="_blank" href="https://linkedin.com/in/juan-gonzalez-b43757234"><i class="fab fa-linkedin"></i></a>
+    </header>
+
+    <main class="section">
+        <div class="container prose reveal">
+            <p class="eyebrow">Legal</p>
+            <h1>Legal notice &amp; privacy policy</h1>
+            <p>Contents of this site are © Copyright <span id="year">2025</span> Juan González Iglesias. All rights reserved.</p>
+
+            <h2>1. What information I collect and why</h2>
+            <p>When you access juanchan.es I may learn limited information during your visit:</p>
+            <p><strong>a. Information you provide.</strong> Data you send through the contact form (name, email and
+                message). It is used only to reply to you.</p>
+            <p><strong>b. Information collected automatically.</strong> Aggregated technical data such as approximate
+                location, device and browser, used only to improve the site. It does not include personal information.</p>
+
+            <h2>2. Cookies</h2>
+            <p>This website does not use cookies for advertising or profiling. Third-party resources loaded by the site
+                (such as fonts or icon libraries) are governed by their own providers' privacy policies. You can block
+                most cookies through your browser settings.</p>
+
+            <h2>3. How long I keep your data</h2>
+            <p>Any information you choose to provide (for example, through the contact form) is kept only as long as
+                necessary to answer your request. You can ask me to delete it at any time by writing to
+                <a href="mailto:juan.gonzalez1@udc.es">juan.gonzalez1@udc.es</a>.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span class="f-brand">Juan González</span>
+            <div class="f-links">
+                <a href="/">About</a>
+                <a href="work.html">Work</a>
+                <a href="maquinas.html">Machines</a>
+                <a href="contact.html">Contact</a>
             </div>
-            <div class="footer-credits">
-                Made by <a href="/">Juan González</a>
+            <div class="socials">
+                <a href="mailto:juan.gonzalez1@udc.es" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/juangonzalez1" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/juan-gonzalez-b43757234" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
-    </div>
-    <div class="menu-wrap">
-        <input type="checkbox" class="toggler">
-        <div class="hamburger">
-            <div></div>
-        </div>
-        <div class="menu">
-            <div>
-                <div>
-                    <ul>
-                        <li><a href="/">About me</a></li>
-                        <li><a href="work.html">Works</a></li>
-                        <li><a href="maquinas.html">Machines/CTF</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    </footer>
 </body>
 
 </html>

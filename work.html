@@ -1,425 +1,169 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159411627-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-159411627-1');
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects, research and theses by Juan González Iglesias — cybersecurity, IoT, forensics and more." />
+    <title>Work — Juan González Iglesias</title>
+    <link rel="icon" type="image/png" href="assets/img/logo2.png">
+    <meta name="theme-color" content="#0a0e16">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <meta name="Description"
-        content="Juan Gonzalez web page" />
-    <title>Trabajos | Juan González</title>
-    <link rel="icon" type="image/png" href="assets/img/logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </head>
 
-<body id="contact-body" style="overflow-x: hidden; text-align:center;">
-    <div>
-        <nav class="nav-desk">
-            <center>
-                <div class="nav-items">
-                    <ul>
-                        <li><span><a href="/">About me</a></span></li>
-                        <li><span><a href="#" style="text-decoration: line-through;">Works</a></span></li>
-                        <li><span><a href="maquinas.html">Machines/CTF</a></span></li>
-                        <li><span><a href="contact.html">Contact</a></span></li>
-                    </ul>
-                </div>
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="/"><img src="assets/img/logo2.png" alt="Logo Juan González"><span>Juan&nbsp;González</span></a>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <nav class="nav-links" id="navlinks">
+                <a href="/">About</a>
+                <a href="work.html" class="active">Work</a>
+                <a href="maquinas.html">Machines&nbsp;/&nbsp;CTF</a>
+                <a href="contact.html">Contact</a>
+                <a class="btn btn-sm btn-primary" href="assets/JuanGonzalezIglesias_CV.pdf" target="_blank" rel="noopener">CV</a>
+            </nav>
+        </div>
+    </header>
 
-            </center>
-        </nav>
-        <div class=" fadeIn row" style="width:100vw;height:auto;animation-duration: 1.5s;">
-            <div class="col-md-12" id="left-hero">
-                <h1 class="hero-tag contact-hero  fadeInLeft">My works.</h1>
-                <p class="hero-des contact-des  fadeIn delay-1s">Take a look at some of the work I've done.
-                </p>
-                <!-- <div class="feedback"><a href="https://d474b570.nolt.io/">Have any feedback or suggestion?</a></div> -->
+    <main class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <p class="eyebrow">Portfolio</p>
+                <h2>My work</h2>
+                <p>Theses, research and tools I've built across cybersecurity, IoT and systems.</p>
+            </div>
+
+            <div class="grid grid-work">
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/LogoConNombre.png" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/GonzalezIglesias_Juan_TFG_2021.pdf" target="_blank" rel="noopener">Mobile app &amp; dummy monitoring for emergency-care training</a></h3>
+                        <p>Double Bachelor's thesis bringing together the two fundamental pillars of computer science: software and hardware.</p>
+                        <div class="chips"><span class="chip">Java</span><span class="chip">Android</span><span class="chip">GPS</span><span class="chip">Firebase</span><span class="chip">Sigfox</span><span class="chip">Bluetooth</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/GonzalezIglesias_Juan_TFG_2021.pdf" target="_blank" rel="noopener">Read PDF <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/xiaomi.png" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/tfm_munics.pdf" target="_blank" rel="noopener">Cybersecurity analysis of IP cameras</a></h3>
+                        <p>Master's thesis designing a proprietary methodology to test IP-camera security, applied to two of the best-selling cameras on the market.</p>
+                        <div class="chips"><span class="chip">Pentesting</span><span class="chip">IoT</span><span class="chip">Methodology</span><span class="chip">Shodan</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/tfm_munics.pdf" target="_blank" rel="noopener">Read PDF <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/drone.png" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/SI_munics_TT.pdf" target="_blank" rel="noopener">GPS-guidance security in UAVs and drones</a></h3>
+                        <p>Analysis of the use and importance of drones and UAVs in industry, the vulnerabilities and threats they face, and the impact their security can have on industrial environments.</p>
+                        <div class="chips"><span class="chip">GPS</span><span class="chip">SDR</span><span class="chip">UAV</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/SI_munics_TT.pdf" target="_blank" rel="noopener">Read PDF <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/Cameras.png" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="https://github.com/juangonzalez1/camerasfinder" target="_blank" rel="noopener">CamerasFinder</a></h3>
+                        <p>Tool to gather information about and exploit IP cameras using the Shodan search engine.</p>
+                        <div class="chips"><span class="chip">Shodan</span><span class="chip">Python</span><span class="chip">Nmap</span><span class="chip">CVEs</span></div>
+                        <div class="card-foot"><a class="card-link" href="https://github.com/juangonzalez1/camerasfinder" target="_blank" rel="noopener">View on GitHub <i class="fab fa-github"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/volatillity.jpg" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/5.3.2_Memory_Forensics_2020-12-09.pdf" target="_blank" rel="noopener">Memory forensics on Windows with Volatility</a></h3>
+                        <p>Operation and core concepts of memory forensics focused on Windows, with a comprehensive study of the Volatility tool.</p>
+                        <div class="chips"><span class="chip">Volatility</span><span class="chip">Belkasoft</span><span class="chip">OSForensics</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/5.3.2_Memory_Forensics_2020-12-09.pdf" target="_blank" rel="noopener">Read PDF <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/elk.png" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/AII_Tutelado.pdf" target="_blank" rel="noopener">ELK stack study &amp; deployment</a></h3>
+                        <p>Collection and visualization of network-flow data (Netflow, sFlow, IPFIX) with the Elastic Stack. In collaboration with Mauro de los Santos.</p>
+                        <div class="chips"><span class="chip">ELK</span><span class="chip">Tshark</span><span class="chip">Softflowd</span><span class="chip">Yaf</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/AII_Tutelado.pdf" target="_blank" rel="noopener">Read PDF <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/qlustar.png" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/HPC_Cluster.pdf" target="_blank" rel="noopener">Virtual HPC cluster with Qlustar</a></h3>
+                        <p>Deploying a cluster with virtual and real components for high-performance computing using the open-source Qlustar framework, including install guide, testing and monitoring.</p>
+                        <div class="chips"><span class="chip">Qlustar</span><span class="chip">Vagrant</span><span class="chip">Qluman</span><span class="chip">Slurm</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/HPC_Cluster.pdf" target="_blank" rel="noopener">Read PDF <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/apiary.png" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/Apiary.pdf" target="_blank" rel="noopener">Building an API with Apiary &amp; testing with Dredd</a></h3>
+                        <p>Creation of a basic API with mocks to verify its correct operation, automating test execution with Dredd.</p>
+                        <div class="chips"><span class="chip">Apiary</span><span class="chip">Dredd</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/Apiary.pdf" target="_blank" rel="noopener">Read PDF <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/pdf.png" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/AttacksOverPdfs.pdf" target="_blank" rel="noopener">Attacks and analysis over PDF files</a></h3>
+                        <p>Execution and analysis of several attacks on PDF files, plus identification and discovery of malware embedded in PDFs.</p>
+                        <div class="chips"><span class="chip">Msfconsole</span><span class="chip">PDFiD</span><span class="chip">PhoneyPDF</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/AttacksOverPdfs.pdf" target="_blank" rel="noopener">Read PDF <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+
+                <article class="card reveal">
+                    <div class="card-media contain"><img src="assets/img/appotar.jpg" alt="" loading="lazy"></div>
+                    <div class="card-body">
+                        <h3 class="card-title">Appotar mobile app</h3>
+                        <p>Android application developed in collaboration with Mauro de los Santos for the Computer Engineering degree.</p>
+                        <div class="chips"><span class="chip">Java</span><span class="chip">Firebase</span></div>
+                    </div>
+                </article>
+
             </div>
         </div>
-        <!--Content-->
-        <div class="animated bounceInUp delay-1s">
-            <div class="row" id="work-row">
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero" style="height: 100%;">
-                            <img class="work-hero-img" src="assets/img/LogoConNombre.png" style="height: 100%; object-fit: contain;">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
+    </main>
 
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/GonzalezIglesias_Juan_TFG_2021.pdf">Aplicación móvil y monitorización de un dummy para la formación en emergencias sanitarias </a></h1>
-                        <p>Double Bachelor's thesis where the two fundamental pillars of computer science, software and hardware, are brought together.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">
-                                Java
-                            </span>
-                            <span class="tech-stack">
-                                Android
-                            </span>
-                            <span class="tech-stack">
-                                GPS
-                            </span>
-                            <span class="tech-stack">
-                                Firebase
-                            </span>
-                            <span class="tech-stack">
-                                Sigfox
-                            </span>
-                            <span class="tech-stack">
-                                Bluetooth
-                            </span>
-
-                        </div>
-
-                        <!-- <button class="contact-btn work-read" style="margin:0;">
-                            Read More
-                        </button> -->
-                    </div>
-                </div>
+    <footer class="site-footer">
+        <div class="container">
+            <span class="f-brand">Juan González</span>
+            <div class="f-links">
+                <a href="/">About</a>
+                <a href="maquinas.html">Machines</a>
+                <a href="contact.html">Contact</a>
+                <a href="legal.html">Legal</a>
             </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero" style="display: inline-block; vertical-align: middle;">
-                            <img class="work-hero-img" src="assets/img/xiaomi.png" style="max-width: 100%; height: auto;">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/tfm_munics.pdf">Análisis de la ciberseguridad de las cámaras IP </a></h1>
-                        <p>Master's thesis in which a proprietary methodology was designed and created to test the security of IP cameras, and this methodology was applied to study two of the best-selling cameras in the market.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">
-                                Pentesting
-                            </span>
-                            <span class="tech-stack">
-                                IoT
-                            </span>
-                            <span class="tech-stack">
-                                Metodología
-                            </span>
-                            <span class="tech-stack">
-                                Shodan
-                            </span>
-                        </div>
-                        <!-- <button class="contact-btn work-read" style="margin:0;">
-                            Read More
-                        </button> -->
-                    </div>
-                </div>
+            <div class="socials">
+                <a href="mailto:juan.gonzalez1@udc.es" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/juangonzalez1" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/juan-gonzalez-b43757234" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <br><br><br>
-
-
-
-
-            <div class="row" id="work-row">
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero" style="height: 100%;">
-                            <img class="work-hero-img" src="assets/img/drone.png" style="height: 100%; object-fit: contain;">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/SI_munics_TT.pdf">Análisis de la seguridad del guiado por GPS en sistemas UAVs y Drones</a></h1>
-                        <p>Delve into and analyze the utilization and importance of drones and UAVs in the industrial sector, examining the potential vulnerabilities and threats they may face, as well as the possible impact their security could have on the industrial environment.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">
-                                GPS
-                            </span>
-                            <span class="tech-stack">
-                                SDR
-                            </span>
-                            <span class="tech-stack">
-                                UAV
-                            </span>
-                        </div>
-                        <!-- <button class="contact-btn work-read" style="margin:0;">
-                            Read More
-                        </button> -->
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row">
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero" style="height: 100%;">
-                            <img class="work-hero-img1" src="assets/img/Cameras.png" style="height: 100%; object-fit: contain;">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="https://github.com/juangonzalez1/camerasfinder">CamerasFinder: Herramienta para el escaneo y explotación de cámaras ip.</a></h1>
-                        <p>Tool aimed at obtaining information and exploiting IP cameras using the Shodan search engine.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">
-                                Shodan
-                            </span>
-                            <span class="tech-stack">
-                                Python
-                            </span>
-                            <span class="tech-stack">
-                                Nmap
-                            </span>
-                            <span class="tech-stack">
-                                CVEs
-                            </span>
-                        </div>
-                        <!-- <button class="contact-btn work-read" style="margin:0;">
-                            Read More
-                        </button> -->
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-
-
-
-
-            <div class="row" id="work-row">
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero" style="height: 100%;">
-                            <img class="work-hero-img1" src="assets/img/volatillity.jpg" style="height: 100%; object-fit: contain;">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/5.3.2_Memory_Forensics_2020-12-09.pdf">Memory forensics en Windows junto con la herramienta Volatility</a></h1>
-                        <p>Operation and main theoretical concepts of Memory Forensics method focusing on the Windows operating system. A comprehensive study of the Volatility tool is also conducted.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">
-                                Volatillity
-                            </span>
-                            <span class="tech-stack">
-                                Belkasoft
-                            </span>
-                            <span class="tech-stack">
-                                OSForensics
-                            </span>
-                        </div>
-                        <!-- <button class="contact-btn work-read" style="margin:0;">
-                            Read More
-                        </button> -->
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row">
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero" style="height: 100%;">
-                            <img class="work-hero-img" src="assets/img/elk.png" style="height: 100%; object-fit: contain;">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/AII_Tutelado.pdf">Estudio e instalación del entorno ELK (Elasticsearch, Logstash y Kibana)</a></h1>
-                        <p>Compilation and visualization of network flow data (supporting Netflow, sFlow, and IPFIX) using the well-known Elastic Stack, where Elasticsearch serves as the search engine, Logstash acts as a data processing pipeline, and Kibana enables users to visualize and analyze the obtained data. Done in collaboration with Mauro de los Santos.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">
-                                ELK
-                            </span>
-                            <span class="tech-stack">
-                                Tshark
-                            </span>
-                            <span class="tech-stack">
-                                Softflowd
-                            </span>
-                            <span class="tech-stack">
-                                Yaf
-                            </span>
-                        </div>
-                        <!-- <button class="contact-btn work-read" style="margin:0;">
-                            Read More
-                        </button> -->
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            
-            <div class="row" id="work-row">
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero" style="height: 100%;">
-                            <img class="work-hero-img" src="assets/img/qlustar.png" style="height: 100%; object-fit: contain;">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des">
-                        <h1><a style="color: inherit;" href="assets/HPC_Cluster.pdf">Despliegue de un clúster virtual para HPC con Qlustar</a></h1>
-                        <p>Deploying a cluster with virtual and real components for high-performance computing using the Qlustar framework, which is free and open-source, and analyzing its components, capabilities, and operation. This includes an installation guide for the operating system, real-world testing, and monitoring of a deployed cluster, as well as studying various frameworks related to clustering such as Slurm, Qluman, or Vagrant.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">Qlustar</span>
-                            <span class="tech-stack">Vagrant</span>
-                            <span class="tech-stack">Qluman</span>
-                        </div>
-                        <!-- <button class="contact-btn work-read" style="margin:0;">Read More</button> -->
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-
-
-            <div class="row" id="work-row">
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero" style="display: inline-block; vertical-align: middle;">
-                            <img class="work-hero-img" src="assets/img/apiary.png" style="max-width: 100%; height: auto;">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des">
-                        <h1><a style="color: inherit;" href="assets/Apiary.pdf">Creación de una API con Apiary y realización de tests con DREDD</a></h1>
-                        <p>We create a basic API, in which by creating a series of MOCKS we can test its correct operation. Likewise, with DREDD, we can automate the execution of tests on the created API.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">Apiary</span>
-                            <span class="tech-stack">DREDD</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-
-            
-            <div class="row" id="work-row">
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero" style="display: inline-block; vertical-align: middle;">
-                            <img class="work-hero-img" src="assets/img/pdf.png" style="max-width: 100%; height: auto;">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12" style="display: inline-block; vertical-align: middle;">
-                    <div class="work-des">
-                        <h1><a style="color: inherit;" href="assets/AttacksOverPdfs.pdf">Attacks and analysis over PDF files</a></h1>
-                        <p>Execution and analysis of various attacks that can be performed on PDF files. In addition, identification and discovery of embedded malware in PDFs.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">Msfconsole</span>
-                            <span class="tech-stack">PDFiD</span>
-                            <span class="tech-stack">PhoneyPDF</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-
-
-
-
-
-            
-            
-
-            <div class="row" id="work-row">
-                <div class="col-md-4 col-sm-12  bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/img/appotar.jpg">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-
-                    <div class="work-des ">
-                        <h1>Aplicación móvil Appotar</h1>
-                        <p>Mobile application for Android devices developed in collaboration with Mauro de los Santos for the degree in Computer Engineering.</p>
-                        <div class="technologies">
-                            <h2>Tecnologías utilizadas</h2>
-                            <span class="tech-stack">
-                                Java
-                            </span>
-                            <span class="tech-stack">
-                                Firebase
-                            </span>
-                        </div>
-                        <!-- <button class="contact-btn work-read" style="margin:0;">
-                            Read More
-                        </button> -->
-                    </div>
-                </div>
-            </div>
-            <br>
-            
-
-
-        
-            <div class="footer-full  fadeIn delay-2s">
-                <div id="contact-social" class="social-icons" style="display: inline;">
-                <a target="_blank" href="mailto:juan.gonzalez1@udc.es"><i class="fas fa-envelope"></i></a>
-                <a target="_blank" href="https://github.com/juangonzalez1"><i class="fab fa-github"></i></a>
-                <a target="_blank" href="https://linkedin.com/in/juan-gonzalez-b43757234"><i class="fab fa-linkedin"></i></a>
-            </div>
-                 <div class="footer-credits">
-                    Made by <a> Juan González </a>
-                </div>
-            </div>
+            <p>© <span id="year">2025</span> Juan González Iglesias</p>
         </div>
-        <div class="menu-wrap">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger">
-                <div></div>
-            </div>
-            <div class="menu">
-                <div>
-                    <div>
-                        <ul>
-                            <li><a href="index.html">About me</a></li>
-                            <li><a disabled href="#" style="text-decoration: line-through;">Works</a></li>
-                            <li><a href="maquinas.html">Machines/CTF</a></li>
-                            <li><span><a href="contact.html">Contact</a></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </footer>
 </body>
 
 </html>

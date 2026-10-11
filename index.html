@@ -2,105 +2,101 @@
 <html lang="en">
 
 <head>
-    <!--     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159411627-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-159411627-1');
-    </script> -->
-    <!-- Caching Disabler-->
-        <meta http-equiv="Pragma" content="no-cache">
-        <meta http-equiv="Expires" content="-1">
-        <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
-    
-    
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <meta name="Description"
-        content="Juan González web page" />
-    <title>Juan González Iglesias</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juan González Iglesias — Cybersecurity Engineer. Pentesting, vulnerability analysis, IoT security, forensics and hardening." />
+    <title>Juan González Iglesias — Cybersecurity Engineer</title>
     <link rel="icon" type="image/png" href="assets/img/logo2.png">
     <link rel="apple-touch-icon" href="assets/img/logo2.png">
-    <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
-    <meta name="theme-color" content="#FFE1C4">
-    <script src="assets/js/app.js"></script>
+    <meta name="theme-color" content="#0a0e16">
     <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </head>
 
-<body id="index-body" style="overflow-x: hidden;">
-    <div>
-        <nav class="nav-desk">
-            <center>
-                <div class="nav-items">
-                    <ul>
-                        <li><span><a href="/">About me</a></span></li>
-                        <li><span><a href="work.html">Works</a></span></li>
-                        <li><span><a href="maquinas.html">Machines/CTF</a></span></li>
-                        <li><span><a href="contact.html">Contact</a></span></li>
-                        <!--<li><span><a href="cheatsheet.html">Cheatsheet</a></span></li>-->
-                    </ul>
-                </div>
-
-            </center>
-        </nav>
-        <div class="animated fadeIn row" style="width:100vw;animation-duration: 1.5s;">
-            <div class="col-md-6" id="left-hero">
-                <h1 class="hero-tag"><span class="typer" id="main" data-words="Hi, I'm Juan." data-delay="100"
-                        data-deleteDelay="1000" data-loop="1" style="color:blue!important;"></span>
-                    &nbsp;</h1>
-                <p class="hero-des">Graduated in Computer Engineering, with dual specialization in Information Technologies and Computer Engineering, holding two Cybersecurity master's degrees, one from the University of A Coruña (MUNICS) and another from Deloitte. With two years of experience, currently employed at the Automotive Technology Center of Galicia as a Cybersecurity Engineer.</p>
-                
-                <p class="hero-des">I consider myself deeply passionate about this field and the IoT world, focusing on areas such as pentesting, vulnerability analysis and exploitation, hardening, forensics, as well as requirements and risk analysis. And above all, an ardent technology and security enthusiast with a positive attitude and an eagerness to continue learning and pursue a successful career.</p>
-                
-                <script async src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"></script>
-                 <button class="animated bounce delay-4s learn-btn" onclick="location.href='assets/JuanGonzalezIglesias_CV.pdf'">
-                    Download CV
-                </button>
-                <a href="contact.html"><button class="contact-btn">
-                        Contact with me
-                    </button></a>
-                <div class="social-icons">
-                    <a target="_blank" href="mailto:juan.gonzalez1@udc.es"><i class="fas fa-envelope"></i></a>
-                    <a target="_blank" href="https://github.com/juangonzalez1"><i class="fab fa-github"></i></a>
-                    <a target="_blank" href="https://linkedin.com/in/juan-gonzalez-b43757234"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-
-            <div class="col-md-6" id="hero-right">
-                <img id="hero-img" src="assets/img/FotoJuan.jpg">
-            </div>
-
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="/"><img src="assets/img/logo2.png" alt="Logo Juan González"><span>Juan&nbsp;González</span></a>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <nav class="nav-links" id="navlinks">
+                <a href="/" class="active">About</a>
+                <a href="work.html">Work</a>
+                <a href="maquinas.html">Machines&nbsp;/&nbsp;CTF</a>
+                <a href="contact.html">Contact</a>
+                <a class="btn btn-sm btn-primary" href="assets/JuanGonzalezIglesias_CV.pdf" target="_blank" rel="noopener">CV</a>
+            </nav>
         </div>
-    </div>
-    <div class="menu-wrap">
-        <input type="checkbox" class="toggler">
-        <div class="hamburger">
-            <div></div>
-        </div>
-        <div class="menu">
-            <div>
-                <div>
-                    <ul>
-                        <li><a href="#" style="text-decoration: line-through;">About me</a></li>
-                        <li><a href="work.html">Works</a></li>
-                        <li><a href="maquinas.html">Machines/CTF</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-text reveal">
+                <p class="eyebrow">Cybersecurity Engineer</p>
+                <h1>Hi, I'm <span class="grad">Juan González</span>.</h1>
+                <p class="lead">Computer Engineer with a dual specialization in Information Technologies and
+                    Computer Engineering, and two Cybersecurity master's degrees — one from the University of A
+                    Coruña (MUNICS) and another from Deloitte. Currently a Cybersecurity Engineer at the Automotive
+                    Technology Center of Galicia.</p>
+                <p class="lead">Passionate about security and the IoT world: pentesting, vulnerability analysis and
+                    exploitation, hardening, forensics, and risk analysis — always eager to keep learning.</p>
+                <div class="cta">
+                    <a class="btn btn-primary" href="assets/JuanGonzalezIglesias_CV.pdf" target="_blank" rel="noopener">
+                        <i class="fas fa-download"></i> Download CV</a>
+                    <a class="btn btn-ghost" href="contact.html">Contact me</a>
+                </div>
+                <div class="socials">
+                    <a href="mailto:juan.gonzalez1@udc.es" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/juangonzalez1" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/juan-gonzalez-b43757234" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
+            <div class="hero-media reveal">
+                <img src="assets/img/FotoJuan.jpg" alt="Portrait of Juan González">
+            </div>
+        </section>
+
+        <section class="section" style="padding-top:0">
+            <div class="container">
+                <div class="section-head reveal">
+                    <p class="eyebrow">Focus areas</p>
+                    <h2>What I work on</h2>
+                </div>
+                <div class="focus-row reveal" style="justify-content:center">
+                    <span class="chip">Pentesting</span>
+                    <span class="chip">Vulnerability analysis &amp; exploitation</span>
+                    <span class="chip">IoT &amp; embedded security</span>
+                    <span class="chip">Digital forensics</span>
+                    <span class="chip">System hardening</span>
+                    <span class="chip">Risk &amp; requirements analysis</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span class="f-brand">Juan González</span>
+            <div class="f-links">
+                <a href="work.html">Work</a>
+                <a href="maquinas.html">Machines</a>
+                <a href="contact.html">Contact</a>
+                <a href="legal.html">Legal</a>
+            </div>
+            <div class="socials">
+                <a href="mailto:juan.gonzalez1@udc.es" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/juangonzalez1" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/juan-gonzalez-b43757234" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>© <span id="year">2025</span> Juan González Iglesias</p>
         </div>
-    </div>
+    </footer>
 </body>
 
 </html>

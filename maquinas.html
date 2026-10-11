@@ -1,508 +1,261 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159411627-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-159411627-1');
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HackTheBox machines and CTFs solved by Juan González Iglesias, with writeups." />
+    <title>Machines / CTF — Juan González Iglesias</title>
+    <link rel="icon" type="image/png" href="assets/img/logo2.png">
+    <meta name="theme-color" content="#0a0e16">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <meta name="Description"
-        content="Juan Gonzalez web page" />
-    <title>Máquinas/CTF | Juan González</title>
-    <link rel="icon" type="image/png" href="assets/img/logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </head>
 
-<body id="contact-body" style="overflow-x: hidden;">
-    <div>
-        <nav class="nav-desk">
-            <center>
-                <div class="nav-items">
-                    <ul>
-                        <li><span><a href="/">About me</a></span></li>
-                        <li><span><a href="work.html">Works</a></span></li>
-                        <li><span><a href="#" style="text-decoration: line-through;">Machines/CTF</a></span></li>
-                        <li><span><a href="contact.html">Contact</a></span></li>
-                    </ul>
-                </div>
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="/"><img src="assets/img/logo2.png" alt="Logo Juan González"><span>Juan&nbsp;González</span></a>
+            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <nav class="nav-links" id="navlinks">
+                <a href="/">About</a>
+                <a href="work.html">Work</a>
+                <a href="maquinas.html" class="active">Machines&nbsp;/&nbsp;CTF</a>
+                <a href="contact.html">Contact</a>
+                <a class="btn btn-sm btn-primary" href="assets/JuanGonzalezIglesias_CV.pdf" target="_blank" rel="noopener">CV</a>
+            </nav>
+        </div>
+    </header>
 
-            </center>
-        </nav>
-        <div class=" fadeIn row" style="width:100vw;height:auto;animation-duration: 1.5s;">
-            <div class="col-md-12" id="left-hero">
-                <h1 class="hero-tag contact-hero  fadeInLeft">Machines and resolved CTFs.</h1>
-                <p class="hero-des contact-des  fadeIn delay-1s">Take a look at some machines or CTFs that I've solved.
-                </p>
-                <!-- <div class="feedback"><a href="https://d474b570.nolt.io/">Have any feedback or suggestion?</a></div> -->
+    <main class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <p class="eyebrow">HackTheBox &amp; CTF</p>
+                <h2>Machines I've solved</h2>
+                <p>A selection of HackTheBox machines rooted — user and administrator flags — each with its own writeup.</p>
+            </div>
+
+            <div class="grid grid-machines">
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/agile.html" aria-label="Agile writeup"><img src="assets/maquinas/Agile.png" alt="Agile" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/agile.html">Agile</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-medium">Medium</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/agile.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Cat.html" aria-label="Cat writeup"><img src="assets/maquinas/Cat.PNG" alt="Cat" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Cat.html">Cat</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-medium">Medium</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Cat.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Cypher.html" aria-label="Cypher writeup"><img src="assets/maquinas/Cypher.PNG" alt="Cypher" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Cypher.html">Cypher</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-medium">Medium</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Cypher.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Environment.html" aria-label="Environment writeup"><img src="assets/maquinas/Environment.png" alt="Environment" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Environment.html">Environment</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-medium">Medium</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Environment.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Strutted.html" aria-label="Strutted writeup"><img src="assets/maquinas/Strutted.png" alt="Strutted" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Strutted.html">Strutted</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-medium">Medium</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Strutted.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Outbound.html" aria-label="Outbound writeup"><img src="assets/maquinas/Outbound.PNG" alt="Outbound" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Outbound.html">Outbound</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Outbound.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Artificial.html" aria-label="Artificial writeup"><img src="assets/maquinas/Artificial.png" alt="Artificial" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Artificial.html">Artificial</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Artificial.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Planning.html" aria-label="Planning writeup"><img src="assets/maquinas/Planning.PNG" alt="Planning" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Planning.html">Planning</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Planning.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/nocturnal.html" aria-label="Nocturnal writeup"><img src="assets/maquinas/Nocturnal.PNG" alt="Nocturnal" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/nocturnal.html">Nocturnal</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/nocturnal.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Alert.html" aria-label="Alert writeup"><img src="assets/maquinas/Alert.PNG" alt="Alert" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Alert.html">Alert</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Alert.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Cap.html" aria-label="Cap writeup"><img src="assets/maquinas/Cap.PNG" alt="Cap" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Cap.html">Cap</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Cap.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Chemistry.html" aria-label="Chemistry writeup"><img src="assets/maquinas/Chemistry.PNG" alt="Chemistry" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Chemistry.html">Chemistry</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Chemistry.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Dog.html" aria-label="Dog writeup"><img src="assets/maquinas/Dog.PNG" alt="Dog" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Dog.html">Dog</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Dog.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/LinkVortex.html" aria-label="LinkVortex writeup"><img src="assets/maquinas/LinkVortex.PNG" alt="LinkVortex" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/LinkVortex.html">LinkVortex</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/LinkVortex.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/Titanic.html" aria-label="Titanic writeup"><img src="assets/maquinas/Titanic.PNG" alt="Titanic" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/Titanic.html">Titanic</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/Titanic.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/TwoMillion.html" aria-label="TwoMillion writeup"><img src="assets/maquinas/TwoMillion.PNG" alt="TwoMillion" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/TwoMillion.html">TwoMillion</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/TwoMillion.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/UnderPass.html" aria-label="UnderPass writeup"><img src="assets/maquinas/UnderPass.PNG" alt="UnderPass" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/UnderPass.html">UnderPass</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/UnderPass.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/inject.html" aria-label="Inject writeup"><img src="assets/maquinas/Inject.png" alt="Inject" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/inject.html">Inject</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/inject.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/investigation.html" aria-label="Investigation writeup"><img src="assets/maquinas/Investigation.png" alt="Investigation" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/investigation.html">Investigation</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/investigation.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/metatwo.html" aria-label="MetaTwo writeup"><img src="assets/maquinas/MetaTwo.png" alt="MetaTwo" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/metatwo.html">MetaTwo</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/metatwo.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/precious.html" aria-label="Precious writeup"><img src="assets/maquinas/Precious.png" alt="Precious" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/precious.html">Precious</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/precious.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/soccer.html" aria-label="Soccer writeup"><img src="assets/maquinas/Soccer.png" alt="Soccer" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/soccer.html">Soccer</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/soccer.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/squashed.html" aria-label="Squashed writeup"><img src="assets/maquinas/Squashed.png" alt="Squashed" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/squashed.html">Squashed</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/squashed.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
+                <article class="card machine reveal">
+                    <a class="card-media" href="assets/maquinas/stocker.html" aria-label="Stocker writeup"><img src="assets/maquinas/Stocker.png" alt="Stocker" loading="lazy"></a>
+                    <div class="card-body">
+                        <h3 class="card-title"><a href="assets/maquinas/stocker.html">Stocker</a></h3>
+                        <div class="machine-badges"><span class="badge badge-os">Linux</span><span class="badge badge-easy">Easy</span></div>
+                        <div class="card-foot"><a class="card-link" href="assets/maquinas/stocker.html">Writeup <i class="fas fa-arrow-right"></i></a></div>
+                    </div>
+                </article>
             </div>
         </div>
-        <br><br>
-        <!--Content-->
+    </main>
 
-
-
-
-
-
-        <div class="animated bounceInUp delay-1s" >
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Agile.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/agile.html">Machine HackTheBox Agile</a></h1>
-                        <p>Medium-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
+    <footer class="site-footer">
+        <div class="container">
+            <span class="f-brand">Juan González</span>
+            <div class="f-links">
+                <a href="/">About</a>
+                <a href="work.html">Work</a>
+                <a href="contact.html">Contact</a>
+                <a href="legal.html">Legal</a>
             </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Cat.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Cat.html">Machine HackTheBox Cat</a></h1>
-                        <p>Medium-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
+            <div class="socials">
+                <a href="mailto:juan.gonzalez1@udc.es" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/juangonzalez1" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/juan-gonzalez-b43757234" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Cypher.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Cypher.html">Machine HackTheBox Cypher</a></h1>
-                        <p>Medium-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Environment.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Environment.html">Machine HackTheBox Environment</a></h1>
-                        <p>Medium-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Strutted.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Strutted.html">Machine HackTheBox Strutted</a></h1>
-                        <p>Medium-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Outbound.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Outbound.html">Machine HackTheBox Outbound</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Artificial.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Artificial.html">Machine HackTheBox Artificial</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-             <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Planning.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Planning.html">Machine HackTheBox Planning</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-            
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Nocturnal.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/nocturnal.html">Machine HackTheBox Nocturnal</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-             <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Alert.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Alert.html">Machine HackTheBox Alert</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Cap.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Cap.html">Machine HackTheBox Cap</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Chemistry.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Chemistry.html">Machine HackTheBox Chemistry</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Dog.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Dog.html">Machine HackTheBox Dog</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/LinkVortex.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/LinkVortex.html">Machine HackTheBox LinkVortex</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Titanic.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/Titanic.html">Machine HackTheBox Titanic</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/TwoMillion.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/TwoMillion.html">Machine HackTheBox TwoMillion</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-            
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/UnderPass.PNG">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/UnderPass.html">Machine HackTheBox UnderPass</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags. </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-            
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Inject.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/inject.html">Machine HackTheBox Inject</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags.  </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Investigation.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/investigation.html">Machine HackTheBox Investigation</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags.  </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/MetaTwo.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/metatwo.html">Machine HackTheBox MetaTwo</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags.  </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Precious.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/precious.html">Machine HackTheBox Precious</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags.  </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Soccer.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/soccer.html">Machine HackTheBox Soccer</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags.  </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Squashed.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/squashed.html">Machine HackTheBox Squashed</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags.  </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="row" id="work-row" >
-                <div class="col-md-3 col-sm-4 bounceInLeft delay-2s">
-                    <center>
-                        <div class="work-hero">
-                            <img class="work-hero-img" src="assets/maquinas/Stocker.png">
-                        </div>
-                    </center>
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <div class="work-des ">
-                        <h1><a style= "color: inherit;" href="assets/maquinas/stocker.html">Machine HackTheBox Stocker</a></h1>
-                        <p>Easy-level Linux machine solved, finding both the user and administrator flags.  </p>
-                    </div>
-                </div>
-            </div>
-            <br><br><br>
-
-            <div class="footer-full  fadeIn delay-2s">
-                <div id="contact-social" class="social-icons" style="display: inline;">
-                <a target="_blank" href="mailto:juan.gonzalez1@udc.es"><i class="fas fa-envelope"></i></a>
-                <a target="_blank" href="https://github.com/juangonzalez1"><i class="fab fa-github"></i></a>
-                <a target="_blank" href="https://linkedin.com/in/juan-gonzalez-b43757234"><i class="fab fa-linkedin"></i></a>
-            </div>
-                 <div class="footer-credits">
-                    Made by <a> Juan González </a>
-                </div>
-            </div>
+            <p>© <span id="year">2025</span> Juan González Iglesias</p>
         </div>
-        <div class="menu-wrap">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger">
-                <div></div>
-            </div>
-            <div class="menu">
-                <div>
-                    <div>
-                        <ul>
-                            <li><a href="index.html">About me</a></li>
-                            <li><a href="work.html">Works</a></li>
-                            <li><a href="#" style="text-decoration: line-through;">Machines/CTF</a></li>
-                            <li><span><a href="contact.html">Contact</a></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </footer>
 </body>
 
 </html>
