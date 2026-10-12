@@ -135,9 +135,9 @@ strong { color: var(--text); font-weight: 600; }
 .card:hover { transform: translateY(-5px); border-color: var(--border-2); box-shadow: var(--shadow); }
 .card-media { aspect-ratio: 16 / 10; background: #ececeb; overflow: hidden; border-bottom: 1px solid var(--border); }
 .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-.card:hover .card-media img { transform: scale(1.04); }
-.card-media.contain { display: grid; place-items: center; background: var(--surface-2); }
-.card-media.contain img { object-fit: contain; padding: 26px; }
+.card:hover .card-media:not(.contain) img { transform: scale(1.04); }
+.card-media.contain { display: grid; place-items: center; background: var(--surface-2); padding: 22px; }
+.card-media.contain img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .card-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .card-title { font-size: 1.16rem; font-weight: 600; }
 .card-title a { border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }

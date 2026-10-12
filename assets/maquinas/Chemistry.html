@@ -11,19 +11,27 @@
 :root{--bg-0:#f3f3f2;--bg-1:#ececeb;--bg-2:#dcdcda;--text-0:#1d1e20;--text-1:#63656a;--accent:#3b3f45;--keyword:#3b3f45;--string:#5c5f64;--literal:#45484d;--type:#55585e;}
 html{background:var(--bg-0)!important;color:var(--text-0)!important;}
 body{font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif!important;line-height:1.6;}
-header,h1,h2,h3,.sans{font-family:'Fraunces',Georgia,serif!important;}
+h1,h2,h3,.sans{font-family:'Fraunces',Georgia,serif!important;}
 code,.mono,summary{font-family:'IBM Plex Mono',ui-monospace,monospace!important;}
-body>header{border-bottom:1px solid var(--bg-2);padding-bottom:1em;}
-body>header a{color:var(--accent)!important;letter-spacing:0!important;font-weight:600;}
 p a,main li a{color:var(--accent);}
 pre{background:var(--bg-1);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 6px 6px 0;margin-left:0;}
 :not(pre)>code{background:var(--bg-1);border:1px solid #e2e2e0;border-radius:5px;}
 article>hr{border-color:var(--bg-2);}
+/* barra superior igual que el resto del sitio (ancho completo) */
+.wu-nav{position:sticky;top:0;z-index:50;display:block;margin:0 calc(50% - 50vw) 2.6rem;background:rgba(243,243,242,0.92);-webkit-backdrop-filter:saturate(1.2) blur(10px);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--bg-2);}
+.wu-nav-inner{max-width:1120px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.wu-brand{font-family:'Fraunces',Georgia,serif!important;font-weight:600;font-size:1.05rem;color:var(--text-0)!important;letter-spacing:0!important;white-space:nowrap;}
+.wu-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:flex-end;}
+.wu-links a{margin:0!important;color:var(--text-1)!important;font-family:'IBM Plex Sans',sans-serif!important;font-size:0.9rem;font-weight:500;letter-spacing:0!important;padding:6px 11px;white-space:nowrap;}
+.wu-links a:hover,.wu-links a.cur{color:var(--text-0)!important;}
+.wu-links a.cur{position:relative;}
+.wu-links a.cur::after{content:"";position:absolute;left:11px;right:11px;bottom:0;height:2px;background:var(--accent);}
+@media(max-width:600px){.wu-nav-inner{height:auto;flex-direction:column;align-items:flex-start;gap:6px;padding:12px 20px;}.wu-links{gap:2px;justify-content:flex-start;}}
 </style>
 </head>
 
 
-<body><header align="center"><a href="/maquinas.html">Máquinas/CTF</a><nav><a href="/">Sobre mi</a></nav></header>
+<body><header class="wu-nav"><div class="wu-nav-inner"><a class="wu-brand" href="/">Juan González Iglesias</a><nav class="wu-links"><a href="/">About</a><a href="/work.html">Work</a><a href="/maquinas.html" class="cur">Machines / CTF</a><a href="/contact.html">Contact</a></nav></div></header>
 
 
     <article aria-label="Content" itemscope="" itemtype="http://schema.org/BlogPosting"><h1 itemprop="name headline">Máquina resuelta</h1><div itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="height:48px"> <img itemprop="image" alt="main authors image" src="./Chemistry.JPG"> <span class="mono authors"> <a href="https://juachan.es/assets/maquinas/Chemistry.html" itemprop="name">Chemistry</a> </span></div><time datetime="2022-05-11T07:00:00+00:00" itemprop="datePublished" class="mono"> Mar, 2025 </time><hr><main itemprop="articleBody" style="position: relative">
