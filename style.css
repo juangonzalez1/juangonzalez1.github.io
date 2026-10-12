@@ -98,8 +98,9 @@ strong { color: var(--text); font-weight: 600; }
 .btn-primary:hover { background: var(--accent-ink); transform: translateY(-2px); box-shadow: 0 12px 26px rgba(37, 39, 43, 0.28); }
 .btn-ghost { background: transparent; color: var(--text); border-color: var(--border-2); }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-/* botón CV de la barra: compacto pero con las letras como "Download CV" (0.95rem) */
-.btn-sm.nav-cv { font-size: 0.95rem; }
+/* botón CV de la barra: mismo color de texto que "Download CV" (el gris de
+   .nav-links a ganaba por especificidad; lo forzamos al claro de btn-primary) */
+.nav-links a.nav-cv, .nav-links a.nav-cv:hover { color: #f6f6f5; }
 
 /* ---------- Hero ---------- */
 .hero { display: grid; grid-template-columns: 1.3fr 0.8fr; gap: 60px; align-items: center; padding: 80px 0 92px; }
